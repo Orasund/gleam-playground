@@ -28,8 +28,8 @@ pub fn triangle(x: Float, y: Float, r: Float) {
     list.range(0, 2)
     |> list.map(fn(i) {
       Polar(radius: r, angle: 2.0 *. elementary.pi() *. int.to_float(i) /. 3.0)
+      |> vector.from_polar
+      |> vector.add(v, _)
     })
-    |> list.map(vector.from_polar)
-    |> list.map(vector.add(v, _))
   p5.triangle(x1, y1, x2, y2, x3, y3)
 }

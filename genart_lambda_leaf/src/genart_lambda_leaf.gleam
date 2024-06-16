@@ -1,4 +1,6 @@
+import gleam/float
 import gleam/int
+import gleam/javascript/array
 import gleam/list
 import gleam_community/maths/elementary
 import lustre/element/html
@@ -22,8 +24,11 @@ pub fn rec(size: Float, steps: Int) -> Nil {
     0 -> {
       let assert Ok(color) =
         colors
-        |> list.shuffle()
-        |> list.first()
+        |> array.from_list()
+        |> array.get(
+          p5.random(0.0, int.to_float(list.length(colors)) -. 1.0)
+          |> float.round(),
+        )
 
       p5.fill(color)
       use <- extra.with_rotate(elementary.pi() /. -2.0)
@@ -38,13 +43,14 @@ pub fn rec(size: Float, steps: Int) -> Nil {
       )
 
       {
-        use <- extra.with_translate(box_size /. 4.0, box_size *. 7.0 /. 4.0)
-        use <- extra.with_rotate(elementary.pi() *. -7.0 /. 8.0)
+        use <- extra.with_translate(box_size /. 3.0, box_size *. 7.0 /. 4.0)
+        use <- extra.with_rotate(elementary.pi() /. 2.0)
+        use <- extra.with_scale(1.5, 1.5)
         rec(box_size, steps - 1)
       }
       {
-        use <- extra.with_translate(box_size, box_size /. 2.0)
-        use <- extra.with_rotate(-15.0 *. elementary.pi() /. 8.0)
+        use <- extra.with_translate(box_size *. 1.1, box_size /. 2.0)
+        use <- extra.with_rotate(elementary.pi() /. 8.0)
         use <- extra.with_scale(2.0, 2.0)
         rec(box_size, steps - 1)
       }
@@ -53,8 +59,9 @@ pub fn rec(size: Float, steps: Int) -> Nil {
           box_size *. 7.0 /. 4.0,
           box_size *. 7.0 /. 4.0,
         )
-        use <- extra.with_rotate(elementary.pi() *. 3.0 /. 4.0)
-        use <- extra.with_scale(1.2, 1.2)
+        use <- extra.with_scale(-1.0, 1.0)
+        use <- extra.with_rotate(elementary.pi() *. -3.0 /. 4.0)
+
         rec(box_size, steps - 1)
       }
     }
@@ -64,7 +71,7 @@ pub fn rec(size: Float, steps: Int) -> Nil {
 pub fn draw(_) {
   p5.background("#181F1C")
   p5.random_seed(42)
-  let size = canvas_size *. 0.8
+  let size = canvas_size
   p5.translate(canvas_size /. 2.0, canvas_size /. 2.0)
   rec(size, 7)
 }
