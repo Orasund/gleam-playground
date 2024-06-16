@@ -78,3 +78,7 @@ pub fn with_scale(x: Float, y: Float, fun: fn() -> Nil) {
   fun()
   p5.scale(1.0 /. x, 1.0 /. y)
 }
+
+pub fn main() {
+  p5.init(setup: setup, draw: draw, id: "main")
+}
