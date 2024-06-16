@@ -1,7 +1,10 @@
+import gleam/int
 import gleam/list
 import gleam_community/maths/elementary
 import lustre/element/html
-import p5js_in_gleam/p5
+import p5js_bindings/extra
+import p5js_bindings/p5
+import vector.{Polar, Vector}
 
 const canvas_size = 600.0
 
@@ -23,32 +26,37 @@ pub fn rec(size: Float, steps: Int) -> Nil {
         |> list.first()
 
       p5.fill(color)
-      p5.circle(0.0, 0.0, size)
+      use <- extra.with_rotate(elementary.pi() /. -2.0)
+      extra.triangle(0.0, 0.0, size /. 2.0)
     }
     _ -> {
       let box_size = size /. 3.0
 
-      with_translate(
+      use <- extra.with_translate(
         { size /. 2.0 -. box_size /. 2.0 } *. -1.0,
         { size /. 2.0 -. box_size /. 2.0 } *. -1.0,
-        fn() {
-          with_translate(box_size /. 4.0, box_size *. 7.0 /. 4.0, fn() {
-            with_rotate(elementary.pi() *. -7.0 /. 8.0, fn() {
-              rec(box_size, steps - 1)
-            })
-          })
-          with_translate(box_size, box_size /. 2.0, fn() {
-            with_rotate(-15.0 *. elementary.pi() /. 8.0, fn() {
-              with_scale(2.0, 2.0, fn() { rec(box_size, steps - 1) })
-            })
-          })
-          with_translate(box_size *. 7.0 /. 4.0, box_size *. 7.0 /. 4.0, fn() {
-            with_rotate(elementary.pi() *. 3.0 /. 4.0, fn() {
-              with_scale(1.2, 1.2, fn() { rec(box_size, steps - 1) })
-            })
-          })
-        },
       )
+
+      {
+        use <- extra.with_translate(box_size /. 4.0, box_size *. 7.0 /. 4.0)
+        use <- extra.with_rotate(elementary.pi() *. -7.0 /. 8.0)
+        rec(box_size, steps - 1)
+      }
+      {
+        use <- extra.with_translate(box_size, box_size /. 2.0)
+        use <- extra.with_rotate(-15.0 *. elementary.pi() /. 8.0)
+        use <- extra.with_scale(2.0, 2.0)
+        rec(box_size, steps - 1)
+      }
+      {
+        use <- extra.with_translate(
+          box_size *. 7.0 /. 4.0,
+          box_size *. 7.0 /. 4.0,
+        )
+        use <- extra.with_rotate(elementary.pi() *. 3.0 /. 4.0)
+        use <- extra.with_scale(1.2, 1.2)
+        rec(box_size, steps - 1)
+      }
     }
   }
 }
@@ -59,24 +67,6 @@ pub fn draw(_) {
   let size = canvas_size *. 0.8
   p5.translate(canvas_size /. 2.0, canvas_size /. 2.0)
   rec(size, 7)
-}
-
-pub fn with_translate(x: Float, y: Float, fun: fn() -> Nil) {
-  p5.translate(x, y)
-  fun()
-  p5.translate(x *. -1.0, y *. -1.0)
-}
-
-pub fn with_rotate(r: Float, fun: fn() -> Nil) {
-  p5.rotate(r)
-  fun()
-  p5.rotate(r *. -1.0)
-}
-
-pub fn with_scale(x: Float, y: Float, fun: fn() -> Nil) {
-  p5.scale(x, y)
-  fun()
-  p5.scale(1.0 /. x, 1.0 /. y)
 }
 
 pub fn main() {

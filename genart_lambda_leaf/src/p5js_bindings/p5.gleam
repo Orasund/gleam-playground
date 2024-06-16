@@ -40,6 +40,16 @@ pub fn random_seed(seed: Int) -> Nil
 @external(javascript, "../p5Module.mjs", "random")
 pub fn random(min: Float, max_not_including: Float) -> Float
 
+@external(javascript, "../p5Module.mjs", "triangle")
+pub fn triangle(
+  x1: Float,
+  y1: Float,
+  x2: Float,
+  y2: Float,
+  x3: Float,
+  y3: Float,
+) -> Nil
+
 pub fn init(
   setup setup: fn() -> state,
   draw draw: fn(javascript.Reference(Option(state))) -> Nil,
