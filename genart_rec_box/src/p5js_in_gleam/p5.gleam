@@ -28,11 +28,17 @@ pub fn fill(color: String) -> Nil
 @external(javascript, "../p5Module.mjs", "circle")
 pub fn circle(center_x: Float, center_y: Float, diameter: Float) -> Nil
 
+@external(javascript, "../p5Module.mjs", "square")
+pub fn square(x: Float, y: Float, size: Float) -> Nil
+
 @external(javascript, "../p5Module.mjs", "background")
 pub fn background(color: String) -> Nil
 
 @external(javascript, "../p5Module.mjs", "randomSeed")
-pub fn random_seed(seed: Float) -> Nil
+pub fn random_seed(seed: Int) -> Nil
+
+@external(javascript, "../p5Module.mjs", "random")
+pub fn random(min: Float, max_not_including: Float) -> Float
 
 pub fn init(
   setup setup: fn() -> state,

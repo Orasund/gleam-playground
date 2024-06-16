@@ -1,4 +1,3 @@
-//new window.p5();
 let sketch = null;
 
 export function initById(script, id) {
@@ -18,5 +17,7 @@ export const rotate = (a) => sketch.rotate(a)
 export const scale = (a, b) => sketch.scale(a, b)
 export const fill = (a) => sketch.fill(a)
 export const circle = (a, b, c) => sketch.circle(a, b, c)
+export const square = (a, b, c) => sketch.square(a, b, c)
 export const background = (a) => sketch.background(a)
 export const randomSeed = (a) => sketch.randomSeed(a)
+export const random = (a, b) => sketch.random(a, b)
