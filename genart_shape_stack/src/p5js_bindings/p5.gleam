@@ -50,6 +50,15 @@ pub fn triangle(
   y3: Float,
 ) -> Nil
 
+@external(javascript, "../p5Module.mjs", "beginShape")
+pub fn begin_shape() -> Nil
+
+@external(javascript, "../p5Module.mjs", "endShape")
+pub fn end_shape() -> Nil
+
+@external(javascript, "../p5Module.mjs", "vertex")
+pub fn vertex(x: Float, y: Float) -> Nil
+
 pub fn init(
   setup setup: fn() -> state,
   draw draw: fn(javascript.Reference(Option(state))) -> Nil,
