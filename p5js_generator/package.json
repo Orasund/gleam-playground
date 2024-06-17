@@ -1,0 +1,17 @@
+{
+  "name": "p5js_generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "generator": "node script.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdoc-to-markdown": "^8.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

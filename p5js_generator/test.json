@@ -1,0 +1,363 @@
+[
+  {
+    "id": "module:Color",
+    "longname": "module:Color",
+    "name": "Color",
+    "kind": "module",
+    "requires": [
+      "module:core",
+      "module:constants",
+      "module:color_conversion"
+    ],
+    "customTags": [
+      {
+        "tag": "submodule",
+        "value": "Creating & Reading"
+      },
+      {
+        "tag": "for",
+        "value": "p5"
+      }
+    ],
+    "meta": {
+      "lineno": 1,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 0
+  },
+  {
+    "id": "module:Color~p5.Color()",
+    "longname": "module:Color~p5.Color",
+    "name": "p5.Color",
+    "kind": "constructor",
+    "memberof": "module:Color~p5.Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "p5"
+          ]
+        },
+        "optional": true,
+        "description": "pointer to p5 instance.",
+        "name": "pInst"
+      },
+      {
+        "type": {
+          "names": [
+            "Array.<Number>",
+            "String"
+          ]
+        },
+        "description": "an array containing the color values\n                                         for red, green, blue and alpha channel\n                                         or CSS color.",
+        "name": "vals"
+      }
+    ],
+    "order": 5
+  },
+  {
+    "id": "module:Color#p5.Color#_getHue",
+    "longname": "module:Color#p5.Color#_getHue",
+    "name": "_getHue",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Hue is the same in HSB and HSL, but the maximum value may be different.\nThis function will return the HSB-normalized saturation when supplied with\nan HSB color object, but will default to the HSL-normalized saturation\notherwise.",
+    "memberof": "module:Color#p5.Color",
+    "params": [],
+    "meta": {
+      "lineno": 794,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 11
+  },
+  {
+    "id": "module:Color#p5.Color#_getSaturation",
+    "longname": "module:Color#p5.Color#_getSaturation",
+    "name": "_getSaturation",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Saturation is scaled differently in HSB and HSL. This function will return\nthe HSB saturation when supplied with an HSB color object, but will default\nto the HSL saturation otherwise.",
+    "memberof": "module:Color#p5.Color",
+    "params": [],
+    "meta": {
+      "lineno": 824,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 12
+  },
+  {
+    "id": "module:Color~p5.Color",
+    "longname": "module:Color~p5.Color",
+    "name": "Color",
+    "kind": "class",
+    "scope": "static",
+    "description": "p5.Color",
+    "memberof": "module:Color~p5",
+    "meta": {
+      "lineno": 346,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 4
+  },
+  {
+    "id": "module:Color~results.0]",
+    "longname": "module:Color~results.0]",
+    "name": "0]",
+    "kind": "member",
+    "scope": "static",
+    "description": "For HSB and HSL, interpret the gray level as a brightness/lightness\nvalue (they are equivalent when chroma is zero). For RGB, normalize the\ngray level according to the blue maximum.",
+    "memberof": "module:Color~results",
+    "meta": {
+      "lineno": 1052,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 14
+  },
+  {
+    "id": "module:Color.p5.Color._parseInputs",
+    "longname": "module:Color.p5.Color._parseInputs",
+    "name": "_parseInputs",
+    "kind": "function",
+    "scope": "static",
+    "description": "For a number of different inputs, returns a color formatted as [r, g, b, a]\narrays, with each component normalized between 0 and 1.",
+    "memberof": "module:Color.p5.Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Array"
+          ]
+        },
+        "optional": true,
+        "description": "An 'array-like' object that represents a list of\n                         arguments",
+        "name": "...args"
+      }
+    ],
+    "examples": [
+      "s\n<div>\n<code>\n// todo\n//\n// describe('');\n</code>\n</div>"
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Array.<Number>"
+          ]
+        },
+        "description": "a color formatted as [r, g, b, a]\n                         Example:\n                         input        ==> output\n                         g            ==> [g, g, g, 255]\n                         g,a          ==> [g, g, g, a]\n                         r, g, b      ==> [r, g, b, 255]\n                         r, g, b, a   ==> [r, g, b, a]\n                         [g]          ==> [g, g, g, 255]\n                         [g, a]       ==> [g, g, g, a]\n                         [r, g, b]    ==> [r, g, b, 255]\n                         [r, g, b, a] ==> [r, g, b, a]"
+      }
+    ],
+    "access": "private",
+    "meta": {
+      "lineno": 864,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 13
+  },
+  {
+    "id": "module:Color~namedColors",
+    "longname": "module:Color~namedColors",
+    "name": "namedColors",
+    "kind": "constant",
+    "scope": "inner",
+    "description": "CSS named colors.",
+    "memberof": "module:Color",
+    "params": [],
+    "meta": {
+      "lineno": 17,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 1
+  },
+  {
+    "id": "module:Color~WHITESPACE",
+    "longname": "module:Color~WHITESPACE",
+    "name": "WHITESPACE",
+    "kind": "constant",
+    "scope": "inner",
+    "description": "These regular expressions are used to build up the patterns for matching\nviable CSS color strings: fragmenting the regexes in this way increases the\nlegibility and comprehensibility of the code.\n\nNote that RGB values of .9 are not parsed by IE, but are supported here for\ncolor string consistency.",
+    "memberof": "module:Color",
+    "params": [],
+    "meta": {
+      "lineno": 176,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 2
+  },
+  {
+    "id": "module:Color~colorPatterns",
+    "longname": "module:Color~colorPatterns",
+    "name": "colorPatterns",
+    "kind": "constant",
+    "scope": "inner",
+    "description": "Full color string patterns. The capture groups are necessary.",
+    "memberof": "module:Color",
+    "params": [],
+    "meta": {
+      "lineno": 184,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 3
+  },
+  {
+    "id": "module:Color~toString",
+    "longname": "module:Color~toString",
+    "name": "toString",
+    "kind": "function",
+    "scope": "inner",
+    "description": "Returns the color formatted as a `String`.\n\nCalling `myColor.toString()` can be useful for debugging, as in\n`print(myColor.toString())`. It's also helpful for using p5.js with other\nlibraries.\n\nThe parameter, `format`, is optional. If a format string is passed, as in\n`myColor.toString('#rrggbb')`, it will determine how the color string is\nformatted. By default, color strings are formatted as `'rgba(r, g, b, a)'`.",
+    "memberof": "module:Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "String"
+          ]
+        },
+        "optional": true,
+        "description": "how the color string will be formatted.\nLeaving this empty formats the string as rgba(r, g, b, a).\n'#rgb' '#rgba' '#rrggbb' and '#rrggbbaa' format as hexadecimal color codes.\n'rgb' 'hsb' and 'hsl' return the color formatted in the specified color mode.\n'rgba' 'hsba' and 'hsla' are the same as above but with alpha channels.\n'rgb%' 'hsb%' 'hsl%' 'rgba%' 'hsba%' and 'hsla%' format as percentages.",
+        "name": "format"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "String"
+          ]
+        },
+        "description": "the formatted string.\n\n<div>\n<code>\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  // Create a p5.Color object.\n  let myColor = color('darkorchid');\n\n  // Style the text.\n  textAlign(CENTER);\n  textSize(16);\n\n  // Display the text.\n  text(myColor.toString('#rrggbb'), 50, 50);\n\n  describe('The text \"#9932cc\" written in purple on a gray background.');\n}\n</code>\n</div>"
+      }
+    ],
+    "meta": {
+      "lineno": 362,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 6
+  },
+  {
+    "id": "module:Color~setRed",
+    "longname": "module:Color~setRed",
+    "name": "setRed",
+    "kind": "function",
+    "scope": "inner",
+    "description": "Sets the red component of a color.\n\nThe range depends on the <a href=\"#/p5/colorMode\">colorMode()</a>. In the\ndefault RGB mode it's between 0 and 255.",
+    "memberof": "module:Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Number"
+          ]
+        },
+        "description": "the new red value.",
+        "name": "red"
+      }
+    ],
+    "examples": [
+      "s\n<div>\n<code>\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  // Create a p5.Color object.\n  let c = color(255, 128, 128);\n\n  // Draw the left rectangle.\n  noStroke();\n  fill(c);\n  rect(15, 20, 35, 60);\n\n  // Change the red value.\n  c.setRed(64);\n\n  // Draw the right rectangle.\n  fill(c);\n  rect(50, 20, 35, 60);\n\n  describe('Two rectangles. The left one is salmon pink and the right one is teal.');\n}\n</code>\n</div>"
+    ],
+    "meta": {
+      "lineno": 571,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 7
+  },
+  {
+    "id": "module:Color~setGreen",
+    "longname": "module:Color~setGreen",
+    "name": "setGreen",
+    "kind": "function",
+    "scope": "inner",
+    "description": "Sets the green component of a color.\n\nThe range depends on the <a href=\"#/p5/colorMode\">colorMode()</a>. In the\ndefault RGB mode it's between 0 and 255.",
+    "memberof": "module:Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Number"
+          ]
+        },
+        "description": "the new green value.",
+        "name": "green"
+      }
+    ],
+    "examples": [
+      "s\n<div>\n<code>\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  // Create a p5.Color object.\n  let c = color(255, 128, 128);\n\n  // Draw the left rectangle.\n  noStroke();\n  fill(c);\n  rect(15, 20, 35, 60);\n\n  // Change the green value.\n  c.setGreen(255);\n\n  // Draw the right rectangle.\n  fill(c);\n  rect(50, 20, 35, 60);\n\n  describe('Two rectangles. The left one is salmon pink and the right one is yellow.');\n}\n</code>\n</div>"
+    ],
+    "meta": {
+      "lineno": 613,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 8
+  },
+  {
+    "id": "module:Color~setBlue",
+    "longname": "module:Color~setBlue",
+    "name": "setBlue",
+    "kind": "function",
+    "scope": "inner",
+    "description": "Sets the blue component of a color.\n\nThe range depends on the <a href=\"#/p5/colorMode\">colorMode()</a>. In the\ndefault RGB mode it's between 0 and 255.",
+    "memberof": "module:Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Number"
+          ]
+        },
+        "description": "the new blue value.",
+        "name": "blue"
+      }
+    ],
+    "examples": [
+      "s\n<div>\n<code>\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  // Create a p5.Color object.\n  let c = color(255, 128, 128);\n\n  // Draw the left rectangle.\n  noStroke();\n  fill(c);\n  rect(15, 20, 35, 60);\n\n  // Change the blue value.\n  c.setBlue(255);\n\n  // Draw the right rectangle.\n  fill(c);\n  rect(50, 20, 35, 60);\n\n  describe('Two rectangles. The left one is salmon pink and the right one is pale fuchsia.');\n}\n</code>\n</div>"
+    ],
+    "meta": {
+      "lineno": 655,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 9
+  },
+  {
+    "id": "module:Color~setAlpha",
+    "longname": "module:Color~setAlpha",
+    "name": "setAlpha",
+    "kind": "function",
+    "scope": "inner",
+    "description": "Sets the alpha (transparency) value of a color.\n\nThe range depends on the\n<a href=\"#/p5/colorMode\">colorMode()</a>. In the default RGB mode it's\nbetween 0 and 255.",
+    "memberof": "module:Color",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Number"
+          ]
+        },
+        "description": "the new alpha value.",
+        "name": "alpha"
+      }
+    ],
+    "examples": [
+      "s\n<div>\n<code>\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  // Create a p5.Color object.\n  let c = color(255, 128, 128);\n\n  // Draw the left rectangle.\n  noStroke();\n  fill(c);\n  rect(15, 20, 35, 60);\n\n  // Change the alpha value.\n  c.setAlpha(128);\n\n  // Draw the right rectangle.\n  fill(c);\n  rect(50, 20, 35, 60);\n\n  describe('Two rectangles. The left one is salmon pink and the right one is faded pink.');\n}\n</code>\n</div>"
+    ],
+    "meta": {
+      "lineno": 697,
+      "filename": "p5.Color.js",
+      "path": "/home/orasund/gleam-playground/p5js_generator/input"
+    },
+    "order": 10
+  }
+]
