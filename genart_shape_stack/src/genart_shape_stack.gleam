@@ -12,13 +12,21 @@ pub fn setup() {
   p5.stroke_weight(0.0)
   p5.background("#2E4057")
   p5.random_seed(40)
-  rec(canvas_size *. 0.7, 6)
+  rec(canvas_size *. 0.7, 6, rand_color())
 }
 
-pub fn rec(size: Float, steps: Int) -> Nil {
+pub fn rand_color() {
+  random.uniform(["#66A182", "#CAFFB9", "#AEF78E", "#C0D461"])
+}
+
+pub fn rec(size: Float, steps: Int, old_color: String) -> Nil {
+  let color = case p5.random(0.0, 1.0) <. 0.8 {
+    True -> old_color
+    False -> rand_color()
+  }
   case steps <= 0 {
     True -> {
-      p5.fill(random.uniform(["#66A182", "#CAFFB9", "#AEF78E", "#C0D461"]))
+      p5.fill(color)
       {
         list.range(3, 6)
         |> list.map(fn(n) { fn() { shape.polygon(0.0, 0.0, size /. 2.0, n) } })
@@ -32,27 +40,27 @@ pub fn rec(size: Float, steps: Int) -> Nil {
       {
         use <- transform.scale(0.5, 0.5)
         use <- transform.translate(box_size /. -1.5, box_size /. -1.5)
-        rec(box_size, 0)
+        rec(box_size, 0, color)
       }
       {
         {
           use <- transform.rotate(elementary.pi() /. -16.0)
           use <- transform.translate(box_size /. 2.0, box_size /. -2.0)
           use <- transform.rotate(elementary.pi() /. -2.0)
-          rec(box_size, steps - 1)
+          rec(box_size, steps - 1, color)
         }
         {
           use <- transform.scale(0.9, 0.9)
           use <- transform.rotate(elementary.pi() /. 16.0)
           use <- transform.translate(box_size /. -2.0, box_size /. 2.0)
           use <- transform.rotate(elementary.pi() /. 2.0)
-          rec(box_size, steps - 1)
+          rec(box_size, steps - 1, color)
         }
       }
       {
         use <- transform.scale(1.1, 1.1)
         use <- transform.translate(box_size /. 2.0, box_size /. 2.0)
-        rec(box_size, steps - 1)
+        rec(box_size, steps - 1, color)
       }
     }
   }
