@@ -8,10 +8,10 @@ var CustomType = class {
   }
 };
 var List = class {
-  static fromArray(array2, tail) {
+  static fromArray(array, tail) {
     let t = tail || new Empty();
-    for (let i = array2.length - 1; i >= 0; --i) {
-      t = new NonEmpty(array2[i], t);
+    for (let i = array.length - 1; i >= 0; --i) {
+      t = new NonEmpty(array[i], t);
     }
     return t;
   }
@@ -46,8 +46,8 @@ var List = class {
     return length4;
   }
 };
-function prepend(element2, tail) {
-  return new NonEmpty(element2, tail);
+function prepend(element, tail) {
+  return new NonEmpty(element, tail);
 }
 function toList(elements, tail) {
   return List.fromArray(elements, tail);
@@ -226,8 +226,8 @@ var MIN_ARRAY_NODE = BUCKET_SIZE / 4;
 function identity(x) {
   return x;
 }
-function round(float2) {
-  return Math.round(float2);
+function round(float) {
+  return Math.round(float);
 }
 
 // build/dev/javascript/gleam_stdlib/gleam/float.mjs
@@ -265,14 +265,14 @@ function compare2(a, b) {
 }
 
 // build/dev/javascript/gleam_community_maths/maths.mjs
-function sin(float2) {
-  return Math.sin(float2);
+function sin(float) {
+  return Math.sin(float);
 }
 function pi() {
   return Math.PI;
 }
-function cos(float2) {
-  return Math.cos(float2);
+function cos(float) {
+  return Math.cos(float);
 }
 
 // build/dev/javascript/gleam_community_maths/gleam_community/maths/elementary.mjs
@@ -319,7 +319,6 @@ function initById(script, id) {
 }
 var createCanvas = (a, b) => sketch.createCanvas(a, b);
 var strokeWeight = (a) => sketch.strokeWeight(a);
-var noLoop = () => sketch.noLoop();
 var translate = (a, b) => sketch.translate(a, b);
 var rotate = (a) => sketch.rotate(a);
 var scale = (a, b) => sketch.scale(a, b);
@@ -331,13 +330,13 @@ var triangle = (a, b, c, d, e, f) => sketch.triangle(a, b, c, d, e, f);
 
 // build/dev/javascript/genart_lambda_leaf/p5js_bindings/p5.mjs
 var Sketch = class extends CustomType {
-  constructor(setup2, draw2) {
+  constructor(setup2, draw) {
     super();
     this.setup = setup2;
-    this.draw = draw2;
+    this.draw = draw;
   }
 };
-function init(setup2, draw2, id) {
+function init(setup2, draw, id) {
   let _pipe = () => {
     let state = make_reference(new None());
     return new Sketch(
@@ -346,11 +345,38 @@ function init(setup2, draw2, id) {
         return void 0;
       },
       () => {
-        return draw2(state);
+        return draw(state);
       }
     );
   };
   return initById(_pipe, id);
+}
+
+// build/dev/javascript/genart_lambda_leaf/p5js_bindings/random.mjs
+function uniform(list) {
+  let $ = (() => {
+    let _pipe = list;
+    let _pipe$1 = toArray(_pipe);
+    return index(
+      _pipe$1,
+      (() => {
+        let _pipe$2 = random(0, to_float(length(list)) - 1);
+        return round2(_pipe$2);
+      })()
+    );
+  })();
+  if (!$.isOk()) {
+    throw makeError(
+      "assignment_no_match",
+      "p5js_bindings/random",
+      8,
+      "uniform",
+      "Assignment pattern did not match",
+      { value: $ }
+    );
+  }
+  let out = $[0];
+  return out;
 }
 
 // build/dev/javascript/genart_lambda_leaf/vector.mjs
@@ -377,22 +403,7 @@ function add2(v1, v2) {
   return new Vector(v1.x + v2.x, v1.y + v2.y);
 }
 
-// build/dev/javascript/genart_lambda_leaf/p5js_bindings/extra.mjs
-function with_translate(x, y, fun) {
-  translate(x, y);
-  fun();
-  return translate(x * -1, y * -1);
-}
-function with_rotate(r, fun) {
-  rotate(r);
-  fun();
-  return rotate(r * -1);
-}
-function with_scale(x, y, fun) {
-  scale(x, y);
-  fun();
-  return scale(divideFloat(1, x), divideFloat(1, y));
-}
+// build/dev/javascript/genart_lambda_leaf/p5js_bindings/shape.mjs
 function triangle2(x, y, r) {
   let v = new Vector(x, y);
   let $ = (() => {
@@ -402,7 +413,10 @@ function triangle2(x, y, r) {
       (i) => {
         let _pipe$1 = new Polar(
           r,
-          divideFloat(2 * pi2() * to_float(i), 3)
+          divideFloat(2 * pi2() * to_float(i), 3) + divideFloat(
+            pi2(),
+            -2
+          )
         );
         let _pipe$2 = from_polar(_pipe$1);
         return ((_capture) => {
@@ -414,8 +428,8 @@ function triangle2(x, y, r) {
   if (!$.hasLength(3) || !($.head instanceof Vector) || !($.tail.head instanceof Vector) || !($.tail.tail.head instanceof Vector)) {
     throw makeError(
       "assignment_no_match",
-      "p5js_bindings/extra",
-      27,
+      "p5js_bindings/shape",
+      9,
       "triangle",
       "Assignment pattern did not match",
       { value: $ }
@@ -430,63 +444,42 @@ function triangle2(x, y, r) {
   return triangle(x1, y1, x2, y2, x3, y3);
 }
 
-// build/dev/javascript/genart_lambda_leaf/genart_lambda_leaf.mjs
-var canvas_size = 600;
-function setup() {
-  createCanvas(canvas_size, canvas_size);
-  strokeWeight(0);
-  noLoop();
-  return void 0;
+// build/dev/javascript/genart_lambda_leaf/p5js_bindings/transform.mjs
+function translate2(x, y, fun) {
+  translate(x, y);
+  fun();
+  return translate(x * -1, y * -1);
 }
-var colors = toList(["#274029", "#60712F", "#9EA93F"]);
+function rotate2(r, fun) {
+  rotate(r);
+  fun();
+  return rotate(r * -1);
+}
+function scale2(x, y, fun) {
+  scale(x, y);
+  fun();
+  return scale(divideFloat(1, x), divideFloat(1, y));
+}
+
+// build/dev/javascript/genart_lambda_leaf/genart_lambda_leaf.mjs
 function rec(size, steps) {
   if (steps === 0) {
-    let $ = (() => {
-      let _pipe = colors;
-      let _pipe$1 = toArray(_pipe);
-      return index(
-        _pipe$1,
-        (() => {
-          let _pipe$2 = random(
-            0,
-            to_float(length(colors)) - 1
-          );
-          return round2(_pipe$2);
-        })()
-      );
-    })();
-    if (!$.isOk()) {
-      throw makeError(
-        "assignment_no_match",
-        "genart_lambda_leaf",
-        25,
-        "rec",
-        "Assignment pattern did not match",
-        { value: $ }
-      );
-    }
-    let color = $[0];
-    fill(color);
-    return with_rotate(
-      divideFloat(pi2(), -2),
-      () => {
-        return triangle2(0, 0, divideFloat(size, 2));
-      }
-    );
+    fill(uniform(toList(["#274029", "#60712F", "#9EA93F"])));
+    return triangle2(0, 0, divideFloat(size, 2));
   } else {
     let box_size = divideFloat(size, 3);
-    return with_translate(
-      (divideFloat(size, 2) - divideFloat(box_size, 2)) * -1,
-      (divideFloat(size, 2) - divideFloat(box_size, 2)) * -1,
+    return translate2(
+      divideFloat(size - box_size, -2),
+      divideFloat(size - box_size, -2),
       () => {
-        with_translate(
+        translate2(
           divideFloat(box_size, 3),
           divideFloat(box_size * 7, 4),
           () => {
-            return with_rotate(
+            return rotate2(
               divideFloat(pi2(), 2),
               () => {
-                return with_scale(
+                return scale2(
                   1.5,
                   1.5,
                   () => {
@@ -497,14 +490,14 @@ function rec(size, steps) {
             );
           }
         );
-        with_translate(
+        translate2(
           box_size * 1.1,
           divideFloat(box_size, 2),
           () => {
-            return with_rotate(
+            return rotate2(
               divideFloat(pi2(), 8),
               () => {
-                return with_scale(
+                return scale2(
                   2,
                   2,
                   () => {
@@ -515,15 +508,15 @@ function rec(size, steps) {
             );
           }
         );
-        return with_translate(
+        return translate2(
           divideFloat(box_size * 7, 4),
           divideFloat(box_size * 7, 4),
           () => {
-            return with_scale(
+            return scale2(
               -1,
               1,
               () => {
-                return with_rotate(
+                return rotate2(
                   divideFloat(pi2() * -3, 4),
                   () => {
                     return rec(box_size, steps - 1);
@@ -537,15 +530,20 @@ function rec(size, steps) {
     );
   }
 }
-function draw(_) {
+function setup() {
+  let canvas_size = 600;
+  createCanvas(canvas_size, canvas_size);
+  strokeWeight(0);
   background("#181F1C");
   randomSeed(42);
-  let size = canvas_size;
   translate(divideFloat(canvas_size, 2), divideFloat(canvas_size, 2));
-  return rec(size, 7);
+  rec(canvas_size, 7);
+  return void 0;
 }
 function main() {
-  return init(setup, draw, "main");
+  return init(setup, (_) => {
+    return void 0;
+  }, "main");
 }
 
 // build/.lustre/entry.mjs
