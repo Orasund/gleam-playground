@@ -27,3 +27,19 @@ export const rect = (x,y,w,h,detailX,detailY) => sketch.rect(x,y,w,h,detailX,det
 export const square = (x,y,s,tl,tr,br,bl) => sketch.square(x,y,s,tl,tr,br,bl)
 
 export const triangle = (x1,y1,x2,y2,x3,y3) => sketch.triangle(x1,y1,x2,y2,x3,y3)
+
+export const _getHue = () => sketch._getHue()
+
+export const _getSaturation = () => sketch._getSaturation()
+
+export const _parseInputs = (...args) => sketch._parseInputs(...args)
+
+export const toString = (format) => sketch.toString(format)
+
+export const setRed = (red) => sketch.setRed(red)
+
+export const setGreen = (green) => sketch.setGreen(green)
+
+export const setBlue = (blue) => sketch.setBlue(blue)
+
+export const setAlpha = (alpha) => sketch.setAlpha(alpha)
