@@ -15,19 +15,7 @@ function mapType(t, optional) {
         : getType()
 }
 
-function buildParamDict(params) {
-    const map = new Map();
-    for (const param in params) {
-        const name = params.name
-        const type = mapType(param.type.names[0], param.optional)
-        const array = map.get(name) ?? []
-        array.append({
-            name: name,
-            type: type
-        })
-        map.set(name, array)
-    }
-}
+
 
 let fileNames = fs.readdirSync("input", { withFileTypes: true })
     .filter(item => !item.isDirectory())
