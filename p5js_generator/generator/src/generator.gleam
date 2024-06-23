@@ -9,9 +9,13 @@ import gleam/string
 import justin
 import simplifile
 
+pub type EntrySort {
+  FunctionSort
+  TypeSort
+}
+
 pub type Entry {
-  FunctionEntry(gleam_name: String, name: String, params: List(Param))
-  TypeEntry(gleam_name: String, name: String)
+  Entry(gleam_name: String, name: String, params: List(Param), sort: EntrySort)
 }
 
 pub type Param {
@@ -26,6 +30,8 @@ pub fn to_gleam_type(string: String) -> String {
     "p5.Vector" -> "Vector"
     "Array" -> "Array"
     "String" -> "String"
+    "p5" -> "_"
+    "Array.<Number>" -> "Array(Float)"
     _ -> {
       io.debug(string)
       panic
@@ -62,10 +68,11 @@ fn decoder(dynamic) -> Result(Option(Entry), List(DecodeError)) {
     "function" -> {
       dynamic.decode2(
         fn(name, params) {
-          FunctionEntry(
+          Entry(
             justin.snake_case(name),
             name,
             params |> option.unwrap([]),
+            FunctionSort,
           )
           |> Some
         },
@@ -77,11 +84,23 @@ fn decoder(dynamic) -> Result(Option(Entry), List(DecodeError)) {
     }
     "module" -> Ok(None)
     "constructor" -> {
-      dynamic.decode1(
-        fn(name) { TypeEntry(to_gleam_type(name), name) |> Some },
+      dynamic.decode2(
+        fn(name, params) {
+          Entry(
+            to_type_name(name),
+            name,
+            params
+              |> option.unwrap([])
+              |> list.drop(1),
+            TypeSort,
+          )
+          |> Some
+        },
         dynamic.field("name", dynamic.string),
+        param_decoder()
+          |> dynamic.list()
+          |> dynamic.optional_field(named: "params"),
       )(dynamic)
-      //Ok(None)
     }
     "class" -> Ok(None)
     "member" -> Ok(None)
@@ -103,26 +122,32 @@ pub fn function_name(entry: Entry, i, list) {
 pub fn generate_js_file(entries: List(Entry)) {
   entries
   |> list.map(fn(entry) {
-    case entry {
-      FunctionEntry(_, _, params) ->
+    let params = {
+      entry.params
+      |> list.map(fn(param) { param.name })
+      |> string.join(", ")
+    }
+    case entry.sort {
+      FunctionSort ->
         "export const "
         <> entry.gleam_name
         <> " = ("
-        <> {
-          params
-          |> list.map(fn(param) { param.name })
-          |> string.join(", ")
-        }
+        <> params
         <> ") => p5."
         <> entry.name
         <> "("
-        <> {
-          params
-          |> list.map(fn(param) { param.name })
-          |> string.join(", ")
-        }
+        <> params
         <> ")"
-      TypeEntry(..) -> "export const" <> entry.gleam_name
+      TypeSort ->
+        "export const "
+        <> entry.gleam_name
+        <> " = ("
+        <> params
+        <> ") => new "
+        <> entry.name
+        <> "(p5,"
+        <> params
+        <> ")"
     }
   })
   |> string.join("\n\n")
@@ -131,20 +156,24 @@ pub fn generate_js_file(entries: List(Entry)) {
 pub fn generate_gleam_file(entries: List(Entry)) {
   entries
   |> list.map(fn(entry) {
-    {
-      "@external(javascript, \"./p5js_bindings.mjs\", \""
-      <> entry.name
-      <> "\")\n"
+    case entry.sort {
+      FunctionSort ->
+        {
+          "@external(javascript, \"./p5js_bindings.mjs\", \""
+          <> entry.name
+          <> "\")\n"
+        }
+        <> "pub fn "
+        <> entry.gleam_name
+        <> "("
+        <> {
+          entry.params
+          |> list.map(fn(param) { param.name <> ":" <> param.type_ })
+          |> string.join(", ")
+        }
+        <> ")\n"
+      TypeSort -> panic
     }
-    <> "pub fn "
-    <> entry.gleam_name
-    <> "("
-    <> {
-      entry.params
-      |> list.map(fn(param) { param.name <> ":" <> param.type_ })
-      |> string.join(", ")
-    }
-    <> ")\n"
   })
   |> string.join("\n\n")
 }
@@ -178,7 +207,7 @@ pub fn main() {
     |> list.flat_map(fn(list) {
       list
       |> list.index_map(fn(entry, i) {
-        FunctionEntry(..entry, gleam_name: function_name(entry, i, list))
+        Entry(..entry, gleam_name: function_name(entry, i, list))
       })
     })
 

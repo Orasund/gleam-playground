@@ -36,13 +36,13 @@ pub fn rec(size: Float, steps: Int, color: String) -> Nil {
       }
       {
         use <- transform.rotate(elementary.pi() *. 1.0 /. 3.0)
-        use <- transform.translate(size /. 3.5, 0.0)
+        use <- transform.translate(size /. 4.0, 0.0)
         use <- transform.rotate(elementary.pi() *. 1.0 /. -4.0)
         rec(size /. 2.0, steps - 1, new_color)
       }
       {
         use <- transform.rotate(elementary.pi() *. 1.0 /. -3.0)
-        use <- transform.translate(size /. 4.5, 0.0)
+        use <- transform.translate(size /. 4.0, 0.0)
         rec(size /. 2.0, steps - 1, new_color)
       }
     }

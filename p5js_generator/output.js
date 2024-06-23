@@ -26,6 +26,8 @@ export const line1 = (x1, y1, z1, x2, y2, z2) => p5.line(x1, y1, z1, x2, y2, z2)
 
 export const line2 = (x1, y1, x2, y2) => p5.line(x1, y1, x2, y2)
 
+export const Color = (vals) => new p5.Color(p5,vals)
+
 export const set_alpha = (alpha) => p5.setAlpha(alpha)
 
 export const set_blue = (blue) => p5.setBlue(blue)
