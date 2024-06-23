@@ -1,45 +1,37 @@
-export const _normalizeArcAngles = () => sketch._normalizeArcAngles()
+export const set_green = (green) => p5.setGreen(green)
 
-export const arc = (x,y,w,h,start,stop,mode,detail) => sketch.arc(x,y,w,h,start,stop,mode,detail)
+export const rect1 = (x, y, w, h, detail_x, detail_y) => p5.rect(x, y, w, h, detail_x, detail_y)
 
-export const ellipse = (x,y,w,h) => sketch.ellipse(x,y,w,h)
+export const rect2 = (x, y, w, h, tl, tr, br, bl) => p5.rect(x, y, w, h, tl, tr, br, bl)
 
-export const ellipse = (x,y,w,h,detail) => sketch.ellipse(x,y,w,h,detail)
+export const quad1 = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x, detail_y) => p5.quad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x, detail_y)
 
-export const circle = (x,y,d) => sketch.circle(x,y,d)
+export const quad2 = (x1, y1, x2, y2, x3, y3, x4, y4, detail_x, detail_y) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4, detail_x, detail_y)
 
-export const line = (x1,y1,x2,y2) => sketch.line(x1,y1,x2,y2)
+export const triangle = (x1, y1, x2, y2, x3, y3) => p5.triangle(x1, y1, x2, y2, x3, y3)
 
-export const line = (x1,y1,z1,x2,y2,z2) => sketch.line(x1,y1,z1,x2,y2,z2)
+export const to_string = (format) => p5.toString(format)
 
-export const point = (x,y,z) => sketch.point(x,y,z)
+export const set_red = (red) => p5.setRed(red)
 
-export const point = (coordinateVector) => sketch.point(coordinateVector)
+export const circle = (x, y, d) => p5.circle(x, y, d)
 
-export const quad = (x1,y1,x2,y2,x3,y3,x4,y4,detailX,detailY) => sketch.quad(x1,y1,x2,y2,x3,y3,x4,y4,detailX,detailY)
+export const point1 = (coordinate_vector) => p5.point(coordinate_vector)
 
-export const quad = (x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,detailX,detailY) => sketch.quad(x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,detailX,detailY)
+export const point2 = (x, y, z) => p5.point(x, y, z)
 
-export const rect = (x,y,w,h,tl,tr,br,bl) => sketch.rect(x,y,w,h,tl,tr,br,bl)
+export const arc = (x, y, w, h, start, stop, mode, detail) => p5.arc(x, y, w, h, start, stop, mode, detail)
 
-export const rect = (x,y,w,h,detailX,detailY) => sketch.rect(x,y,w,h,detailX,detailY)
+export const line1 = (x1, y1, z1, x2, y2, z2) => p5.line(x1, y1, z1, x2, y2, z2)
 
-export const square = (x,y,s,tl,tr,br,bl) => sketch.square(x,y,s,tl,tr,br,bl)
+export const line2 = (x1, y1, x2, y2) => p5.line(x1, y1, x2, y2)
 
-export const triangle = (x1,y1,x2,y2,x3,y3) => sketch.triangle(x1,y1,x2,y2,x3,y3)
+export const set_alpha = (alpha) => p5.setAlpha(alpha)
 
-export const _getHue = () => sketch._getHue()
+export const set_blue = (blue) => p5.setBlue(blue)
 
-export const _getSaturation = () => sketch._getSaturation()
+export const square = (x, y, s, tl, tr, br, bl) => p5.square(x, y, s, tl, tr, br, bl)
 
-export const _parseInputs = (...args) => sketch._parseInputs(...args)
+export const ellipse1 = (x, y, w, h, detail) => p5.ellipse(x, y, w, h, detail)
 
-export const toString = (format) => sketch.toString(format)
-
-export const setRed = (red) => sketch.setRed(red)
-
-export const setGreen = (green) => sketch.setGreen(green)
-
-export const setBlue = (blue) => sketch.setBlue(blue)
-
-export const setAlpha = (alpha) => sketch.setAlpha(alpha)
+export const ellipse2 = (x, y, w, h) => p5.ellipse(x, y, w, h)
