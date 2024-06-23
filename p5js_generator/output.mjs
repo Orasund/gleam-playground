@@ -1,3 +1,7 @@
+const p5 = null
+
+export const set_p5 = (new_p5) => p5 = new_p5
+
 export const set_green = (green) => p5.setGreen(green)
 
 export const rect1 = (x, y, w, h, detail_x, detail_y) => p5.rect(x, y, w, h, detail_x, detail_y)
@@ -26,7 +30,7 @@ export const line1 = (x1, y1, z1, x2, y2, z2) => p5.line(x1, y1, z1, x2, y2, z2)
 
 export const line2 = (x1, y1, x2, y2) => p5.line(x1, y1, x2, y2)
 
-export const Color = (vals) => new p5.Color(p5,vals)
+export const new_color = (vals) => new p5.Color(p5,vals)
 
 export const set_alpha = (alpha) => p5.setAlpha(alpha)
 

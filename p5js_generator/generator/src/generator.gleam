@@ -9,6 +9,8 @@ import gleam/string
 import justin
 import simplifile
 
+const js_filename = "output.mjs"
+
 pub type EntrySort {
   FunctionSort
   TypeSort
@@ -120,62 +122,89 @@ pub fn function_name(entry: Entry, i, list) {
 }
 
 pub fn generate_js_file(entries: List(Entry)) {
-  entries
-  |> list.map(fn(entry) {
-    let params = {
-      entry.params
-      |> list.map(fn(param) { param.name })
-      |> string.join(", ")
-    }
-    case entry.sort {
-      FunctionSort ->
-        "export const "
-        <> entry.gleam_name
-        <> " = ("
-        <> params
-        <> ") => p5."
-        <> entry.name
-        <> "("
-        <> params
-        <> ")"
-      TypeSort ->
-        "export const "
-        <> entry.gleam_name
-        <> " = ("
-        <> params
-        <> ") => new "
-        <> entry.name
-        <> "(p5,"
-        <> params
-        <> ")"
-    }
-  })
-  |> string.join("\n\n")
+  {
+    "const p5 = null\n\n" <> "export const set_p5 = (new_p5) => p5 = new_p5\n\n"
+  }
+  <> {
+    entries
+    |> list.map(fn(entry) {
+      let params = {
+        entry.params
+        |> list.map(fn(param) { param.name })
+        |> string.join(", ")
+      }
+      case entry.sort {
+        FunctionSort ->
+          "export const "
+          <> entry.gleam_name
+          <> " = ("
+          <> params
+          <> ") => p5."
+          <> entry.name
+          <> "("
+          <> params
+          <> ")"
+        TypeSort ->
+          "export const new_"
+          <> string.lowercase(entry.gleam_name)
+          <> " = ("
+          <> params
+          <> ") => new "
+          <> entry.name
+          <> "(p5,"
+          <> params
+          <> ")"
+      }
+    })
+    |> string.join("\n\n")
+  }
 }
 
 pub fn generate_gleam_file(entries: List(Entry)) {
-  entries
-  |> list.map(fn(entry) {
-    case entry.sort {
-      FunctionSort ->
-        {
-          "@external(javascript, \"./p5js_bindings.mjs\", \""
-          <> entry.name
-          <> "\")\n"
-        }
-        <> "pub fn "
-        <> entry.gleam_name
-        <> "("
-        <> {
-          entry.params
-          |> list.map(fn(param) { param.name <> ":" <> param.type_ })
-          |> string.join(", ")
-        }
-        <> ")\n"
-      TypeSort -> panic
-    }
-  })
-  |> string.join("\n\n")
+  { "import gleam/javascript.{Array}\n\n" }
+  <> {
+    entries
+    |> list.map(fn(entry) {
+      case entry.sort {
+        FunctionSort ->
+          {
+            "@external(javascript, \"./"
+            <> js_filename
+            <> "\", \""
+            <> entry.name
+            <> "\")\n"
+          }
+          <> "pub fn "
+          <> entry.gleam_name
+          <> "("
+          <> {
+            entry.params
+            |> list.map(fn(param) { param.name <> ":" <> param.type_ })
+            |> string.join(", ")
+          }
+          <> ")\n"
+        TypeSort ->
+          "pub type "
+          <> entry.gleam_name
+          <> "\n\n"
+          <> {
+            "@external(javascript, \"./p5js_bindings.mjs\", \""
+            <> { "new_" <> string.lowercase(entry.name) }
+            <> "\")\n"
+          }
+          <> "pub fn new_"
+          <> string.lowercase(entry.gleam_name)
+          <> "("
+          <> {
+            entry.params
+            |> list.map(fn(param) { param.name <> ":" <> param.type_ })
+            |> string.join(", ")
+          }
+          <> ")\n"
+      }
+    })
+    |> string.join("\n\n")
+  }
 }
 
 pub fn main() {
@@ -213,8 +242,9 @@ pub fn main() {
 
   let assert Ok(_) =
     generate_js_file(entries)
-    |> simplifile.write(to: "../output.js")
+    |> simplifile.write(to: "../" <> js_filename)
 
-  generate_gleam_file(entries)
-  |> io.println()
+  let assert Ok(_) =
+    generate_gleam_file(entries)
+    |> simplifile.write(to: "../output.gleam")
 }

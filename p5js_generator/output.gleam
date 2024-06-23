@@ -1,68 +1,82 @@
-@external(javascript, "./p5js_bindings.mjs", "_normalizeArcAngles")
-pub fn normalize_arc_angles() -> 
+import gleam/javascript.{Array}
 
-@external(javascript, "./p5js_bindings.mjs", "arc")
-pub fn arc(x:float, y:float, w:float, h:float, start:float, stop:float, mode:Option(Constant), detail:Option(int)) -> 
+@external(javascript, "./output.mjs", "setGreen")
+pub fn set_green(green:Float)
 
-@external(javascript, "./p5js_bindings.mjs", "ellipse")
-pub fn ellipse(x:float, y:float, w:float, h:Option(float)) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "ellipse")
-pub fn ellipse(x:float, y:float, w:float, h:float, detail:Option(int)) -> 
+@external(javascript, "./output.mjs", "rect")
+pub fn rect1(x:Float, y:Float, w:Float, h:Float, detail_x:Int, detail_y:Int)
 
-@external(javascript, "./p5js_bindings.mjs", "circle")
-pub fn circle(x:float, y:float, d:float) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "line")
-pub fn line(x1:float, y1:float, x2:float, y2:float) -> 
+@external(javascript, "./output.mjs", "rect")
+pub fn rect2(x:Float, y:Float, w:Float, h:Float, tl:Float, tr:Float, br:Float, bl:Float)
 
-@external(javascript, "./p5js_bindings.mjs", "line")
-pub fn line(x1:float, y1:float, z1:float, x2:float, y2:float, z2:float) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "point")
-pub fn point(x:float, y:float, z:Option(float)) -> 
+@external(javascript, "./output.mjs", "quad")
+pub fn quad1(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float, detail_x:Int, detail_y:Int)
 
-@external(javascript, "./p5js_bindings.mjs", "point")
-pub fn point(coordinateVector:p5.Vector) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "quad")
-pub fn quad(x1:float, y1:float, x2:float, y2:float, x3:float, y3:float, x4:float, y4:float, detailX:Option(int), detailY:Option(int)) -> 
+@external(javascript, "./output.mjs", "quad")
+pub fn quad2(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float, detail_x:Int, detail_y:Int)
 
-@external(javascript, "./p5js_bindings.mjs", "quad")
-pub fn quad(x1:float, y1:float, z1:float, x2:float, y2:float, z2:float, x3:float, y3:float, z3:float, x4:float, y4:float, z4:float, detailX:Option(int), detailY:Option(int)) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "rect")
-pub fn rect(x:float, y:float, w:float, h:Option(float), tl:Option(float), tr:Option(float), br:Option(float), bl:Option(float)) -> 
+@external(javascript, "./output.mjs", "triangle")
+pub fn triangle(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float)
 
-@external(javascript, "./p5js_bindings.mjs", "rect")
-pub fn rect(x:float, y:float, w:float, h:float, detailX:Option(int), detailY:Option(int)) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "square")
-pub fn square(x:float, y:float, s:float, tl:Option(float), tr:Option(float), br:Option(float), bl:Option(float)) -> 
+@external(javascript, "./output.mjs", "toString")
+pub fn to_string(format:String)
 
-@external(javascript, "./p5js_bindings.mjs", "triangle")
-pub fn triangle(x1:float, y1:float, x2:float, y2:float, x3:float, y3:float) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "_getHue")
-pub fn get_hue() -> 
+@external(javascript, "./output.mjs", "setRed")
+pub fn set_red(red:Float)
 
-@external(javascript, "./p5js_bindings.mjs", "_getSaturation")
-pub fn get_saturation() -> 
 
-@external(javascript, "./p5js_bindings.mjs", "_parseInputs")
-pub fn parse_inputs(...args:Option(Array)) -> 
+@external(javascript, "./output.mjs", "circle")
+pub fn circle(x:Float, y:Float, d:Float)
 
-@external(javascript, "./p5js_bindings.mjs", "toString")
-pub fn to_string(format:Option(String)) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "setRed")
-pub fn set_red(red:float) -> 
+@external(javascript, "./output.mjs", "point")
+pub fn point1(coordinate_vector:Vector)
 
-@external(javascript, "./p5js_bindings.mjs", "setGreen")
-pub fn set_green(green:float) -> 
 
-@external(javascript, "./p5js_bindings.mjs", "setBlue")
-pub fn set_blue(blue:float) -> 
+@external(javascript, "./output.mjs", "point")
+pub fn point2(x:Float, y:Float, z:Float)
 
-@external(javascript, "./p5js_bindings.mjs", "setAlpha")
-pub fn set_alpha(alpha:float) -> 
+
+@external(javascript, "./output.mjs", "arc")
+pub fn arc(x:Float, y:Float, w:Float, h:Float, start:Float, stop:Float, mode:String, detail:Int)
+
+
+@external(javascript, "./output.mjs", "line")
+pub fn line1(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float)
+
+
+@external(javascript, "./output.mjs", "line")
+pub fn line2(x1:Float, y1:Float, x2:Float, y2:Float)
+
+
+pub type Color
+
+@external(javascript, "./p5js_bindings.mjs", "new_p5.color")
+pub fn new_color(vals:Array(Float))
+
+
+@external(javascript, "./output.mjs", "setAlpha")
+pub fn set_alpha(alpha:Float)
+
+
+@external(javascript, "./output.mjs", "setBlue")
+pub fn set_blue(blue:Float)
+
+
+@external(javascript, "./output.mjs", "square")
+pub fn square(x:Float, y:Float, s:Float, tl:Float, tr:Float, br:Float, bl:Float)
+
+
+@external(javascript, "./output.mjs", "ellipse")
+pub fn ellipse1(x:Float, y:Float, w:Float, h:Float, detail:Int)
+
+
+@external(javascript, "./output.mjs", "ellipse")
+pub fn ellipse2(x:Float, y:Float, w:Float, h:Float)
