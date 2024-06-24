@@ -1,5 +1,6 @@
 import gleam_community/maths/elementary
 import p5js_bindings/p5
+import p5js_bindings/random
 import p5js_bindings/transform
 
 pub fn setup() {
@@ -9,7 +10,7 @@ pub fn setup() {
   p5.stroke_weight(0.0)
   p5.background("#DCED31")
   p5.random_seed(40)
-  rec(canvas_size *. 1.0, 7, "#0CCE6B")
+  rec(canvas_size, 7, "#0CCE6B")
 }
 
 pub fn rec(size: Float, steps: Int, color: String) -> Nil {

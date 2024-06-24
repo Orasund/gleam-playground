@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "generator": "node script.mjs"
+    "parse": "node script.mjs"
   },
   "author": "",
   "license": "ISC",

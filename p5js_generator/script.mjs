@@ -23,7 +23,7 @@ let fileNames = fs.readdirSync("input", { withFileTypes: true })
 let json = fileNames.flatMap((name) => JSON.parse(execSync("jsdoc2md --json input/" + name)))
 fs.writeFileSync("output.json", JSON.stringify(json))
 
-
+/*
 const js_output = json
     .filter((elem) => elem.kind == "function")
     .map((elem) => {
@@ -58,3 +58,4 @@ const gleam_output = json
 
 fs.writeFileSync("output.js", js_output)
 fs.writeFileSync("output.gleam", gleam_output)
+*/
