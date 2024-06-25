@@ -235,6 +235,9 @@ pub fn main() {
     |> dict.values
     |> list.flat_map(fn(list) {
       list
+      |> list.sort(by: fn(a, b) {
+        int.compare(list.length(a.params), list.length(b.params))
+      })
       |> list.index_map(fn(entry, i) {
         Entry(..entry, gleam_name: function_name(entry, i, list))
       })
