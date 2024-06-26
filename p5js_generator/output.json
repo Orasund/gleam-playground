@@ -1086,6 +1086,278 @@
         "order": 15
     },
     {
+        "id": "module:Events",
+        "longname": "module:Events",
+        "name": "Events",
+        "kind": "module",
+        "requires": [
+            "module:core"
+        ],
+        "customTags": [
+            {
+                "tag": "submodule",
+                "value": "Keyboard"
+            },
+            {
+                "tag": "for",
+                "value": "p5"
+            }
+        ],
+        "meta": {
+            "lineno": 1,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 0
+    },
+    {
+        "id": "module:Events~p5#isKeyPressed",
+        "longname": "module:Events~p5#isKeyPressed",
+        "name": "isKeyPressed",
+        "kind": "member",
+        "scope": "instance",
+        "description": "A `Boolean` system variable that's `true` if any key is currently pressed\nand `false` if not.",
+        "memberof": "module:Events~p5",
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a white square at its center. The white square turns black when the user presses a key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  if (keyIsPressed === true) {\n    fill(0);\n  } else {\n    fill(255);\n  }\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a white square at its center. The white square turns black when the user presses a key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  if (keyIsPressed) {\n    fill(0);\n  } else {\n    fill(255);\n  }\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with the word \"false\" at its center. The word switches to \"true\" when the user presses a key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the text.\n  textAlign(CENTER);\n  textSize(16);\n\n  // Display the value of keyIsPressed.\n  text(keyIsPressed, 50, 50);\n}\n</code>\n</div>"
+        ],
+        "readonly": true,
+        "properties": [
+            {
+                "type": {
+                    "names": [
+                        "Boolean"
+                    ]
+                },
+                "name": "keyIsPressed"
+            }
+        ],
+        "meta": {
+            "lineno": 99,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 1
+    },
+    {
+        "id": "module:Events~p5#key",
+        "longname": "module:Events~p5#key",
+        "name": "key",
+        "kind": "member",
+        "scope": "instance",
+        "description": "A `String` system variable that contains the value of the last key typed.\n\nThe key variable is helpful for checking whether an\n<a href=\"https://en.wikipedia.org/wiki/ASCII#Printable_characters\" target=\"_blank\">ASCII</a>\nkey has been typed. For example, the expression `key === \"a\"` evaluates to\n`true` if the `a` key was typed and `false` if not. `key` doesn’t update\nfor special keys such as `LEFT_ARROW` and `ENTER`. Use keyCode instead for\nspecial keys. The <a href=\"#/p5/keyIsDown\">keyIsDown()</a> function should\nbe used to check for multiple different key presses at the same time.",
+        "memberof": "module:Events~p5",
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square. The last key pressed is displayed at the center.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the text.\n  textAlign(CENTER);\n  textSize(16);\n\n  // Display the last key pressed.\n  text(key, 50, 50);\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet x = 50;\nlet y = 50;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  describe(\n    'A gray square with a black circle at its center. The circle moves when the user presses the keys \"w\", \"a\", \"s\", or \"d\". It leaves a trail as it moves.'\n  );\n}\n\nfunction draw() {\n  // Update x and y if a key is pressed.\n  if (keyIsPressed === true) {\n    if (key === 'w') {\n      y -= 1;\n    } else if (key === 's') {\n      y += 1;\n    } else if (key === 'a') {\n      x -= 1;\n    } else if (key === 'd') {\n      x += 1;\n    }\n  }\n\n  // Style the circle.\n  fill(0);\n\n  // Draw the circle at (x, y).\n  circle(x, y, 5);\n}\n</code>\n</div>"
+        ],
+        "readonly": true,
+        "properties": [
+            {
+                "type": {
+                    "names": [
+                        "String"
+                    ]
+                },
+                "name": "key"
+            }
+        ],
+        "meta": {
+            "lineno": 182,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 2
+    },
+    {
+        "id": "module:Events~p5#keyCode",
+        "longname": "module:Events~p5#keyCode",
+        "name": "keyCode",
+        "kind": "member",
+        "scope": "instance",
+        "description": "A `Number` system variable that contains the code of the last key typed.\n\nAll keys have a `keyCode`. For example, the `a` key has the `keyCode` 65.\nThe `keyCode` variable is helpful for checking whether a special key has\nbeen typed. For example, the following conditional checks whether the enter\nkey has been typed:\n\n```js\nif (keyCode === 13) {\n  // Code to run if the enter key was pressed.\n}\n```\n\nThe same code can be written more clearly using the system variable `ENTER`\nwhich has a value of 13:\n\n```js\nif (keyCode === ENTER) {\n  // Code to run if the enter key was pressed.\n}\n```\n\nThe system variables `BACKSPACE`, `DELETE`, `ENTER`, `RETURN`, `TAB`,\n`ESCAPE`, `SHIFT`, `CONTROL`, `OPTION`, `ALT`, `UP_ARROW`, `DOWN_ARROW`,\n`LEFT_ARROW`, and `RIGHT_ARROW` are all helpful shorthands the key codes of\nspecial keys. Key codes can be found on websites such as\n<a href=\"http://keycode.info/\">keycode.info</a>.",
+        "memberof": "module:Events~p5",
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square. The last key pressed and its code are displayed at the center.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the text.\n  textAlign(CENTER);\n  textSize(16);\n\n  // Display the last key pressed and its code.\n  text(`${key} : ${keyCode}`, 50, 50);\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet x = 50;\nlet y = 50;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  describe(\n    'A gray square with a black circle at its center. The circle moves when the user presses an arrow key. It leaves a trail as it moves.'\n  );\n}\n\nfunction draw() {\n  // Update x and y if an arrow key is pressed.\n  if (keyIsPressed === true) {\n    if (keyCode === UP_ARROW) {\n      y -= 1;\n    } else if (keyCode === DOWN_ARROW) {\n      y += 1;\n    } else if (keyCode === LEFT_ARROW) {\n      x -= 1;\n    } else if (keyCode === RIGHT_ARROW) {\n      x += 1;\n    }\n  }\n\n  // Style the circle.\n  fill(0);\n\n  // Draw the circle at (x, y).\n  circle(x, y, 5);\n}\n</code>\n</div>"
+        ],
+        "readonly": true,
+        "properties": [
+            {
+                "type": {
+                    "names": [
+                        "Integer"
+                    ]
+                },
+                "name": "keyCode"
+            }
+        ],
+        "meta": {
+            "lineno": 282,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 3
+    },
+    {
+        "id": "module:Events~p5#_onblur",
+        "longname": "module:Events~p5#_onblur",
+        "name": "_onblur",
+        "kind": "function",
+        "scope": "instance",
+        "description": "The onblur function is called when the user is no longer focused\non the p5 element. Because the keyup events will not fire if the user is\nnot focused on the element we must assume all keys currently down have\nbeen released.",
+        "memberof": "module:Events~p5",
+        "meta": {
+            "lineno": 791,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 7
+    },
+    {
+        "id": "module:Events~p5#_areDownKeys",
+        "longname": "module:Events~p5#_areDownKeys",
+        "name": "_areDownKeys",
+        "kind": "function",
+        "scope": "instance",
+        "description": "The _areDownKeys function returns a boolean true if any keys pressed\nand a false if no keys are currently pressed.\nHelps avoid instances where multiple keys are pressed simultaneously and\nreleasing a single key will then switch the\nkeyIsPressed property to true.",
+        "memberof": "module:Events~p5",
+        "access": "private",
+        "meta": {
+            "lineno": 920,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 9
+    },
+    {
+        "id": "module:Events~keyPressed",
+        "longname": "module:Events~keyPressed",
+        "name": "keyPressed",
+        "kind": "function",
+        "scope": "inner",
+        "description": "A function that's called once when any key is pressed.\n\nDeclaring the function `keyPressed()` sets a code block to run once\nautomatically when the user presses any key:\n\n```js\nfunction keyPressed() {\n  // Code to run.\n}\n```\n\nThe <a href=\"#/p5/key\">key</a> and <a href=\"#/p5/keyCode\">keyCode</a>\nvariables will be updated with the most recently typed value when\n`keyPressed()` is called by p5.js:\n\n```js\nfunction keyPressed() {\n  if (key === 'c') {\n    // Code to run.\n  }\n\n  if (keyCode === ENTER) {\n    // Code to run.\n  }\n}\n```\n\nThe parameter, `event`, is optional. `keyPressed()` is always passed a\n<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent\" target=\"_blank\">KeyboardEvent</a>\nobject with properties that describe the key press event:\n\n```js\nfunction keyPressed(event) {\n  // Code to run that uses the event.\n  console.log(event);\n}\n```\n\nBrowsers may have default behaviors attached to various key events. For\nexample, some browsers may jump to the bottom of a web page when the\n`SPACE` key is pressed. To prevent any default behavior for this event, add\n`return false;` to the end of the function.",
+        "memberof": "module:Events",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "KeyboardEvent"
+                    ]
+                },
+                "optional": true,
+                "description": "optional `KeyboardEvent` callback argument.",
+                "name": "event"
+            }
+        ],
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a black square at its center. The inner square changes color when the user presses a key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Toggle the background color when the user presses a key.\nfunction keyPressed() {\n  if (value === 0) {\n    value = 255;\n  } else {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a white square at its center. The inner square turns black when the user presses the \"b\" key. It turns white when the user presses the \"a\" key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Reassign value when the user presses the 'a' or 'b' key.\nfunction keyPressed() {\n  if (key === 'a') {\n    value = 255;\n  } else if (key === 'b') {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a black square at its center. The inner square turns white when the user presses the left arrow key. It turns black when the user presses the right arrow key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Toggle the background color when the user presses an arrow key.\nfunction keyPressed() {\n  if (keyCode === LEFT_ARROW) {\n    value = 255;\n  } else if (keyCode === RIGHT_ARROW) {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>"
+        ],
+        "meta": {
+            "lineno": 284,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 4
+    },
+    {
+        "id": "module:Events~keyReleased",
+        "longname": "module:Events~keyReleased",
+        "name": "keyReleased",
+        "kind": "function",
+        "scope": "inner",
+        "description": "A function that's called once when any key is released.\n\nDeclaring the function `keyReleased()` sets a code block to run once\nautomatically when the user releases any key:\n\n```js\nfunction keyReleased() {\n  // Code to run.\n}\n```\n\nThe <a href=\"#/p5/key\">key</a> and <a href=\"#/p5/keyCode\">keyCode</a>\nvariables will be updated with the most recently released value when\n`keyReleased()` is called by p5.js:\n\n```js\nfunction keyReleased() {\n  if (key === 'c') {\n    // Code to run.\n  }\n\n  if (keyCode === ENTER) {\n    // Code to run.\n  }\n}\n```\n\nThe parameter, `event`, is optional. `keyReleased()` is always passed a\n<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent\" target=\"_blank\">KeyboardEvent</a>\nobject with properties that describe the key press event:\n\n```js\nfunction keyReleased(event) {\n  // Code to run that uses the event.\n  console.log(event);\n}\n```\n\nBrowsers may have default behaviors attached to various key events. To\nprevent any default behavior for this event, add `return false;` to the end\nof the function.",
+        "memberof": "module:Events",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "KeyboardEvent"
+                    ]
+                },
+                "optional": true,
+                "description": "optional `KeyboardEvent` callback argument.",
+                "name": "event"
+            }
+        ],
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a black square at its center. The inner square changes color when the user releases a key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Toggle value when the user releases a key.\nfunction keyReleased() {\n  if (value === 0) {\n    value = 255;\n  } else {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a black square at its center. The inner square becomes white when the user releases the \"w\" key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Set value to 255 the user releases the 'w' key.\nfunction keyReleased() {\n  if (key === 'w') {\n    value = 255;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a black square at its center. The inner square turns white when the user presses and releases the left arrow key. It turns black when the user presses and releases the right arrow key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Toggle the background color when the user releases an arrow key.\nfunction keyReleased() {\n  if (keyCode === LEFT_ARROW) {\n    value = 255;\n  } else if (keyCode === RIGHT_ARROW) {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>"
+        ],
+        "meta": {
+            "lineno": 461,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 5
+    },
+    {
+        "id": "module:Events~keyTyped",
+        "longname": "module:Events~keyTyped",
+        "name": "keyTyped",
+        "kind": "function",
+        "scope": "inner",
+        "description": "A function that's called once when keys with printable characters are pressed.\n\nDeclaring the function `keyTyped()` sets a code block to run once\nautomatically when the user presses any key with a printable character such\nas `a` or 1. Modifier keys such as `SHIFT`, `CONTROL`, and the arrow keys\nwill be ignored:\n\n```js\nfunction keyTyped() {\n  // Code to run.\n}\n```\n\nThe <a href=\"#/p5/key\">key</a> and <a href=\"#/p5/keyCode\">keyCode</a>\nvariables will be updated with the most recently released value when\n`keyTyped()` is called by p5.js:\n\n```js\nfunction keyTyped() {\n  // Check for the \"c\" character using key.\n  if (key === 'c') {\n    // Code to run.\n  }\n\n  // Check for \"c\" using keyCode.\n  if (keyCode === 67) {\n    // Code to run.\n  }\n}\n```\n\nThe parameter, `event`, is optional. `keyTyped()` is always passed a\n<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent\" target=\"_blank\">KeyboardEvent</a>\nobject with properties that describe the key press event:\n\n```js\nfunction keyReleased(event) {\n  // Code to run that uses the event.\n  console.log(event);\n}\n```\n\nNote: Use the <a href=\"#/p5/keyPressed\">keyPressed()</a> function and\n<a href=\"#/p5/keyCode\">keyCode</a> system variable to respond to modifier\nkeys such as `ALT`.\n\nBrowsers may have default behaviors attached to various key events. To\nprevent any default behavior for this event, add `return false;` to the end\nof the function.",
+        "memberof": "module:Events",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "KeyboardEvent"
+                    ]
+                },
+                "optional": true,
+                "description": "optional `KeyboardEvent` callback argument.",
+                "name": "event"
+            }
+        ],
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n// Note: Pressing special keys such as SPACE have no effect.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a white square at its center. The inner square changes color when the user presses a key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Toggle the square's color when the user types a printable key.\nfunction keyTyped() {\n  if (value === 0) {\n    value = 255;\n  } else {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet value = 0;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  describe(\n    'A gray square with a white square at its center. The inner square turns black when the user types the \"b\" key. It turns white when the user types the \"a\" key.'\n  );\n}\n\nfunction draw() {\n  background(200);\n\n  // Style the square.\n  fill(value);\n\n  // Draw the square.\n  square(25, 25, 50);\n}\n\n// Reassign value when the user types the 'a' or 'b' key.\nfunction keyTyped() {\n  if (key === 'a') {\n    value = 255;\n  } else if (key === 'b') {\n    value = 0;\n  }\n  // Uncomment to prevent any default behavior.\n  // return false;\n}\n</code>\n</div>"
+        ],
+        "meta": {
+            "lineno": 639,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 6
+    },
+    {
+        "id": "module:Events~keyIsDown",
+        "longname": "module:Events~keyIsDown",
+        "name": "keyIsDown",
+        "kind": "function",
+        "scope": "inner",
+        "description": "Returns `true` if the key it’s checking is pressed and `false` if not.\n\n`keyIsDown()` is helpful when checking for multiple different key presses.\nFor example, `keyIsDown()` can be used to check if both `LEFT_ARROW` and\n`UP_ARROW` are pressed:\n\n```js\nif (keyIsDown(LEFT_ARROW) && keyIsDown(UP_ARROW)) {\n  // Move diagonally.\n}\n```\n\n`keyIsDown()` can check for key presses using\n<a href=\"#/p5/keyCode\">keyCode</a> values, as in `keyIsDown(37)` or\n`keyIsDown(LEFT_ARROW)`. Key codes can be found on websites such as\n<a href=\"https://keycode.info\" target=\"_blank\">keycode.info</a>.",
+        "memberof": "module:Events",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Number"
+                    ]
+                },
+                "description": "key to check.",
+                "name": "code"
+            }
+        ],
+        "examples": [
+            "<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet x = 50;\nlet y = 50;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  describe(\n    'A gray square with a black circle at its center. The circle moves when the user presses an arrow key. It leaves a trail as it moves.'\n  );\n}\n\nfunction draw() {\n  // Update x and y if an arrow key is pressed.\n  if (keyIsDown(LEFT_ARROW) === true) {\n    x -= 1;\n  }\n\n  if (keyIsDown(RIGHT_ARROW) === true) {\n    x += 1;\n  }\n\n  if (keyIsDown(UP_ARROW) === true) {\n    y -= 1;\n  }\n\n  if (keyIsDown(DOWN_ARROW) === true) {\n    y += 1;\n  }\n\n  // Style the circle.\n  fill(0);\n\n  // Draw the circle.\n  circle(x, y, 5);\n}\n</code>\n</div>\n\n<div>\n<code>\n// Click on the canvas to begin detecting key presses.\n\nlet x = 50;\nlet y = 50;\n\nfunction setup() {\n  createCanvas(100, 100);\n\n  background(200);\n\n  describe(\n    'A gray square with a black circle at its center. The circle moves when the user presses an arrow key. It leaves a trail as it moves.'\n  );\n}\n\nfunction draw() {\n  // Update x and y if an arrow key is pressed.\n  if (keyIsDown(37) === true) {\n    x -= 1;\n  }\n\n  if (keyIsDown(39) === true) {\n    x += 1;\n  }\n\n  if (keyIsDown(38) === true) {\n    y -= 1;\n  }\n\n  if (keyIsDown(40) === true) {\n    y += 1;\n  }\n\n  // Style the circle.\n  fill(0);\n\n  // Draw the circle.\n  circle(x, y, 5);\n}\n</code>\n</div>"
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Boolean"
+                    ]
+                },
+                "description": "whether the key is down or not."
+            }
+        ],
+        "meta": {
+            "lineno": 795,
+            "filename": "keyboard.js",
+            "path": "/home/orasund/gleam-playground/p5js_generator/input"
+        },
+        "order": 8
+    },
+    {
         "id": "module:Color",
         "longname": "module:Color",
         "name": "Color",

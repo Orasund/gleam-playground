@@ -34,6 +34,7 @@ pub fn to_gleam_type(string: String) -> String {
     "String" -> "String"
     "p5" -> "_"
     "Array.<Number>" -> "Array(Float)"
+    "KeyboardEvent" -> "fn() -> Nil"
     _ -> {
       io.debug(string)
       panic
