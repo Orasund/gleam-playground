@@ -1,10 +1,7 @@
-import gleam/javascript
-import gleam/option.{type Option}
-
-@external(javascript,  "../p5Module.mjs", "setup")
+@external(javascript, "../p5Module.mjs", "setup")
 pub fn setup(fun: fn() -> Nil) -> Nil
 
-@external(javascript,  "../p5Module.mjs", "draw")
+@external(javascript, "../p5Module.mjs", "draw")
 pub fn draw(fun: fn() -> Nil) -> Nil
 
 @external(javascript, "../p5Module.mjs", "initById")
@@ -69,4 +66,7 @@ pub fn vertex(x: Float, y: Float) -> Nil
 pub fn rect(x: Float, y: Float, w: Float, h: Float) -> Nil
 
 @external(javascript, "../p5Module.mjs", "keyPressed")
-pub fn key_pressed(fun:fn() -> Nil) -> Nil
+pub fn key_pressed(fun: fn() -> Nil) -> Nil
+
+@external(javascript, "../p5Module.mjs", "key")
+pub fn key() -> String

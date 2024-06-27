@@ -27,3 +27,4 @@ export const endShape = () => sketch.endShape()
 export const vertex = (a, b) => sketch.vertex(a, b)
 export const rect = (a, b, c, d) => sketch.rect(a, b, c, d)
 export const keyPressed = (fun) => sketch.keyPressed = fun
+export const key = () => sketch.key
