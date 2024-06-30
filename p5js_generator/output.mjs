@@ -4,6 +4,8 @@ export const set_p5 = (new_p5) => p5 = new_p5
 
 export const set_green = (green) => p5.setGreen(green)
 
+export const key_pressed = (fun) => p5.keyPressed = fun
+
 export const bezier_vertex1 = (x2, y2, x3, y3, x4, y4) => p5.bezierVertex(x2, y2, x3, y3, x4, y4)
 
 export const bezier_vertex2 = (x2, y2, z2, x3, y3, z3, x4, y4, z4) => p5.bezierVertex(x2, y2, z2, x3, y3, z3, x4, y4, z4)
@@ -30,6 +32,10 @@ export const quad2 = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x, 
 
 export const triangle = (x1, y1, x2, y2, x3, y3) => p5.triangle(x1, y1, x2, y2, x3, y3)
 
+export const key_is_down = (code) => p5.keyIsDown(code)
+
+export const key_typed = (fun) => p5.keyTyped = fun
+
 export const to_string = (format) => p5.toString(format)
 
 export const set_red = (red) => p5.setRed(red)
@@ -54,7 +60,9 @@ export const line2 = (x1, y1, z1, x2, y2, z2) => p5.line(x1, y1, z1, x2, y2, z2)
 
 export const begin_shape = (kind) => p5.beginShape(kind)
 
-export const new_color = (vals) => new p5.Color(p5, vals)
+export const new_color = (vals) => new p5.Color(p5,vals)
+
+export const key_released = (fun) => p5.keyReleased = fun
 
 export const set_alpha = (alpha) => p5.setAlpha(alpha)
 

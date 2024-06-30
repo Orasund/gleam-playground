@@ -4,6 +4,10 @@ import gleam/javascript.{Array}
 pub fn set_green(green:Float)
 
 
+@external(javascript, "./output.mjs", "keyPressed")
+pub fn key_pressed(fun:() -> Nil)
+
+
 @external(javascript, "./output.mjs", "bezierVertex")
 pub fn bezier_vertex1(x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float)
 
@@ -54,6 +58,14 @@ pub fn quad2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Floa
 
 @external(javascript, "./output.mjs", "triangle")
 pub fn triangle(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float)
+
+
+@external(javascript, "./output.mjs", "keyIsDown")
+pub fn key_is_down(code:Float)
+
+
+@external(javascript, "./output.mjs", "keyTyped")
+pub fn key_typed(fun:() -> Nil)
 
 
 @external(javascript, "./output.mjs", "toString")
@@ -108,6 +120,10 @@ pub type Color
 
 @external(javascript, "./p5js_bindings.mjs", "new_p5.color")
 pub fn new_color(vals:Array(Float))
+
+
+@external(javascript, "./output.mjs", "keyReleased")
+pub fn key_released(fun:() -> Nil)
 
 
 @external(javascript, "./output.mjs", "setAlpha")
