@@ -10,6 +10,7 @@ pub type Entry {
     gleam_name: String,
     name: String,
     params: List(Param),
+    return_type: String,
     sort: EntrySort,
     body: Option(String),
   )

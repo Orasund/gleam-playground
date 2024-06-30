@@ -14,7 +14,8 @@ pub fn entries(name) -> Option(Entry) {
       Entry(
         "key_pressed",
         name,
-        [Param("fun", "() -> Nil")],
+        [Param("fun", "fn() -> Nil")],
+        "Nil",
         FunctionSort,
         Some("p5.keyPressed = fun"),
       )
@@ -23,7 +24,8 @@ pub fn entries(name) -> Option(Entry) {
       Entry(
         "key_released",
         name,
-        [Param("fun", "() -> Nil")],
+        [Param("fun", "fn() -> Nil")],
+        "Nil",
         FunctionSort,
         Some("p5.keyReleased = fun"),
       )
@@ -32,7 +34,8 @@ pub fn entries(name) -> Option(Entry) {
       Entry(
         "key_typed",
         name,
-        [Param("fun", "() -> Nil")],
+        [Param("fun", "fn() -> Nil")],
+        "Nil",
         FunctionSort,
         Some("p5.keyTyped = fun"),
       )

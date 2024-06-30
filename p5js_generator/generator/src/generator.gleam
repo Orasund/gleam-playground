@@ -3,13 +3,16 @@ import entry.{type Entry, Entry, FunctionSort, TypeSort}
 import gleam/dict
 import gleam/dynamic
 import gleam/int
+import gleam/io
 import gleam/json
 import gleam/list
 import gleam/option.{None, Some}
 import gleam/string
 import simplifile
 
-const js_filename = "output.mjs"
+const js_filename = "p5.mjs"
+
+const gleam_filename = "p5.gleam"
 
 pub fn function_name(entry: Entry, i, list) {
   case list {
@@ -56,7 +59,7 @@ pub fn generate_js_file(entries: List(Entry)) {
 }
 
 pub fn generate_gleam_file(entries: List(Entry)) {
-  { "import gleam/javascript.{Array}\n\n" }
+  { "import gleam/javascript/array.{type Array}\n\n" <> "pub type Vector" }
   <> {
     entries
     |> list.map(fn(entry) {
@@ -77,7 +80,9 @@ pub fn generate_gleam_file(entries: List(Entry)) {
             |> list.map(fn(param) { param.name <> ":" <> param.type_ })
             |> string.join(", ")
           }
-          <> ")\n"
+          <> ") -> "
+          <> entry.return_type
+          <> "\n"
         TypeSort ->
           "pub type "
           <> entry.gleam_name
@@ -141,6 +146,7 @@ pub fn main() {
         Entry(..entry, gleam_name: function_name(entry, i, list))
       })
     })
+  io.println("generated")
 
   let assert Ok(_) =
     generate_js_file(entries)
@@ -148,5 +154,5 @@ pub fn main() {
 
   let assert Ok(_) =
     generate_gleam_file(entries)
-    |> simplifile.write(to: "../output.gleam")
+    |> simplifile.write(to: "../" <> gleam_filename)
 }

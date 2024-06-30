@@ -1,5 +1,5 @@
 import entry.{type Entry, Entry, FunctionSort, Param, TypeSort}
-import gleam/dynamic.{type DecodeError}
+import gleam/dynamic
 import gleam/io
 import gleam/list
 import gleam/option.{type Option, None, Some}
@@ -11,10 +11,13 @@ import special
 pub fn to_gleam_type(string: String) -> Result(String, String) {
   case string {
     "Number" -> Ok("Float")
+    "Boolean" -> Ok("Bool")
+    "boolean" -> Ok("Bool")
     "Integer" -> Ok("Int")
     "Constant" -> Ok("String")
     "p5.Vector" -> Ok("Vector")
-    "Array" -> Ok("Array")
+    "Array" -> Ok("Array(a)")
+    "*" -> Ok("a")
     "String" -> Ok("String")
     "Array.<Number>" -> Ok("Array(Float)")
     _ -> Error(string)
@@ -43,7 +46,7 @@ fn param_decoder(print_error: fn(String) -> String) {
         to_gleam_type(head)
         |> result.map_error(fn(string) {
           io.println(print_error(string))
-          Error(Nil)
+          Nil
         })
       [] -> Ok("Nil")
     }
@@ -59,9 +62,37 @@ pub fn decode_params(list, of name) {
   )
 }
 
+pub fn decode_returns(print_error: fn(String) -> String) {
+  fn(dynamic) {
+    case
+      dynamic.optional_field(
+        "returns",
+        dynamic.field(
+          "type",
+          dynamic.field("names", dynamic.list(dynamic.string)),
+        )
+          |> dynamic.list(),
+      )(dynamic)
+    {
+      Ok(Some([[name]])) ->
+        to_gleam_type(name)
+        |> result.map_error(fn(string) {
+          io.println(print_error(string))
+          Nil
+        })
+      Ok(None) -> Ok("Nil")
+      _ -> Error(Nil)
+    }
+  }
+}
+
 pub fn decoder(dynamic) -> Option(Entry) {
   let assert Ok(kind) = dynamic.field("kind", dynamic.string)(dynamic)
   let assert Ok(name) = dynamic.field("name", dynamic.string)(dynamic)
+  let assert Ok(return) =
+    decode_returns(fn(string) {
+      "❓ Unkown Return Type " <> string <> " of " <> name
+    })(dynamic)
 
   case special.ignored(name) {
     True -> None
@@ -86,34 +117,37 @@ pub fn decoder(dynamic) -> Option(Entry) {
                       "❓ Unkown Type " <> string <> " of " <> name
                     }),
                   ),
+                return,
                 FunctionSort,
                 None,
               )
               |> Some
             }
             "module" -> None
-            "constructor" -> {
-              let assert Ok(params) =
-                dynamic.optional_field(dynamic.shallow_list(_), named: "params")(
-                  dynamic,
-                )
+            "constructor" -> None
 
-              Entry(
-                to_type_name(name),
-                name,
-                params
-                  |> option.unwrap([])
-                  |> list.drop(1)
-                  |> list.filter_map(
-                    param_decoder(fn(string) {
-                      "❓ Unkown Type " <> string <> " of " <> name
-                    }),
-                  ),
-                TypeSort,
-                None,
-              )
-              |> Some
-            }
+            //{
+            //let assert Ok(params) =
+            //  dynamic.optional_field(dynamic.shallow_list(_), named: "params")(
+            //    dynamic,
+            //  )
+            //Entry(
+            //  to_type_name(name),
+            //  name,
+            //  params
+            //    |> option.unwrap([])
+            //    |> list.drop(1)
+            //    |> list.filter_map(
+            //      param_decoder(fn(string) {
+            //        "❓ Unkown Type " <> string <> " of " <> name
+            //      }),
+            //    ),
+            //  return,
+            //  TypeSort,
+            //  None,
+            //)
+            //|> Some
+            //}
             "class" -> None
             "member" -> None
             "constant" -> None
