@@ -5,6 +5,7 @@ import gleam/io
 import gleam/json
 import gleam/list
 import gleam/option.{type Option, None, Some}
+import gleam/result
 import gleam/string
 import justin
 import simplifile
@@ -24,21 +25,16 @@ pub type Param {
   Param(name: String, type_: String)
 }
 
-pub fn to_gleam_type(string: String) -> String {
+pub fn to_gleam_type(string: String) -> Result(String, String) {
   case string {
-    "Number" -> "Float"
-    "Integer" -> "Int"
-    "Constant" -> "String"
-    "p5.Vector" -> "Vector"
-    "Array" -> "Array"
-    "String" -> "String"
-    "p5" -> "_"
-    "Array.<Number>" -> "Array(Float)"
-    "KeyboardEvent" -> "fn() -> Nil"
-    _ -> {
-      io.debug(string)
-      panic
-    }
+    "Number" -> Ok("Float")
+    "Integer" -> Ok("Int")
+    "Constant" -> Ok("String")
+    "p5.Vector" -> Ok("Vector")
+    "Array" -> Ok("Array")
+    "String" -> Ok("String")
+    "Array.<Number>" -> Ok("Array(Float)")
+    _ -> Error(string)
   }
 }
 
@@ -52,17 +48,31 @@ pub fn to_type_name(string: String) -> String {
   }
 }
 
-fn param_decoder() {
-  dynamic.decode2(
-    fn(name, type_list) {
-      Param(justin.snake_case(name), case type_list {
-        [head, ..] -> to_gleam_type(head)
-        [] -> "Nil"
-      })
-    },
-    dynamic.field("name", dynamic.string),
-    dynamic.field("type", dynamic.field("names", dynamic.list(dynamic.string))),
-  )
+fn param_decoder(print_error: fn(String) -> String) {
+  fn(dynamic) {
+    let assert Ok(name) =
+      dynamic.field("name", dynamic.string)(dynamic)
+      |> result.map(justin.snake_case)
+
+    let assert Ok(list) =
+      dynamic.field(
+        "type",
+        dynamic.field("names", dynamic.list(dynamic.string)),
+      )(dynamic)
+
+    let type_name = case list {
+      [head, ..] ->
+        case to_gleam_type(head) {
+          Ok(string) -> string
+          Error(string) -> {
+            io.println(print_error(string))
+            panic
+          }
+        }
+      [] -> "Nil"
+    }
+    Param(name, type_name)
+  }
 }
 
 fn decoder(dynamic) -> Result(Option(Entry), List(DecodeError)) {
@@ -74,14 +84,19 @@ fn decoder(dynamic) -> Result(Option(Entry), List(DecodeError)) {
           Entry(
             justin.snake_case(name),
             name,
-            params |> option.unwrap([]),
+            params
+              |> option.unwrap([])
+              |> list.map(
+                param_decoder(fn(string) {
+                  "❓ Unkown Type " <> string <> " of " <> name
+                }),
+              ),
             FunctionSort,
           )
           |> Some
         },
         dynamic.field("name", dynamic.string),
-        param_decoder()
-          |> dynamic.list()
+        dynamic.shallow_list(_)
           |> dynamic.optional_field(named: "params"),
       )(dynamic)
     }
@@ -94,14 +109,18 @@ fn decoder(dynamic) -> Result(Option(Entry), List(DecodeError)) {
             name,
             params
               |> option.unwrap([])
-              |> list.drop(1),
+              |> list.drop(1)
+              |> list.map(
+                param_decoder(fn(string) {
+                  "❓ Unkown Type " <> string <> " of " <> name
+                }),
+              ),
             TypeSort,
           )
           |> Some
         },
         dynamic.field("name", dynamic.string),
-        param_decoder()
-          |> dynamic.list()
+        dynamic.shallow_list(_)
           |> dynamic.optional_field(named: "params"),
       )(dynamic)
     }
