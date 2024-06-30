@@ -1,6 +1,13 @@
 import entry.{type Entry, Entry, FunctionSort, Param}
 import gleam/option.{type Option, None, Some}
 
+pub fn ignored(name) {
+  case name {
+    "p5" -> True
+    _ -> False
+  }
+}
+
 pub fn entries(name) -> Option(Entry) {
   case name {
     "keyPressed" ->

@@ -62,61 +62,66 @@ pub fn decode_params(list, of name) {
 pub fn decoder(dynamic) -> Option(Entry) {
   let assert Ok(kind) = dynamic.field("kind", dynamic.string)(dynamic)
   let assert Ok(name) = dynamic.field("name", dynamic.string)(dynamic)
-  case special.entries(name) {
-    Some(entry) -> Some(entry)
-    None ->
-      case kind {
-        "function" -> {
-          let assert Ok(params) =
-            dynamic.optional_field(dynamic.shallow_list(_), named: "params")(
-              dynamic,
-            )
 
-          Entry(
-            justin.snake_case(name),
-            name,
-            params
-              |> option.unwrap([])
-              |> list.filter_map(
-                param_decoder(fn(string) {
-                  "❓ Unkown Type " <> string <> " of " <> name
-                }),
-              ),
-            FunctionSort,
-            None,
-          )
-          |> Some
-        }
-        "module" -> None
-        "constructor" -> {
-          let assert Ok(params) =
-            dynamic.optional_field(dynamic.shallow_list(_), named: "params")(
-              dynamic,
-            )
+  case special.ignored(name) {
+    True -> None
+    False ->
+      case special.entries(name) {
+        Some(entry) -> Some(entry)
+        None ->
+          case kind {
+            "function" -> {
+              let assert Ok(params) =
+                dynamic.optional_field(dynamic.shallow_list(_), named: "params")(
+                  dynamic,
+                )
 
-          Entry(
-            to_type_name(name),
-            name,
-            params
-              |> option.unwrap([])
-              |> list.drop(1)
-              |> list.filter_map(
-                param_decoder(fn(string) {
-                  "❓ Unkown Type " <> string <> " of " <> name
-                }),
-              ),
-            TypeSort,
-            None,
-          )
-          |> Some
-        }
-        "class" -> None
-        "member" -> None
-        "constant" -> None
-        _ -> {
-          io.debug(kind)
-          panic
-        }
+              Entry(
+                justin.snake_case(name),
+                name,
+                params
+                  |> option.unwrap([])
+                  |> list.filter_map(
+                    param_decoder(fn(string) {
+                      "❓ Unkown Type " <> string <> " of " <> name
+                    }),
+                  ),
+                FunctionSort,
+                None,
+              )
+              |> Some
+            }
+            "module" -> None
+            "constructor" -> {
+              let assert Ok(params) =
+                dynamic.optional_field(dynamic.shallow_list(_), named: "params")(
+                  dynamic,
+                )
+
+              Entry(
+                to_type_name(name),
+                name,
+                params
+                  |> option.unwrap([])
+                  |> list.drop(1)
+                  |> list.filter_map(
+                    param_decoder(fn(string) {
+                      "❓ Unkown Type " <> string <> " of " <> name
+                    }),
+                  ),
+                TypeSort,
+                None,
+              )
+              |> Some
+            }
+            "class" -> None
+            "member" -> None
+            "constant" -> None
+            _ -> {
+              io.debug(kind)
+              panic
+            }
+          }
       }
   }
 }

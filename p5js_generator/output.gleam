@@ -36,6 +36,14 @@ pub fn rect1(x:Float, y:Float, w:Float, h:Float, detail_x:Int, detail_y:Int)
 pub fn rect2(x:Float, y:Float, w:Float, h:Float, tl:Float, tr:Float, br:Float, bl:Float)
 
 
+@external(javascript, "./output.mjs", "loop")
+pub fn loop()
+
+
+@external(javascript, "./output.mjs", "noLoop")
+pub fn no_loop()
+
+
 @external(javascript, "./output.mjs", "endShape")
 pub fn end_shape(mode:String, count:Int)
 
@@ -92,6 +100,10 @@ pub fn point2(x:Float, y:Float, z:Float)
 pub fn begin_contour()
 
 
+@external(javascript, "./output.mjs", "pop")
+pub fn pop()
+
+
 @external(javascript, "./output.mjs", "arc")
 pub fn arc(x:Float, y:Float, w:Float, h:Float, start:Float, stop:Float, mode:String, detail:Int)
 
@@ -104,12 +116,20 @@ pub fn curve_vertex1(x:Float, y:Float)
 pub fn curve_vertex2(x:Float, y:Float, z:Float)
 
 
+@external(javascript, "./output.mjs", "isLooping")
+pub fn is_looping()
+
+
 @external(javascript, "./output.mjs", "line")
 pub fn line1(x1:Float, y1:Float, x2:Float, y2:Float)
 
 
 @external(javascript, "./output.mjs", "line")
 pub fn line2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float)
+
+
+@external(javascript, "./output.mjs", "redraw")
+pub fn redraw(n:Int)
 
 
 @external(javascript, "./output.mjs", "beginShape")
@@ -120,6 +140,10 @@ pub type Color
 
 @external(javascript, "./p5js_bindings.mjs", "new_p5.color")
 pub fn new_color(vals:Array(Float))
+
+
+@external(javascript, "./output.mjs", "push")
+pub fn push()
 
 
 @external(javascript, "./output.mjs", "keyReleased")

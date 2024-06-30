@@ -20,6 +20,10 @@ export const rect1 = (x, y, w, h, detail_x, detail_y) => p5.rect(x, y, w, h, det
 
 export const rect2 = (x, y, w, h, tl, tr, br, bl) => p5.rect(x, y, w, h, tl, tr, br, bl)
 
+export const loop = () => p5.loop()
+
+export const no_loop = () => p5.noLoop()
+
 export const end_shape = (mode, count) => p5.endShape(mode, count)
 
 export const normal1 = (vector) => p5.normal(vector)
@@ -48,19 +52,27 @@ export const point2 = (x, y, z) => p5.point(x, y, z)
 
 export const begin_contour = () => p5.beginContour()
 
+export const pop = () => p5.pop()
+
 export const arc = (x, y, w, h, start, stop, mode, detail) => p5.arc(x, y, w, h, start, stop, mode, detail)
 
 export const curve_vertex1 = (x, y) => p5.curveVertex(x, y)
 
 export const curve_vertex2 = (x, y, z) => p5.curveVertex(x, y, z)
 
+export const is_looping = () => p5.isLooping()
+
 export const line1 = (x1, y1, x2, y2) => p5.line(x1, y1, x2, y2)
 
 export const line2 = (x1, y1, z1, x2, y2, z2) => p5.line(x1, y1, z1, x2, y2, z2)
 
+export const redraw = (n) => p5.redraw(n)
+
 export const begin_shape = (kind) => p5.beginShape(kind)
 
 export const new_color = (vals) => new p5.Color(p5,vals)
+
+export const push = () => p5.push()
 
 export const key_released = (fun) => p5.keyReleased = fun
 
