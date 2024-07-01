@@ -2,6 +2,7 @@ import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
 import gleam/option.{type Option}
+import gleam/string
 
 pub type EntrySort {
   FunctionSort
@@ -63,10 +64,10 @@ pub fn add(to builder: Builder, entry base_entry: Entry) {
   })
 }
 
-fn function_name(entry: Entry, i, list) {
+fn function_name(entry: Entry, list: List(String)) {
   case list {
-    [_] -> entry.gleam_name
-    _ -> entry.gleam_name <> int.to_string(i + 1)
+    [] -> entry.gleam_name
+    _ -> entry.gleam_name <> "__" <> { string.join(list, "_") }
   }
 }
 
@@ -79,8 +80,14 @@ pub fn entries(builder: Builder) {
     |> list.sort(by: fn(a, b) {
       int.compare(list.length(a.params), list.length(b.params))
     })
-    |> list.index_map(fn(entry, i) {
-      Entry(..entry, gleam_name: function_name(entry, i, list))
+    |> list.map(fn(entry) {
+      Entry(
+        ..entry,
+        gleam_name: function_name(
+          entry,
+          entry.params |> list.map(fn(param) { param.name }),
+        ),
+      )
     })
   })
 }
