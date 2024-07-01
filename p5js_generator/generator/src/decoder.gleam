@@ -1,4 +1,4 @@
-import entry.{type Entry, Entry, FunctionSort, Param, TypeSort}
+import entry.{type Entry, Entry, FunctionSort, Param}
 import gleam/dynamic
 import gleam/io
 import gleam/list
@@ -35,6 +35,10 @@ fn param_decoder(print_error: fn(String) -> String) {
       dynamic.field("name", dynamic.string)(dynamic)
       |> result.map(justin.snake_case)
 
+    let assert Ok(optional) =
+      dynamic.optional_field("optional", dynamic.bool)(dynamic)
+      |> result.map(option.unwrap(_, False))
+
     let assert Ok(list) =
       dynamic.field(
         "type",
@@ -50,7 +54,7 @@ fn param_decoder(print_error: fn(String) -> String) {
         })
       [] -> Ok("Nil")
     }
-    |> result.map(Param(name, _))
+    |> result.map(Param(name, _, optional))
   }
 }
 

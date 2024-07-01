@@ -14,13 +14,6 @@ const js_filename = "p5.mjs"
 
 const gleam_filename = "p5.gleam"
 
-pub fn function_name(entry: Entry, i, list) {
-  case list {
-    [_] -> entry.gleam_name
-    _ -> entry.gleam_name <> int.to_string(i + 1)
-  }
-}
-
 pub fn generate_js_file(entries: List(Entry)) {
   {
     "const p5 = null\n\n" <> "export const set_p5 = (new_p5) => p5 = new_p5\n\n"
@@ -127,25 +120,8 @@ pub fn main() {
         None -> Error(Nil)
       }
     })
-    |> list.fold(dict.new(), fn(dict, entry) {
-      dict
-      |> dict.update(entry.name, fn(option) {
-        case option {
-          Some(list) -> [entry, ..list]
-          None -> [entry]
-        }
-      })
-    })
-    |> dict.values
-    |> list.flat_map(fn(list) {
-      list
-      |> list.sort(by: fn(a, b) {
-        int.compare(list.length(a.params), list.length(b.params))
-      })
-      |> list.index_map(fn(entry, i) {
-        Entry(..entry, gleam_name: function_name(entry, i, list))
-      })
-    })
+    |> list.fold(entry.builder(), entry.add)
+    |> entry.entries
   io.println("generated")
 
   let assert Ok(_) =
