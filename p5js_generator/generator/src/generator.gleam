@@ -16,7 +16,18 @@ const gleam_filename = "p5.gleam"
 
 pub fn generate_js_file(entries: List(Entry)) {
   {
-    "const p5 = null\n\n" <> "export const set_p5 = (new_p5) => p5 = new_p5\n\n"
+    "let p5 = null\n
+\n
+export const setup__fun = (fun) => p5.setup = fun\n
+\n
+export const draw__fun = (fun) => p5.draw = fun\n
+\n
+export function init(fun, id) {\n
+    return new window.p5((newSketch) => {\n
+        p5 = newSketch\n
+        fun()\n
+    }, document.getElementById(id));\n
+};\n\n"
   }
   <> {
     entries
@@ -52,17 +63,31 @@ pub fn generate_js_file(entries: List(Entry)) {
 }
 
 pub fn generate_gleam_file(entries: List(Entry)) {
-  { "import gleam/javascript/array.{type Array}\n\n" <> "pub type Vector" }
+  {
+    "import gleam/javascript/array.{type Array}\n\n"
+    <> ["Vector", "Renderer", "HTMLCanvasElement", "Graphics", "Framebuffer"]
+    |> list.map(fn(string) { "pub type " <> string })
+    |> string.join("\n\n")
+    <> "\n\n"
+    <> "@external(javascript, \"../p5.mjs\", \"setup__fun\")\n"
+    <> "pub fn setup__fun(fun:fn() -> Nil) -> Nil\n"
+    <> "\n"
+    <> "@external(javascript, \"../p5.mjs\", \"draw__fun\")\n"
+    <> "pub fn draw__fun(fun:fn() -> Nil) -> Nil\n"
+    <> "\n"
+    <> "@external(javascript, \"../p5.mjs\", \"init\")\n"
+    <> "pub fn init(fun:fn() -> Nil,id:String) -> Nil\n\n"
+  }
   <> {
     entries
     |> list.map(fn(entry) {
       case entry.sort {
         FunctionSort ->
           {
-            "@external(javascript, \"./"
+            "@external(javascript, \"../"
             <> js_filename
             <> "\", \""
-            <> entry.name
+            <> entry.gleam_name
             <> "\")\n"
           }
           <> "pub fn "
