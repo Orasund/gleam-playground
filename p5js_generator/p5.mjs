@@ -70,7 +70,7 @@ export const month = () => p5.month()
 
 export const serialize = () => p5.serialize()
 
-export const set_heading = () => p5.setHeading()
+export const set_heading = (angle) => p5.setHeading(angle)
 
 export const transform_normals = () => p5.transformNormals()
 
@@ -132,11 +132,15 @@ export const trim__strs = (strs) => p5.trim(strs)
 
 export const trim__str = (str) => p5.trim(str)
 
-export const touch_started = () => p5.touchStarted()
+export const touch_started = (fun) => p5.touchStarted = fun
 
 export const set = () => p5.set()
 
 export const set__elements = (elements) => p5.set(elements)
+
+export const set__cam = (cam) => p5.set(cam)
+
+export const set__in_matrix = (in_matrix) => p5.set(in_matrix)
 
 export const set__value = (value) => p5.set(value)
 
@@ -158,7 +162,7 @@ export const set__row_column_value = (row, column, value) => p5.set(row, column,
 
 export const set_interpolation__down_scale_up_scale = (down_scale, up_scale) => p5.setInterpolation(down_scale, up_scale)
 
-export const mouse_released = () => p5.mouseReleased()
+export const mouse_released = (fun) => p5.mouseReleased = fun
 
 export const has_attribute = (name) => p5.hasAttribute(name)
 
@@ -208,9 +212,9 @@ export const pixel_density__val = (val) => p5.pixelDensity(val)
 
 export const stroke_join = (join) => p5.strokeJoin(join)
 
-export const mouse_clicked = () => p5.mouseClicked()
+export const mouse_clicked = (fun) => p5.mouseClicked = fun
 
-export const invert_transpose = () => p5.invertTranspose()
+export const invert_transpose = (mat4) => p5.invertTranspose(mat4)
 
 export const get_content = () => p5.getContent()
 
@@ -262,7 +266,7 @@ export const fill__v1_v2_v3 = (v1, v2, v3) => p5.fill(v1, v2, v3)
 
 export const fill__v1_v2_v3_alpha = (v1, v2, v3, alpha) => p5.fill(v1, v2, v3, alpha)
 
-export const drag_leave = () => p5.dragLeave()
+export const drag_leave = (fun) => p5.dragLeave = fun
 
 export const load_model__path = (path) => p5.loadModel(path)
 
@@ -440,7 +444,7 @@ export const select_all__selectors = (selectors) => p5.selectAll(selectors)
 
 export const select_all__selectors_container = (selectors, container) => p5.selectAll(selectors, container)
 
-export const load_bytes = () => p5.loadBytes()
+export const load_bytes = (file) => p5.loadBytes(file)
 
 export const camera = () => p5.camera()
 
@@ -472,7 +476,7 @@ export const save_json__json_filename_optimize = (json, filename, optimize) => p
 
 export const disable_remaining_attributes = () => p5.disableRemainingAttributes()
 
-export const shader = () => p5.shader()
+export const shader = (s) => p5.shader(s)
 
 export const fract = (n) => p5.fract(n)
 
@@ -554,7 +558,7 @@ export const save_gif__filename_duration_options = (filename, duration, options)
 
 export const active_framebuffer = () => p5.activeFramebuffer()
 
-export const set_shake_threshold = () => p5.setShakeThreshold()
+export const set_shake_threshold = (value) => p5.setShakeThreshold(value)
 
 export const create_img__src_alt = (src, alt) => p5.createImg(src, alt)
 
@@ -580,7 +584,7 @@ export const rect_mode = (mode) => p5.rectMode(mode)
 
 export const setup_autoplay_fail_detection = () => p5.setupAutoplayFailDetection()
 
-export const set_camera = () => p5.setCamera()
+export const set_camera = (cam) => p5.setCamera(cam)
 
 export const get_string__column = (column) => p5.getString(column)
 
@@ -604,7 +608,7 @@ export const grid_output = () => p5.gridOutput()
 
 export const grid_output__display = (display) => p5.gridOutput(display)
 
-export const drag_over = () => p5.dragOver()
+export const drag_over = (fun) => p5.dragOver = fun
 
 export const boolean__n = (n) => p5.boolean(n)
 
@@ -652,7 +656,7 @@ export const load_table__filename_extension = (filename, extension) => p5.loadTa
 
 export const load_table__filename_extension_header = (filename, extension, header) => p5.loadTable(filename, extension, header)
 
-export const mouse_out = () => p5.mouseOut()
+export const mouse_out = (fun) => p5.mouseOut = fun
 
 export const begin = () => p5.begin()
 
@@ -688,7 +692,7 @@ export const preload = () => p5.preload()
 
 export const read_pixel_web_gl__x_y_flip_y = (x, y, flip_y) => p5.readPixelWebGL(x, y, flip_y)
 
-export const model = () => p5.model()
+export const model = (model) => p5.model(model)
 
 export const from_angle__angle = (angle) => p5.fromAngle(angle)
 
@@ -700,9 +704,9 @@ export const get_item = (key) => p5.getItem(key)
 
 export const draw_buffers_scaled__g_id_scale_x_scale_y_scale_z = (g_id, scale_x, scale_y, scale_z) => p5.drawBuffersScaled(g_id, scale_x, scale_y, scale_z)
 
-export const slerp__amt = (amt) => p5.slerp(amt)
-
 export const slerp__v_amt = (v, amt) => p5.slerp(v, amt)
+
+export const slerp__cam0_cam1_amt = (cam0, cam1, amt) => p5.slerp(cam0, cam1, amt)
 
 export const slerp__v1_v2_amt = (v1, v2, amt) => p5.slerp(v1, v2, amt)
 
@@ -756,7 +760,7 @@ export const create_capture__type = (type) => p5.createCapture(type)
 
 export const create_capture__type_flipped = (type, flipped) => p5.createCapture(type, flipped)
 
-export const layout = () => p5.layout()
+export const layout = (dim) => p5.layout(dim)
 
 export const input = () => p5.input()
 
@@ -764,7 +768,7 @@ export const noise_detail__lod_falloff = (lod, falloff) => p5.noiseDetail(lod, f
 
 export const key_is_down = (code) => p5.keyIsDown(code)
 
-export const threshold = () => p5.threshold()
+export const threshold = (level) => p5.threshold(level)
 
 export const load_shader__vert_filename_frag_filename = (vert_filename, frag_filename) => p5.loadShader(vert_filename, frag_filename)
 
@@ -862,7 +866,7 @@ export const clear_cues = () => p5.clearCues()
 
 export const parse_asciistl = () => p5.parseASCIISTL()
 
-export const mouse_dragged = () => p5.mouseDragged()
+export const mouse_dragged = (fun) => p5.mouseDragged = fun
 
 export const text__str_x_y = (str, x, y) => p5.text(str, x, y)
 
@@ -932,7 +936,7 @@ export const text_output = () => p5.textOutput()
 
 export const text_output__display = (display) => p5.textOutput(display)
 
-export const mouse_moved = () => p5.mouseMoved()
+export const mouse_moved = (fun) => p5.mouseMoved = fun
 
 export const background = () => p5.background()
 
@@ -1080,6 +1084,8 @@ export const mult__v = (v) => p5.mult(v)
 
 export const mult__arr = (arr) => p5.mult(arr)
 
+export const mult__mult_matrix = (mult_matrix) => p5.mult(mult_matrix)
+
 export const mult__v_n = (v, n) => p5.mult(v, n)
 
 export const mult__v0_arr = (v0, arr) => p5.mult(v0, arr)
@@ -1128,7 +1134,7 @@ export const save_table__filename = (filename) => p5.saveTable(filename)
 
 export const save_table__filename_options = (filename, options) => p5.saveTable(filename, options)
 
-export const div = () => p5.div()
+export const div__n = (n) => p5.div(n)
 
 export const div__v = (v) => p5.div(v)
 
@@ -1164,11 +1170,11 @@ export const value = () => p5.value()
 
 export const value__value = (value) => p5.value(value)
 
-export const set_mag = () => p5.setMag()
+export const set_mag__len = (len) => p5.setMag(len)
 
-export const set_mag__v = (v) => p5.setMag(v)
+export const set_mag__v_len = (v, len) => p5.setMag(v, len)
 
-export const set_mag__v_target = (v, target) => p5.setMag(v, target)
+export const set_mag__v_len_target = (v, len, target) => p5.setMag(v, len, target)
 
 export const style__property = (property) => p5.style(property)
 
@@ -1378,7 +1384,7 @@ export const is_looping = () => p5.isLooping()
 
 export const random3_d = () => p5.random3D()
 
-export const touch_moved = () => p5.touchMoved()
+export const touch_moved = (fun) => p5.touchMoved = fun
 
 export const changed = () => p5.changed()
 
@@ -1502,7 +1508,7 @@ export const angle_mode__mode = (mode) => p5.angleMode(mode)
 
 export const read_pixels_web_gl__x_y_width_height_flip_y = (x, y, width, height, flip_y) => p5.readPixelsWebGL(x, y, width, height, flip_y)
 
-export const mouse_wheel = () => p5.mouseWheel()
+export const mouse_wheel = (fun) => p5.mouseWheel = fun
 
 export const pause = () => p5.pause()
 
@@ -1556,7 +1562,7 @@ export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_
 
 export const remove_row = (id) => p5.removeRow(id)
 
-export const double_clicked = () => p5.doubleClicked()
+export const double_clicked = (fun) => p5.doubleClicked = fun
 
 export const get = () => p5.get()
 
@@ -1583,6 +1589,8 @@ export const char__ns = (ns) => p5.char(ns)
 export const column = (column_index) => p5.column(column_index)
 
 export const invert = () => p5.invert()
+
+export const invert__a = (a) => p5.invert(a)
 
 export const cylinder = () => p5.cylinder()
 
@@ -1640,7 +1648,7 @@ export const add_column = () => p5.addColumn()
 
 export const add_column__title = (title) => p5.addColumn(title)
 
-export const create_buffers = (g_id) => p5.createBuffers(g_id)
+export const create_buffers__g_id_model = (g_id, model) => p5.createBuffers(g_id, model)
 
 export const shear_x = (angle) => p5.shearX(angle)
 
@@ -1720,7 +1728,7 @@ export const stroke__v1_v2_v3_alpha = (v1, v2, v3, alpha) => p5.stroke(v1, v2, v
 
 export const stroke__v1_v2_v3_a = (v1, v2, v3, a) => p5.stroke(v1, v2, v3, a)
 
-export const set_move_threshold = () => p5.setMoveThreshold()
+export const set_move_threshold = (value) => p5.setMoveThreshold(value)
 
 export const pow__n_e = (n, e) => p5.pow(n, e)
 
@@ -1732,9 +1740,9 @@ export const invert3x3 = () => p5.invert3x3()
 
 export const remove_child = (name) => p5.removeChild(name)
 
-export const filter = () => p5.filter()
-
 export const filter__filter_type = (filter_type) => p5.filter(filter_type)
+
+export const filter__shader_filter = (shader_filter) => p5.filter(shader_filter)
 
 export const filter__filter_type_filter_param = (filter_type, filter_param) => p5.filter(filter_type, filter_param)
 
@@ -1770,6 +1778,8 @@ export const process_stack = (stacktrace) => p5.processStack(stacktrace)
 
 export const add_row = () => p5.addRow()
 
+export const add_row__row = (row) => p5.addRow(row)
+
 export const get_url = () => p5.getURL()
 
 export const array = () => p5.array()
@@ -1786,9 +1796,9 @@ export const shuffle__array_bool = (array, bool) => p5.shuffle(array, bool)
 
 export const request_pointer_lock = () => p5.requestPointerLock()
 
-export const mouse_over = () => p5.mouseOver()
+export const mouse_over = (fun) => p5.mouseOver = fun
 
-export const transpose = () => p5.transpose()
+export const transpose = (a) => p5.transpose(a)
 
 export const set_attributes__obj = (obj) => p5.setAttributes(obj)
 
@@ -1856,7 +1866,7 @@ export const begin_geometry = () => p5.beginGeometry()
 
 export const help_for_misused_at_top_level_code = (log) => p5.helpForMisusedAtTopLevelCode(log)
 
-export const image_light = () => p5.imageLight()
+export const image_light = (img) => p5.imageLight(img)
 
 export const create_number_dict__object = (object) => p5.createNumberDict(object)
 
@@ -1868,7 +1878,7 @@ export const get_overload_errors = () => p5.getOverloadErrors()
 
 export const end = () => p5.end()
 
-export const add_child = () => p5.addChild()
+export const add_child = (child) => p5.addChild(child)
 
 export const id = () => p5.id()
 
@@ -1893,8 +1903,6 @@ export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit = (img
 export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align = (img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align)
 
 export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align = (img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align, y_align) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align, y_align)
-
-export const rotate = () => p5.rotate()
 
 export const rotate__angle = (angle) => p5.rotate(angle)
 
@@ -1930,7 +1938,7 @@ export const write_file__data_to_download_filename_extension = (data_to_download
 
 export const max_key = () => p5.maxKey()
 
-export const touch_ended = () => p5.touchEnded()
+export const touch_ended = (fun) => p5.touchEnded = fun
 
 export const tint__values = (values) => p5.tint(values)
 
@@ -2108,7 +2116,7 @@ export const show = () => p5.show()
 
 export const use_program = () => p5.useProgram()
 
-export const mouse_pressed = () => p5.mousePressed()
+export const mouse_pressed = (fun) => p5.mousePressed = fun
 
 export const device_shaken = () => p5.deviceShaken()
 
@@ -2172,11 +2180,11 @@ export const rotate_vector = () => p5.rotateVector()
 
 export const rotate_vector__p = (p) => p5.rotateVector(p)
 
-export const mult3x3 = () => p5.mult3x3()
+export const mult3x3 = (mult_matrix) => p5.mult3x3(mult_matrix)
 
 export const has_class = (c) => p5.hasClass(c)
 
-export const free_geometry = () => p5.freeGeometry()
+export const free_geometry = (geometry) => p5.freeGeometry(geometry)
 
 export const no_lights = () => p5.noLights()
 

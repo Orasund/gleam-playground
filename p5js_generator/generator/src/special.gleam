@@ -1,5 +1,6 @@
 import entry.{type Entry, Entry, FunctionSort, Param}
 import gleam/option.{type Option, None, Some}
+import justin
 
 pub fn ignored(name) {
   case name {
@@ -10,46 +11,37 @@ pub fn ignored(name) {
 
 pub fn entries(name) -> Option(Entry) {
   case name {
-    "windowResized" ->
-      Entry(
-        "window_resized",
-        name,
-        [Param("fun", "fn() -> Nil", False)],
-        "Nil",
-        FunctionSort,
-        Some("p5.windowResized = fun"),
-      )
-      |> Some()
-    "keyPressed" ->
-      Entry(
-        "key_pressed",
-        name,
-        [Param("fun", "fn() -> Nil", False)],
-        "Nil",
-        FunctionSort,
-        Some("p5.keyPressed = fun"),
-      )
-      |> Some()
-    "keyReleased" ->
-      Entry(
-        "key_released",
-        name,
-        [Param("fun", "fn() -> Nil", False)],
-        "Nil",
-        FunctionSort,
-        Some("p5.keyReleased = fun"),
-      )
-      |> Some()
-    "keyTyped" ->
-      Entry(
-        "key_typed",
-        name,
-        [Param("fun", "fn() -> Nil", False)],
-        "Nil",
-        FunctionSort,
-        Some("p5.keyTyped = fun"),
-      )
-      |> Some()
+    "windowResized"
+    | "keyPressed"
+    | "keyReleased"
+    | "keyTyped"
+    | "mousePressed"
+    | "doubleClicked"
+    | "mouseWheel"
+    | "mouseReleased"
+    | "mouseClicked"
+    | "mouseMoved"
+    | "mouseOver"
+    | "mouseOut"
+    | "mouseDragged"
+    | "touchStarted"
+    | "touchMoved"
+    | "touchEnded"
+    | "dragOver"
+    | "dragLeave" -> set_function(name)
+
     _ -> None
   }
+}
+
+fn set_function(name) {
+  Entry(
+    justin.snake_case(name),
+    name,
+    [Param("fun", "fn() -> Nil", False)],
+    "Nil",
+    FunctionSort,
+    Some("p5." <> name <> " = fun"),
+  )
+  |> Some()
 }

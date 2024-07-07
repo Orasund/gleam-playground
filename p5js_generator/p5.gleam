@@ -1,17 +1,33 @@
 import gleam/javascript/array.{type Array}
 import gleam/dynamic.{type Dynamic}
 
-pub type Vector
+pub type P5Vector
 
-pub type Renderer
+pub type P5Renderer
+
+pub type P5Graphics
+
+pub type P5Image
+
+pub type P5Framebuffer
+
+pub type P5Color
+
+pub type P5Element
+
+pub type P5Geometry
+
+pub type P5Shader
+
+pub type P5Matrix
+
+pub type P5XML
+
+pub type P5TableRow
+
+pub type P5Camera
 
 pub type HTMLCanvasElement
-
-pub type Graphics
-
-pub type Image
-
-pub type Framebuffer
 
 @external(javascript, "../p5.mjs", "setup__fun")
 pub fn setup__fun(fun:fn() -> Nil) -> Nil
@@ -39,7 +55,7 @@ pub fn build_arg_type_cache() -> Nil
 
 
 @external(javascript, "../p5.mjs", "build_geometry")
-pub fn build_geometry() -> Nil
+pub fn build_geometry() -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "sqrt")
@@ -119,7 +135,7 @@ pub fn serialize() -> String
 
 
 @external(javascript, "../p5.mjs", "set_heading")
-pub fn set_heading() -> Nil
+pub fn set_heading(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "transform_normals")
@@ -127,7 +143,7 @@ pub fn transform_normals() -> Nil
 
 
 @external(javascript, "../p5.mjs", "get_parent")
-pub fn get_parent() -> Nil
+pub fn get_parent() -> P5XML
 
 
 @external(javascript, "../p5.mjs", "atan")
@@ -135,7 +151,7 @@ pub fn atan(value:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "create_shader__vert_src_frag_src")
-pub fn create_shader__vert_src_frag_src(vert_src:String, frag_src:String) -> Nil
+pub fn create_shader__vert_src_frag_src(vert_src:String, frag_src:String) -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "size")
@@ -191,7 +207,7 @@ pub fn quad_error() -> Float
 
 
 @external(javascript, "../p5.mjs", "find_row__value_column")
-pub fn find_row__value_column(value:String, column:Int) -> Nil
+pub fn find_row__value_column(value:String, column:Int) -> P5TableRow
 
 
 @external(javascript, "../p5.mjs", "curve_point__a_b_c_d_t")
@@ -211,7 +227,7 @@ pub fn get_name() -> String
 
 
 @external(javascript, "../p5.mjs", "create_camera")
-pub fn create_camera() -> Nil
+pub fn create_camera() -> P5Camera
 
 
 @external(javascript, "../p5.mjs", "tan")
@@ -243,7 +259,7 @@ pub fn trim__str(str:String) -> String
 
 
 @external(javascript, "../p5.mjs", "touch_started")
-pub fn touch_started() -> Nil
+pub fn touch_started(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "set")
@@ -252,6 +268,14 @@ pub fn set() -> Nil
 
 @external(javascript, "../p5.mjs", "set__elements")
 pub fn set__elements(elements:Array(Float)) -> Nil
+
+
+@external(javascript, "../p5.mjs", "set__cam")
+pub fn set__cam(cam:P5Camera) -> Nil
+
+
+@external(javascript, "../p5.mjs", "set__in_matrix")
+pub fn set__in_matrix(in_matrix:P5Matrix) -> Nil
 
 
 @external(javascript, "../p5.mjs", "set__value")
@@ -295,7 +319,7 @@ pub fn set_interpolation__down_scale_up_scale(down_scale:String, up_scale:String
 
 
 @external(javascript, "../p5.mjs", "mouse_released")
-pub fn mouse_released() -> Nil
+pub fn mouse_released(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "has_attribute")
@@ -395,11 +419,11 @@ pub fn stroke_join(join:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "mouse_clicked")
-pub fn mouse_clicked() -> Nil
+pub fn mouse_clicked(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "invert_transpose")
-pub fn invert_transpose() -> Nil
+pub fn invert_transpose(mat4:P5Matrix) -> Nil
 
 
 @external(javascript, "../p5.mjs", "get_content")
@@ -503,43 +527,43 @@ pub fn fill__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "drag_leave")
-pub fn drag_leave() -> Nil
+pub fn drag_leave(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "load_model__path")
-pub fn load_model__path(path:String) -> Nil
+pub fn load_model__path(path:String) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_options")
-pub fn load_model__path_options(path:String, options:Dynamic) -> Nil
+pub fn load_model__path_options(path:String, options:Dynamic) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_file_type")
-pub fn load_model__path_file_type(path:String, file_type:String) -> Nil
+pub fn load_model__path_file_type(path:String, file_type:String) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_normalize")
-pub fn load_model__path_normalize(path:String, normalize:Bool) -> Nil
+pub fn load_model__path_normalize(path:String, normalize:Bool) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_options_options_file_type")
-pub fn load_model__path_options_options_file_type(path:String, options:Dynamic, options_file_type:String) -> Nil
+pub fn load_model__path_options_options_file_type(path:String, options:Dynamic, options_file_type:String) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_normalize_file_type")
-pub fn load_model__path_normalize_file_type(path:String, normalize:Bool, file_type:String) -> Nil
+pub fn load_model__path_normalize_file_type(path:String, normalize:Bool, file_type:String) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_options_options_file_type_options_normalize")
-pub fn load_model__path_options_options_file_type_options_normalize(path:String, options:Dynamic, options_file_type:String, options_normalize:Bool) -> Nil
+pub fn load_model__path_options_options_file_type_options_normalize(path:String, options:Dynamic, options_file_type:String, options_normalize:Bool) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_options_options_file_type_options_normalize_options_flip_u")
-pub fn load_model__path_options_options_file_type_options_normalize_options_flip_u(path:String, options:Dynamic, options_file_type:String, options_normalize:Bool, options_flip_u:Bool) -> Nil
+pub fn load_model__path_options_options_file_type_options_normalize_options_flip_u(path:String, options:Dynamic, options_file_type:String, options_normalize:Bool, options_flip_u:Bool) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "load_model__path_options_options_file_type_options_normalize_options_flip_u_options_flip_v")
-pub fn load_model__path_options_options_file_type_options_normalize_options_flip_u_options_flip_v(path:String, options:Dynamic, options_file_type:String, options_normalize:Bool, options_flip_u:Bool, options_flip_v:Bool) -> Nil
+pub fn load_model__path_options_options_file_type_options_normalize_options_flip_u_options_flip_v(path:String, options:Dynamic, options_file_type:String, options_normalize:Bool, options_flip_u:Bool, options_flip_v:Bool) -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "get_column_count")
@@ -751,7 +775,7 @@ pub fn loop() -> Nil
 
 
 @external(javascript, "../p5.mjs", "get_row")
-pub fn get_row(row_id:Int) -> Nil
+pub fn get_row(row_id:Int) -> P5TableRow
 
 
 @external(javascript, "../p5.mjs", "no_fill")
@@ -851,15 +875,15 @@ pub fn create_a__href_html_target(href:String, html:String, target:String) -> P5
 
 
 @external(javascript, "../p5.mjs", "select_all__selectors")
-pub fn select_all__selectors(selectors:String) -> Nil
+pub fn select_all__selectors(selectors:String) -> Array(P5Element)
 
 
 @external(javascript, "../p5.mjs", "select_all__selectors_container")
-pub fn select_all__selectors_container(selectors:String, container:String) -> Nil
+pub fn select_all__selectors_container(selectors:String, container:String) -> Array(P5Element)
 
 
 @external(javascript, "../p5.mjs", "load_bytes")
-pub fn load_bytes() -> Dynamic
+pub fn load_bytes(file:String) -> Dynamic
 
 
 @external(javascript, "../p5.mjs", "camera")
@@ -923,7 +947,7 @@ pub fn disable_remaining_attributes() -> Nil
 
 
 @external(javascript, "../p5.mjs", "shader")
-pub fn shader() -> Nil
+pub fn shader(s:P5Shader) -> Nil
 
 
 @external(javascript, "../p5.mjs", "fract")
@@ -1015,7 +1039,7 @@ pub fn get_target_frame_rate() -> Float
 
 
 @external(javascript, "../p5.mjs", "get_child")
-pub fn get_child(name:String) -> Nil
+pub fn get_child(name:String) -> P5XML
 
 
 @external(javascript, "../p5.mjs", "end_shape")
@@ -1087,7 +1111,7 @@ pub fn active_framebuffer() -> Nil
 
 
 @external(javascript, "../p5.mjs", "set_shake_threshold")
-pub fn set_shake_threshold() -> Nil
+pub fn set_shake_threshold(value:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "create_img__src_alt")
@@ -1139,7 +1163,7 @@ pub fn setup_autoplay_fail_detection() -> Nil
 
 
 @external(javascript, "../p5.mjs", "set_camera")
-pub fn set_camera() -> Nil
+pub fn set_camera(cam:P5Camera) -> Nil
 
 
 @external(javascript, "../p5.mjs", "get_string__column")
@@ -1187,7 +1211,7 @@ pub fn grid_output__display(display:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "drag_over")
-pub fn drag_over() -> Nil
+pub fn drag_over(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "boolean__n")
@@ -1195,7 +1219,7 @@ pub fn boolean__n(n:String) -> Bool
 
 
 @external(javascript, "../p5.mjs", "boolean__ns")
-pub fn boolean__ns(ns:Array(a)) -> Nil
+pub fn boolean__ns(ns:Array(a)) -> Array(Boolean)
 
 
 @external(javascript, "../p5.mjs", "create_media")
@@ -1283,7 +1307,7 @@ pub fn load_table__filename_extension_header(filename:String, extension:String, 
 
 
 @external(javascript, "../p5.mjs", "mouse_out")
-pub fn mouse_out() -> Nil
+pub fn mouse_out(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "begin")
@@ -1355,7 +1379,7 @@ pub fn read_pixel_web_gl__x_y_flip_y(x:Float, y:Float, flip_y:Float) -> Array(Fl
 
 
 @external(javascript, "../p5.mjs", "model")
-pub fn model() -> Nil
+pub fn model(model:P5Geometry) -> Nil
 
 
 @external(javascript, "../p5.mjs", "from_angle__angle")
@@ -1367,7 +1391,7 @@ pub fn from_angle__angle_length(angle:Float, length:Float) -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "create_sub_matrix3x3")
-pub fn create_sub_matrix3x3() -> Nil
+pub fn create_sub_matrix3x3() -> P5Matrix
 
 
 @external(javascript, "../p5.mjs", "get_item")
@@ -1378,12 +1402,12 @@ pub fn get_item(key:String) -> Nil
 pub fn draw_buffers_scaled__g_id_scale_x_scale_y_scale_z(g_id:String, scale_x:Float, scale_y:Float, scale_z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "slerp__amt")
-pub fn slerp__amt(amt:Float) -> Nil
-
-
 @external(javascript, "../p5.mjs", "slerp__v_amt")
 pub fn slerp__v_amt(v:P5Vector, amt:Float) -> P5Vector
+
+
+@external(javascript, "../p5.mjs", "slerp__cam0_cam1_amt")
+pub fn slerp__cam0_cam1_amt(cam0:P5Camera, cam1:P5Camera, amt:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "slerp__v1_v2_amt")
@@ -1491,7 +1515,7 @@ pub fn create_capture__type_flipped(type:String, flipped:Dynamic) -> Nil
 
 
 @external(javascript, "../p5.mjs", "layout")
-pub fn layout() -> Dynamic
+pub fn layout(dim:Array(Array(Float))) -> Dynamic
 
 
 @external(javascript, "../p5.mjs", "input")
@@ -1507,11 +1531,11 @@ pub fn key_is_down(code:Float) -> Bool
 
 
 @external(javascript, "../p5.mjs", "threshold")
-pub fn threshold() -> Nil
+pub fn threshold(level:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "load_shader__vert_filename_frag_filename")
-pub fn load_shader__vert_filename_frag_filename(vert_filename:String, frag_filename:String) -> Nil
+pub fn load_shader__vert_filename_frag_filename(vert_filename:String, frag_filename:String) -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "noise_seed")
@@ -1703,7 +1727,7 @@ pub fn parse_asciistl() -> Nil
 
 
 @external(javascript, "../p5.mjs", "mouse_dragged")
-pub fn mouse_dragged() -> Nil
+pub fn mouse_dragged(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "text__str_x_y")
@@ -1759,7 +1783,7 @@ pub fn max_value() -> Float
 
 
 @external(javascript, "../p5.mjs", "end_geometry")
-pub fn end_geometry() -> Nil
+pub fn end_geometry() -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "min_key")
@@ -1843,7 +1867,7 @@ pub fn text_output__display(display:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "mouse_moved")
-pub fn mouse_moved() -> Nil
+pub fn mouse_moved(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "background")
@@ -2051,7 +2075,7 @@ pub fn draw_buffers(g_id:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "get_rows")
-pub fn get_rows() -> Nil
+pub fn get_rows() -> Array(P5TableRow)
 
 
 @external(javascript, "../p5.mjs", "no_smooth")
@@ -2136,6 +2160,10 @@ pub fn mult__v(v:P5Vector) -> Nil
 
 @external(javascript, "../p5.mjs", "mult__arr")
 pub fn mult__arr(arr:Array(Float)) -> Nil
+
+
+@external(javascript, "../p5.mjs", "mult__mult_matrix")
+pub fn mult__mult_matrix(mult_matrix:P5Matrix) -> Nil
 
 
 @external(javascript, "../p5.mjs", "mult__v_n")
@@ -2234,8 +2262,8 @@ pub fn save_table__filename(filename:String) -> Nil
 pub fn save_table__filename_options(filename:String, options:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "div")
-pub fn div() -> Nil
+@external(javascript, "../p5.mjs", "div__n")
+pub fn div__n(n:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "div__v")
@@ -2295,7 +2323,7 @@ pub fn create_framebuffer__options(options:Dynamic) -> P5Framebuffer
 
 
 @external(javascript, "../p5.mjs", "load_xml")
-pub fn load_xml(path:String) -> Nil
+pub fn load_xml(path:String) -> P5XML
 
 
 @external(javascript, "../p5.mjs", "value")
@@ -2306,16 +2334,16 @@ pub fn value() -> Nil
 pub fn value__value(value:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_mag")
-pub fn set_mag() -> Nil
+@external(javascript, "../p5.mjs", "set_mag__len")
+pub fn set_mag__len(len:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_mag__v")
-pub fn set_mag__v(v:P5Vector) -> P5Vector
+@external(javascript, "../p5.mjs", "set_mag__v_len")
+pub fn set_mag__v_len(v:P5Vector, len:Float) -> P5Vector
 
 
-@external(javascript, "../p5.mjs", "set_mag__v_target")
-pub fn set_mag__v_target(v:P5Vector, target:P5Vector) -> P5Vector
+@external(javascript, "../p5.mjs", "set_mag__v_len_target")
+pub fn set_mag__v_len_target(v:P5Vector, len:Float, target:P5Vector) -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "style__property")
@@ -2351,7 +2379,7 @@ pub fn pop() -> Nil
 
 
 @external(javascript, "../p5.mjs", "mag_sq")
-pub fn mag_sq() -> Nil
+pub fn mag_sq() -> Float
 
 
 @external(javascript, "../p5.mjs", "mag_sq__vec_t")
@@ -2439,7 +2467,7 @@ pub fn look_at__x_y_z(x:Float, y:Float, z:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "find_rows__value_column")
-pub fn find_rows__value_column(value:String, column:Int) -> Nil
+pub fn find_rows__value_column(value:String, column:Int) -> Array(P5TableRow)
 
 
 @external(javascript, "../p5.mjs", "device_turned")
@@ -2735,7 +2763,7 @@ pub fn random3_d() -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "touch_moved")
-pub fn touch_moved() -> Nil
+pub fn touch_moved(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "changed")
@@ -2843,7 +2871,7 @@ pub fn save_canvas__selected_canvas_filename_extension(selected_canvas:P5Framebu
 
 
 @external(javascript, "../p5.mjs", "match_row__regexp_column")
-pub fn match_row__regexp_column(regexp:String, column:String) -> Nil
+pub fn match_row__regexp_column(regexp:String, column:String) -> P5TableRow
 
 
 @external(javascript, "../p5.mjs", "no_debug_mode")
@@ -2911,15 +2939,15 @@ pub fn create_color_picker__value(value:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "get_children")
-pub fn get_children() -> Nil
+pub fn get_children() -> Array(P5XML)
 
 
 @external(javascript, "../p5.mjs", "get_children__name")
-pub fn get_children__name(name:String) -> Nil
+pub fn get_children__name(name:String) -> Array(P5XML)
 
 
 @external(javascript, "../p5.mjs", "copy")
-pub fn copy() -> Nil
+pub fn copy() -> P5Matrix
 
 
 @external(javascript, "../p5.mjs", "copy__v")
@@ -2983,7 +3011,7 @@ pub fn read_pixels_web_gl__x_y_width_height_flip_y(x:Float, y:Float, width:Float
 
 
 @external(javascript, "../p5.mjs", "mouse_wheel")
-pub fn mouse_wheel() -> Nil
+pub fn mouse_wheel(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "pause")
@@ -3091,11 +3119,11 @@ pub fn remove_row(id:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "double_clicked")
-pub fn double_clicked() -> Nil
+pub fn double_clicked(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "get")
-pub fn get() -> Nil
+pub fn get() -> P5Matrix
 
 
 @external(javascript, "../p5.mjs", "get__column")
@@ -3144,6 +3172,10 @@ pub fn column(column_index:Float) -> P5Vector
 
 @external(javascript, "../p5.mjs", "invert")
 pub fn invert() -> Nil
+
+
+@external(javascript, "../p5.mjs", "invert__a")
+pub fn invert__a(a:P5Matrix) -> Nil
 
 
 @external(javascript, "../p5.mjs", "cylinder")
@@ -3258,8 +3290,8 @@ pub fn add_column() -> Nil
 pub fn add_column__title(title:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "create_buffers")
-pub fn create_buffers(g_id:String) -> Nil
+@external(javascript, "../p5.mjs", "create_buffers__g_id_model")
+pub fn create_buffers__g_id_model(g_id:String, model:P5Geometry) -> Nil
 
 
 @external(javascript, "../p5.mjs", "shear_x")
@@ -3419,7 +3451,7 @@ pub fn stroke__v1_v2_v3_a(v1:Float, v2:Float, v3:Float, a:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "set_move_threshold")
-pub fn set_move_threshold() -> Nil
+pub fn set_move_threshold(value:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "pow__n_e")
@@ -3442,12 +3474,12 @@ pub fn invert3x3() -> Nil
 pub fn remove_child(name:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "filter")
-pub fn filter() -> Nil
-
-
 @external(javascript, "../p5.mjs", "filter__filter_type")
 pub fn filter__filter_type(filter_type:String) -> Nil
+
+
+@external(javascript, "../p5.mjs", "filter__shader_filter")
+pub fn filter__shader_filter(shader_filter:P5Shader) -> Nil
 
 
 @external(javascript, "../p5.mjs", "filter__filter_type_filter_param")
@@ -3495,7 +3527,7 @@ pub fn ortho__left_right_bottom_top_near_far(left:Float, right:Float, bottom:Flo
 
 
 @external(javascript, "../p5.mjs", "create_filter_shader")
-pub fn create_filter_shader(frag_src:String) -> Nil
+pub fn create_filter_shader(frag_src:String) -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "text_width")
@@ -3515,7 +3547,11 @@ pub fn process_stack(stacktrace:Array(a)) -> Array(a)
 
 
 @external(javascript, "../p5.mjs", "add_row")
-pub fn add_row() -> Nil
+pub fn add_row() -> P5TableRow
+
+
+@external(javascript, "../p5.mjs", "add_row__row")
+pub fn add_row__row(row:P5TableRow) -> P5TableRow
 
 
 @external(javascript, "../p5.mjs", "get_url")
@@ -3551,11 +3587,11 @@ pub fn request_pointer_lock() -> Nil
 
 
 @external(javascript, "../p5.mjs", "mouse_over")
-pub fn mouse_over() -> Nil
+pub fn mouse_over(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "transpose")
-pub fn transpose() -> Nil
+pub fn transpose(a:P5Matrix) -> Nil
 
 
 @external(javascript, "../p5.mjs", "set_attributes__obj")
@@ -3691,7 +3727,7 @@ pub fn help_for_misused_at_top_level_code(log:Bool) -> Bool
 
 
 @external(javascript, "../p5.mjs", "image_light")
-pub fn image_light() -> Nil
+pub fn image_light(img:P5Image) -> Nil
 
 
 @external(javascript, "../p5.mjs", "create_number_dict__object")
@@ -3715,7 +3751,7 @@ pub fn end() -> Nil
 
 
 @external(javascript, "../p5.mjs", "add_child")
-pub fn add_child() -> Nil
+pub fn add_child(child:P5XML) -> P5XML
 
 
 @external(javascript, "../p5.mjs", "id")
@@ -3764,10 +3800,6 @@ pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align(img:
 
 @external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align")
 pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String, x_align:String, y_align:String) -> Nil
-
-
-@external(javascript, "../p5.mjs", "rotate")
-pub fn rotate() -> Nil
 
 
 @external(javascript, "../p5.mjs", "rotate__angle")
@@ -3839,7 +3871,7 @@ pub fn max_key() -> Float
 
 
 @external(javascript, "../p5.mjs", "touch_ended")
-pub fn touch_ended() -> Nil
+pub fn touch_ended(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "tint__values")
@@ -4195,7 +4227,7 @@ pub fn use_program() -> Nil
 
 
 @external(javascript, "../p5.mjs", "mouse_pressed")
-pub fn mouse_pressed() -> Nil
+pub fn mouse_pressed(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "device_shaken")
@@ -4223,15 +4255,15 @@ pub fn emissive_material__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Flo
 
 
 @external(javascript, "../p5.mjs", "identity")
-pub fn identity() -> Nil
+pub fn identity() -> P5Matrix
 
 
 @external(javascript, "../p5.mjs", "match_rows__regexp")
-pub fn match_rows__regexp(regexp:String) -> Nil
+pub fn match_rows__regexp(regexp:String) -> Array(P5TableRow)
 
 
 @external(javascript, "../p5.mjs", "match_rows__regexp_column")
-pub fn match_rows__regexp_column(regexp:String, column:String) -> Nil
+pub fn match_rows__regexp_column(regexp:String, column:String) -> Array(P5TableRow)
 
 
 @external(javascript, "../p5.mjs", "ambient_light__values")
@@ -4323,7 +4355,7 @@ pub fn rotate_vector__p(p:P5Vector) -> Nil
 
 
 @external(javascript, "../p5.mjs", "mult3x3")
-pub fn mult3x3() -> Nil
+pub fn mult3x3(mult_matrix:P5Matrix) -> Nil
 
 
 @external(javascript, "../p5.mjs", "has_class")
@@ -4331,7 +4363,7 @@ pub fn has_class(c:String) -> Bool
 
 
 @external(javascript, "../p5.mjs", "free_geometry")
-pub fn free_geometry() -> Nil
+pub fn free_geometry(geometry:P5Geometry) -> Nil
 
 
 @external(javascript, "../p5.mjs", "no_lights")
@@ -4435,7 +4467,7 @@ pub fn rotate_z(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "copy_to_context")
-pub fn copy_to_context() -> Nil
+pub fn copy_to_context() -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "bezier__x1_y1_x2_y2_x3_y3_x4_y4")

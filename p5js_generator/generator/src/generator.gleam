@@ -67,8 +67,9 @@ pub fn generate_gleam_file(entries: List(Entry)) {
     "import gleam/javascript/array.{type Array}\n"
     <> "import gleam/dynamic.{type Dynamic}\n\n"
     <> [
-      "Vector", "Renderer", "HTMLCanvasElement", "Graphics", "Image",
-      "Framebuffer",
+      "P5Vector", "P5Renderer", "P5Graphics", "P5Image", "P5Framebuffer",
+      "P5Color", "P5Element", "P5Geometry", "P5Shader", "P5Matrix", "P5XML",
+      "P5TableRow", "P5Camera", "HTMLCanvasElement",
     ]
     |> list.map(fn(string) { "pub type " <> string })
     |> string.join("\n\n")
