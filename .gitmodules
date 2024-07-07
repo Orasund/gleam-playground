@@ -1,0 +1,3 @@
+[submodule "p5js_generator/p5.js"]
+	path = p5js_generator/p5.js
+	url = https://github.com/Orasund/p5.js.git

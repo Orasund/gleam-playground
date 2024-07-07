@@ -21,20 +21,20 @@ pub fn draw__fun(fun:fn() -> Nil) -> Nil
 @external(javascript, "../p5.mjs", "init")
 pub fn init(fun:fn() -> Nil,id:String) -> Nil
 
-@external(javascript, "../p5.mjs", "ellipse_mode__mode")
-pub fn ellipse_mode__mode(mode:String) -> Nil
+@external(javascript, "../p5.mjs", "ellipse_mode")
+pub fn ellipse_mode(mode:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_green__green")
-pub fn set_green__green(green:Float) -> Nil
+@external(javascript, "../p5.mjs", "set_green")
+pub fn set_green(green:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "stroke_join__join")
-pub fn stroke_join__join(join:String) -> Nil
+@external(javascript, "../p5.mjs", "stroke_join")
+pub fn stroke_join(join:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "key_pressed__fun")
-pub fn key_pressed__fun(fun:fn() -> Nil) -> Nil
+@external(javascript, "../p5.mjs", "key_pressed")
+pub fn key_pressed(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "random")
@@ -229,8 +229,8 @@ pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x(x1:Float, y1:Float, z1
 pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x_detail_y(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "rect_mode__mode")
-pub fn rect_mode__mode(mode:String) -> Nil
+@external(javascript, "../p5.mjs", "rect_mode")
+pub fn rect_mode(mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "create_graphics__width_height")
@@ -269,12 +269,12 @@ pub fn scale__s_y(s:Float, y:Float) -> Nil
 pub fn scale__s_y_z(s:Float, y:Float, z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "key_is_down__code")
-pub fn key_is_down__code(code:Float) -> Bool
+@external(javascript, "../p5.mjs", "key_is_down")
+pub fn key_is_down(code:Float) -> Bool
 
 
-@external(javascript, "../p5.mjs", "key_typed__fun")
-pub fn key_typed__fun(fun:fn() -> Nil) -> Nil
+@external(javascript, "../p5.mjs", "key_typed")
+pub fn key_typed(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "end_clip")
@@ -373,8 +373,8 @@ pub fn translate__x_y_z(x:Float, y:Float, z:Float) -> Nil
 pub fn smooth() -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_red__red")
-pub fn set_red__red(red:Float) -> Nil
+@external(javascript, "../p5.mjs", "set_red")
+pub fn set_red(red:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "apply_matrix__arr")
@@ -413,8 +413,8 @@ pub fn point__x_y_z(x:Float, y:Float, z:Float) -> Nil
 pub fn reset_matrix() -> Nil
 
 
-@external(javascript, "../p5.mjs", "stroke_weight__weight")
-pub fn stroke_weight__weight(weight:Float) -> Nil
+@external(javascript, "../p5.mjs", "stroke_weight")
+pub fn stroke_weight(weight:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "clip")
@@ -477,12 +477,12 @@ pub fn create_canvas__width_height_canvas(width:Float, height:Float, canvas:HTML
 pub fn create_canvas__width_height_renderer_canvas(width:Float, height:Float, renderer:String, canvas:HTMLCanvasElement) -> Renderer
 
 
-@external(javascript, "../p5.mjs", "blend_mode__mode")
-pub fn blend_mode__mode(mode:String) -> Nil
+@external(javascript, "../p5.mjs", "blend_mode")
+pub fn blend_mode(mode:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "random_seed__seed")
-pub fn random_seed__seed(seed:Float) -> Nil
+@external(javascript, "../p5.mjs", "random_seed")
+pub fn random_seed(seed:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "is_looping")
@@ -497,8 +497,8 @@ pub fn line__x1_y1_x2_y2(x1:Float, y1:Float, x2:Float, y2:Float) -> Nil
 pub fn line__x1_y1_z1_x2_y2_z2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "load_image__path")
-pub fn load_image__path(path:String) -> Image
+@external(javascript, "../p5.mjs", "load_image")
+pub fn load_image(path:String) -> Image
 
 
 @external(javascript, "../p5.mjs", "clear_depth")
@@ -517,8 +517,8 @@ pub fn redraw() -> Nil
 pub fn redraw__n(n:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "shear_x__angle")
-pub fn shear_x__angle(angle:Float) -> Nil
+@external(javascript, "../p5.mjs", "shear_x")
+pub fn shear_x(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "begin_shape")
@@ -557,8 +557,8 @@ pub fn stroke__v1_v2_v3(v1:Float, v2:Float, v3:Float) -> Nil
 pub fn stroke__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "shear_y__angle")
-pub fn shear_y__angle(angle:Float) -> Nil
+@external(javascript, "../p5.mjs", "shear_y")
+pub fn shear_y(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "no_canvas")
@@ -573,8 +573,8 @@ pub fn no_stroke() -> Nil
 pub fn begin_clip() -> Nil
 
 
-@external(javascript, "../p5.mjs", "stroke_cap__cap")
-pub fn stroke_cap__cap(cap:String) -> Nil
+@external(javascript, "../p5.mjs", "stroke_cap")
+pub fn stroke_cap(cap:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "push")
@@ -657,12 +657,12 @@ pub fn tint__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Float) -> Nil
 pub fn no_tint() -> Nil
 
 
-@external(javascript, "../p5.mjs", "key_released__fun")
-pub fn key_released__fun(fun:fn() -> Nil) -> Nil
+@external(javascript, "../p5.mjs", "key_released")
+pub fn key_released(fun:fn() -> Nil) -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_alpha__alpha")
-pub fn set_alpha__alpha(alpha:Float) -> Nil
+@external(javascript, "../p5.mjs", "set_alpha")
+pub fn set_alpha(alpha:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "quadratic_vertex__cx_cy_x3_y3")
@@ -673,8 +673,8 @@ pub fn quadratic_vertex__cx_cy_x3_y3(cx:Float, cy:Float, x3:Float, y3:Float) -> 
 pub fn quadratic_vertex__cx_cy_cz_x3_y3_z3(cx:Float, cy:Float, cz:Float, x3:Float, y3:Float, z3:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_blue__blue")
-pub fn set_blue__blue(blue:Float) -> Nil
+@external(javascript, "../p5.mjs", "set_blue")
+pub fn set_blue(blue:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "square__x_y_s")
@@ -697,16 +697,16 @@ pub fn square__x_y_s_tl_tr_br(x:Float, y:Float, s:Float, tl:Float, tr:Float, br:
 pub fn square__x_y_s_tl_tr_br_bl(x:Float, y:Float, s:Float, tl:Float, tr:Float, br:Float, bl:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "rotate_x__angle")
-pub fn rotate_x__angle(angle:Float) -> Nil
+@external(javascript, "../p5.mjs", "rotate_x")
+pub fn rotate_x(angle:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "image_mode__mode")
-pub fn image_mode__mode(mode:String) -> Nil
+@external(javascript, "../p5.mjs", "image_mode")
+pub fn image_mode(mode:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "rotate_y__angle")
-pub fn rotate_y__angle(angle:Float) -> Nil
+@external(javascript, "../p5.mjs", "rotate_y")
+pub fn rotate_y(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "ellipse__x_y_w")
@@ -737,5 +737,5 @@ pub fn random_gaussian__mean_sd(mean:Float, sd:Float) -> Float
 pub fn end_contour() -> Nil
 
 
-@external(javascript, "../p5.mjs", "rotate_z__angle")
-pub fn rotate_z__angle(angle:Float) -> Nil
+@external(javascript, "../p5.mjs", "rotate_z")
+pub fn rotate_z(angle:Float) -> Nil
