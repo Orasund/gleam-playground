@@ -18,6 +18,7 @@ pub fn to_gleam_type(string: String) -> Result(String, String) {
     "p5.Vector" -> Ok("Vector")
     "p5.Renderer" -> Ok("Renderer")
     "p5.Graphics" -> Ok("Graphics")
+    "p5.Image" -> Ok("Image")
     "p5.Framebuffer" -> Ok("Framebuffer")
     "HTMLCanvasElement" -> Ok("HTMLCanvasElement")
     "Array" -> Ok("Array(a)")
@@ -97,14 +98,14 @@ pub fn decode_returns(print_error: fn(String) -> String) {
 pub fn decoder(dynamic) -> Option(Entry) {
   let assert Ok(kind) = dynamic.field("kind", dynamic.string)(dynamic)
   let assert Ok(name) = dynamic.field("name", dynamic.string)(dynamic)
-  let assert Ok(return) =
-    decode_returns(fn(string) {
-      "❓ Unkown Return Type " <> string <> " of " <> name
-    })(dynamic)
 
-  case special.ignored(name) {
+  case name |> string.starts_with("_") || special.ignored(name) {
     True -> None
-    False ->
+    False -> {
+      let assert Ok(return) =
+        decode_returns(fn(string) {
+          "❓ Unkown Return Type " <> string <> " of " <> name
+        })(dynamic)
       case special.entries(name) {
         Some(entry) -> Some(entry)
         None ->
@@ -165,5 +166,6 @@ pub fn decoder(dynamic) -> Option(Entry) {
             }
           }
       }
+    }
   }
 }

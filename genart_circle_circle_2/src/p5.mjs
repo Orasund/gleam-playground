@@ -112,8 +112,6 @@ export const normal__vector = (vector) => p5.normal(vector)
 
 export const normal__x_y_z = (x, y, z) => p5.normal(x, y, z)
 
-export const save_gif__filename_duration = (filename, duration) => p5.saveGif(filename, duration)
-
 export const quad__x1_y1_x2_y2_x3_y3_x4_y4 = (x1, y1, x2, y2, x3, y3, x4, y4) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4)
 
 export const quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x = (x1, y1, x2, y2, x3, y3, x4, y4, detail_x) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4, detail_x)
@@ -174,17 +172,15 @@ export const background = () => p5.background()
 
 export const background__values = (values) => p5.background(values)
 
+export const background__a = (a) => p5.background(a)
+
 export const background__colorstring = (colorstring) => p5.background(colorstring)
 
 export const background__gray = (gray) => p5.background(gray)
 
-export const background__image = (image) => p5.background(image)
-
 export const background__colorstring_a = (colorstring, a) => p5.background(colorstring, a)
 
 export const background__gray_a = (gray, a) => p5.background(gray, a)
-
-export const background__image_a = (image, a) => p5.background(image, a)
 
 export const background__v1_v2_v3 = (v1, v2, v3) => p5.background(v1, v2, v3)
 
@@ -260,8 +256,6 @@ export const line__x1_y1_x2_y2 = (x1, y1, x2, y2) => p5.line(x1, y1, x2, y2)
 
 export const line__x1_y1_z1_x2_y2_z2 = (x1, y1, z1, x2, y2, z2) => p5.line(x1, y1, z1, x2, y2, z2)
 
-export const load_image__path = (path) => p5.loadImage(path)
-
 export const clear_depth = () => p5.clearDepth()
 
 export const clear_depth__depth = (depth) => p5.clearDepth(depth)
@@ -302,43 +296,9 @@ export const stroke_cap__cap = (cap) => p5.strokeCap(cap)
 
 export const push = () => p5.push()
 
-export const image__img_x_y = (img, x, y) => p5.image(img, x, y)
-
-export const image__img_x_y_width = (img, x, y, width) => p5.image(img, x, y, width)
-
-export const image__img_x_y_width_height = (img, x, y, width, height) => p5.image(img, x, y, width, height)
-
-export const image__img_dx_dy_d_width_d_height_sx_sy = (img, dx, dy, d_width, d_height, sx, sy) => p5.image(img, dx, dy, d_width, d_height, sx, sy)
-
-export const image__img_dx_dy_d_width_d_height_sx_sy_s_width = (img, dx, dy, d_width, d_height, sx, sy, s_width) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width)
-
-export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height = (img, dx, dy, d_width, d_height, sx, sy, s_width, s_height) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width, s_height)
-
-export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit = (img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit)
-
-export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align = (img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align)
-
-export const image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align = (img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align, y_align) => p5.image(img, dx, dy, d_width, d_height, sx, sy, s_width, s_height, fit, x_align, y_align)
-
 export const rotate__angle = (angle) => p5.rotate(angle)
 
 export const rotate__angle_axis = (angle, axis) => p5.rotate(angle, axis)
-
-export const tint = () => p5.tint()
-
-export const tint__values = (values) => p5.tint(values)
-
-export const tint__value = (value) => p5.tint(value)
-
-export const tint__gray = (gray) => p5.tint(gray)
-
-export const tint__gray_alpha = (gray, alpha) => p5.tint(gray, alpha)
-
-export const tint__v1_v2_v3 = (v1, v2, v3) => p5.tint(v1, v2, v3)
-
-export const tint__v1_v2_v3_alpha = (v1, v2, v3, alpha) => p5.tint(v1, v2, v3, alpha)
-
-export const no_tint = () => p5.noTint()
 
 export const key_released__fun = (fun) => p5.keyReleased = fun
 
@@ -361,8 +321,6 @@ export const square__x_y_s_tl_tr_br = (x, y, s, tl, tr, br) => p5.square(x, y, s
 export const square__x_y_s_tl_tr_br_bl = (x, y, s, tl, tr, br, bl) => p5.square(x, y, s, tl, tr, br, bl)
 
 export const rotate_x__angle = (angle) => p5.rotateX(angle)
-
-export const image_mode__mode = (mode) => p5.imageMode(mode)
 
 export const rotate_y__angle = (angle) => p5.rotateY(angle)
 

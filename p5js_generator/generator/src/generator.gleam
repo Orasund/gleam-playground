@@ -65,7 +65,10 @@ export function init(fun, id) {\n
 pub fn generate_gleam_file(entries: List(Entry)) {
   {
     "import gleam/javascript/array.{type Array}\n\n"
-    <> ["Vector", "Renderer", "HTMLCanvasElement", "Graphics", "Framebuffer"]
+    <> [
+      "Vector", "Renderer", "HTMLCanvasElement", "Graphics", "Image",
+      "Framebuffer",
+    ]
     |> list.map(fn(string) { "pub type " <> string })
     |> string.join("\n\n")
     <> "\n\n"

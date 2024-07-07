@@ -8,8 +8,6 @@ pub type HTMLCanvasElement
 
 pub type Graphics
 
-pub type Image
-
 pub type Framebuffer
 
 @external(javascript, "../p5.mjs", "setup__fun")
@@ -201,10 +199,6 @@ pub fn normal__vector(vector:Vector) -> Nil
 pub fn normal__x_y_z(x:Float, y:Float, z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "save_gif__filename_duration")
-pub fn save_gif__filename_duration(filename:String, duration:Float) -> Nil
-
-
 @external(javascript, "../p5.mjs", "quad__x1_y1_x2_y2_x3_y3_x4_y4")
 pub fn quad__x1_y1_x2_y2_x3_y3_x4_y4(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float) -> Nil
 
@@ -325,6 +319,10 @@ pub fn background() -> Nil
 pub fn background__values(values:Array(Float)) -> Nil
 
 
+@external(javascript, "../p5.mjs", "background__a")
+pub fn background__a(a:Float) -> Nil
+
+
 @external(javascript, "../p5.mjs", "background__colorstring")
 pub fn background__colorstring(colorstring:String) -> Nil
 
@@ -333,20 +331,12 @@ pub fn background__colorstring(colorstring:String) -> Nil
 pub fn background__gray(gray:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "background__image")
-pub fn background__image(image:Image) -> Nil
-
-
 @external(javascript, "../p5.mjs", "background__colorstring_a")
 pub fn background__colorstring_a(colorstring:String, a:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "background__gray_a")
 pub fn background__gray_a(gray:Float, a:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "background__image_a")
-pub fn background__image_a(image:Image, a:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "background__v1_v2_v3")
@@ -497,10 +487,6 @@ pub fn line__x1_y1_x2_y2(x1:Float, y1:Float, x2:Float, y2:Float) -> Nil
 pub fn line__x1_y1_z1_x2_y2_z2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "load_image__path")
-pub fn load_image__path(path:String) -> Image
-
-
 @external(javascript, "../p5.mjs", "clear_depth")
 pub fn clear_depth() -> Nil
 
@@ -581,80 +567,12 @@ pub fn stroke_cap__cap(cap:String) -> Nil
 pub fn push() -> Nil
 
 
-@external(javascript, "../p5.mjs", "image__img_x_y")
-pub fn image__img_x_y(img:Image, x:Float, y:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_x_y_width")
-pub fn image__img_x_y_width(img:Image, x:Float, y:Float, width:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_x_y_width_height")
-pub fn image__img_x_y_width_height(img:Image, x:Float, y:Float, width:Float, height:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy")
-pub fn image__img_dx_dy_d_width_d_height_sx_sy(img:Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width")
-pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width(img:Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height")
-pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height(img:Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit")
-pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit(img:Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align")
-pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align(img:Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String, x_align:String) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align")
-pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align(img:Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String, x_align:String, y_align:String) -> Nil
-
-
 @external(javascript, "../p5.mjs", "rotate__angle")
 pub fn rotate__angle(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "rotate__angle_axis")
 pub fn rotate__angle_axis(angle:Float, axis:Vector) -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint")
-pub fn tint() -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint__values")
-pub fn tint__values(values:Array(Float)) -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint__value")
-pub fn tint__value(value:String) -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint__gray")
-pub fn tint__gray(gray:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint__gray_alpha")
-pub fn tint__gray_alpha(gray:Float, alpha:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint__v1_v2_v3")
-pub fn tint__v1_v2_v3(v1:Float, v2:Float, v3:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "tint__v1_v2_v3_alpha")
-pub fn tint__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "no_tint")
-pub fn no_tint() -> Nil
 
 
 @external(javascript, "../p5.mjs", "key_released__fun")
@@ -699,10 +617,6 @@ pub fn square__x_y_s_tl_tr_br_bl(x:Float, y:Float, s:Float, tl:Float, tr:Float, 
 
 @external(javascript, "../p5.mjs", "rotate_x__angle")
 pub fn rotate_x__angle(angle:Float) -> Nil
-
-
-@external(javascript, "../p5.mjs", "image_mode__mode")
-pub fn image_mode__mode(mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "rotate_y__angle")
