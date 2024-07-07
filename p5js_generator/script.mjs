@@ -15,47 +15,13 @@ function mapType(t, optional) {
         : getType()
 }
 
-
-
-let fileNames = fs.readdirSync("input", { withFileTypes: true })
-    .filter(item => !item.isDirectory())
-    .map(item => item.name)
-let json = fileNames.flatMap((name) => JSON.parse(execSync("jsdoc2md --json input/" + name)))
+function readDirRecursive(path) {
+    return fs.readdirSync(path, { withFileTypes: true })
+        .flatMap(item => {
+            if (item.isDirectory()) return readDirRecursive(path + "/" + item.name)
+            else if (!item.name.endsWith(".js")) return []
+            else return JSON.parse(execSync("jsdoc2md --json " + path + "/" + item.name))
+        })
+}
+let json = readDirRecursive("p5.js/src")
 fs.writeFileSync("output.json", JSON.stringify(json))
-
-/*
-const js_output = json
-    .filter((elem) => elem.kind == "function")
-    .map((elem) => {
-        const paramNames = (elem.params
-            ? elem.params.map((param) => param.name).join(",")
-            : "")
-
-        return "export const " + elem.name + " = (" + paramNames + ") => sketch." + elem.name + "(" + paramNames + ")"
-    })
-    .join("\n\n")
-
-const gleam_output = json
-    .filter((elem) => elem.kind == "function")
-    .map((elem) => {
-        const params = (elem.params
-            ? elem.params.map((param) => {
-                return {
-                    name: param.name,
-                    type: mapType(param.type.names[0], param.optional)
-                }
-            }
-            )
-            : [])
-        const returnValue = elem.returns
-            ? mapType(elem.returns[0].type.names[0], elem.returns[0].optional)
-            : "Nil"
-
-        return ("@external(javascript, \"./p5js_bindings.mjs\", \"" + elem.name + "\")\n")
-            + "pub fn " + lodash.snakeCase(elem.name) + "(" + params.map((param) => param["name"] + ":" + param["type"]).join(", ") + ") -> "
-    })
-    .join("\n\n")
-
-fs.writeFileSync("output.js", js_output)
-fs.writeFileSync("output.gleam", gleam_output)
-*/

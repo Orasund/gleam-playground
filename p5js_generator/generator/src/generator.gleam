@@ -64,7 +64,8 @@ export function init(fun, id) {\n
 
 pub fn generate_gleam_file(entries: List(Entry)) {
   {
-    "import gleam/javascript/array.{type Array}\n\n"
+    "import gleam/javascript/array.{type Array}\n"
+    <> "import gleam/dynamic.{type Dynamic}\n\n"
     <> [
       "Vector", "Renderer", "HTMLCanvasElement", "Graphics", "Image",
       "Framebuffer",

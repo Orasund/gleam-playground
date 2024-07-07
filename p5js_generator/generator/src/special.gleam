@@ -10,6 +10,16 @@ pub fn ignored(name) {
 
 pub fn entries(name) -> Option(Entry) {
   case name {
+    "windowResized" ->
+      Entry(
+        "window_resized",
+        name,
+        [Param("fun", "fn() -> Nil", False)],
+        "Nil",
+        FunctionSort,
+        Some("p5.windowResized = fun"),
+      )
+      |> Some()
     "keyPressed" ->
       Entry(
         "key_pressed",

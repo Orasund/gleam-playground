@@ -64,9 +64,14 @@ pub fn add(to builder: Builder, entry base_entry: Entry) {
   })
 }
 
-fn function_name(entry: Entry, list: List(String)) {
+fn function_name(entry: Entry, list: List(String), variants: Int) {
+  let default_name = case entry.gleam_name {
+    "class" -> "class_"
+    _ -> entry.gleam_name
+  }
   case list {
-    [] -> entry.gleam_name
+    [] -> default_name
+    [_] if variants == 1 -> default_name
     _ -> entry.gleam_name <> "__" <> { string.join(list, "_") }
   }
 }
@@ -86,6 +91,7 @@ pub fn entries(builder: Builder) {
         gleam_name: function_name(
           entry,
           entry.params |> list.map(fn(param) { param.name }),
+          list.length(list),
         ),
       )
     })

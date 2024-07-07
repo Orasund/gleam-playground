@@ -15,16 +15,20 @@ pub fn to_gleam_type(string: String) -> Result(String, String) {
     "boolean" -> Ok("Bool")
     "Integer" -> Ok("Int")
     "Constant" -> Ok("String")
-    "p5.Vector" -> Ok("Vector")
-    "p5.Renderer" -> Ok("Renderer")
-    "p5.Graphics" -> Ok("Graphics")
-    "p5.Image" -> Ok("Image")
-    "p5.Framebuffer" -> Ok("Framebuffer")
+    "p5.Vector" -> Ok("P5Vector")
+    "p5.Renderer" -> Ok("P5Renderer")
+    "p5.Graphics" -> Ok("P5Graphics")
+    "p5.Image" -> Ok("P5Image")
+    "p5.Framebuffer" -> Ok("P5Framebuffer")
+    "p5.Color" -> Ok("P5Color")
+    "p5.Element" -> Ok("P5Element")
     "HTMLCanvasElement" -> Ok("HTMLCanvasElement")
     "Array" -> Ok("Array(a)")
     "*" -> Ok("a")
     "String" -> Ok("String")
     "Array.<Number>" -> Ok("Array(Float)")
+    "Array.<String>" -> Ok("Array(String)")
+    "Object" -> Ok("Dynamic")
     _ -> Error(string)
   }
 }
@@ -36,30 +40,42 @@ pub fn to_type_name(string: String) -> String {
 
 fn param_decoder(print_error: fn(String) -> String) {
   fn(dynamic) {
-    let assert Ok(name) =
+    case
       dynamic.field("name", dynamic.string)(dynamic)
       |> result.map(justin.snake_case)
+    {
+      Ok(string) -> {
+        let name = case string {
+          "class" -> "class_"
+          _ -> string
+        }
+        let assert Ok(optional) =
+          dynamic.optional_field("optional", dynamic.bool)(dynamic)
+          |> result.map(option.unwrap(_, False))
 
-    let assert Ok(optional) =
-      dynamic.optional_field("optional", dynamic.bool)(dynamic)
-      |> result.map(option.unwrap(_, False))
+        let assert Ok(list) =
+          dynamic.field(
+            "type",
+            dynamic.field("names", dynamic.list(dynamic.string)),
+          )(dynamic)
 
-    let assert Ok(list) =
-      dynamic.field(
-        "type",
-        dynamic.field("names", dynamic.list(dynamic.string)),
-      )(dynamic)
-
-    case list {
-      [head, ..] ->
-        to_gleam_type(head)
-        |> result.map_error(fn(string) {
-          io.println(print_error(string))
-          Nil
-        })
-      [] -> Ok("Nil")
+        case list {
+          [head, ..] ->
+            to_gleam_type(head)
+            |> result.map_error(fn(string) {
+              io.println(print_error(string))
+              Nil
+            })
+          [] -> Ok("Nil")
+        }
+        |> result.map(Param(name, _, optional))
+      }
+      Error(_) -> {
+        io.debug(dynamic)
+        //io.println("❓ Can't parse name: " <> dynamic.classify(dynamic))
+        Error(Nil)
+      }
     }
-    |> result.map(Param(name, _, optional))
   }
 }
 
@@ -71,7 +87,10 @@ pub fn decode_params(list, of name) {
   )
 }
 
-pub fn decode_returns(print_error: fn(String) -> String) {
+pub fn decode_returns(
+  print_type_error: fn(String) -> String,
+  print_generic_error: fn(String) -> String,
+) {
   fn(dynamic) {
     case
       dynamic.optional_field(
@@ -86,11 +105,16 @@ pub fn decode_returns(print_error: fn(String) -> String) {
       Ok(Some([[name]])) ->
         to_gleam_type(name)
         |> result.map_error(fn(string) {
-          io.println(print_error(string))
+          io.println(print_type_error(string))
           Nil
         })
+        |> result.unwrap("Nil")
+        |> Ok()
       Ok(None) -> Ok("Nil")
-      _ -> Error(Nil)
+      _ -> {
+        print_generic_error(dynamic.classify(dynamic))
+        Ok("Nil")
+      }
     }
   }
 }
@@ -103,9 +127,10 @@ pub fn decoder(dynamic) -> Option(Entry) {
     True -> None
     False -> {
       let assert Ok(return) =
-        decode_returns(fn(string) {
-          "❓ Unkown Return Type " <> string <> " of " <> name
-        })(dynamic)
+        decode_returns(
+          fn(string) { "❓ Unkown Return Type " <> string <> " of " <> name },
+          fn(string) { "❓ Unkown Structure " <> string <> " of " <> name },
+        )(dynamic)
       case special.entries(name) {
         Some(entry) -> Some(entry)
         None ->
