@@ -4,7 +4,8 @@ import justin
 
 pub fn ignored(name) {
   case name {
-    "p5" -> True
+    "p5" | "layout" | "cubicToQuadratics" | "splitInflections" | "getGlyphInfo" ->
+      True
     _ -> False
   }
 }

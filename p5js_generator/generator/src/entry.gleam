@@ -82,9 +82,6 @@ pub fn entries(builder: Builder) {
     let list = dict.values(dict)
 
     list
-    |> list.sort(by: fn(a, b) {
-      int.compare(list.length(a.params), list.length(b.params))
-    })
     |> list.map(fn(entry) {
       Entry(
         ..entry,
@@ -96,4 +93,5 @@ pub fn entries(builder: Builder) {
       )
     })
   })
+  |> list.sort(by: fn(a, b) { string.compare(a.gleam_name, b.gleam_name) })
 }
