@@ -209,3 +209,48 @@ pub fn decoder(dynamic) -> Option(Entry) {
     }
   }
 }
+
+//----------------------------------------
+
+pub fn decode_param(dynamic) {
+  let assert Ok(name) = dynamic.field("name", dynamic.string)(dynamic)
+  let assert Ok(type_) = dynamic.field("type", dynamic.string)(dynamic)
+  let assert Ok(optional) =
+    dynamic.optional_field("optional", dynamic.bool)(dynamic)
+  Param(name, type_, optional |> option.unwrap(False))
+  |> Ok()
+}
+
+pub fn decode_classitem(dynamic) {
+  dynamic.decode4(
+    fn(name, params_option, overloads_option, return_option) {
+      let param_list = case params_option, overloads_option {
+        Some(params), None -> [params]
+        None, Some(overloads) -> overloads
+        None, None -> [[]]
+        _, _ -> panic
+      }
+
+      param_list
+      |> list.map(fn(params) {
+        Entry(
+          justin.snake_case(name),
+          name,
+          params,
+          return_option
+            |> option.unwrap("Nil"),
+          FunctionSort,
+          None,
+        )
+      })
+    },
+    dynamic.field("name", dynamic.string),
+    dynamic.optional_field("params", dynamic.list(decode_param)),
+    dynamic.optional_field(
+      "overloads",
+      dynamic.field("params", dynamic.list(decode_param))
+        |> dynamic.list(),
+    ),
+    dynamic.optional_field("return", dynamic.field("type", dynamic.string)),
+  )(dynamic)
+}

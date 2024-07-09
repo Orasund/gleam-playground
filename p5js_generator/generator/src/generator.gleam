@@ -131,25 +131,41 @@ pub fn generate_gleam_file(entries: List(Entry)) {
 }
 
 pub fn main() {
-  let assert Ok(json) = simplifile.read(from: "../output.json")
-  let assert Ok(list) =
+  let assert Ok(json) =
+    simplifile.read(from: "../p5.js/docs/reference/data.json")
+  let assert Ok(classitems) =
     json.decode(
       json,
-      fn(dynamic) { decoder.decoder(dynamic) |> Ok() } |> dynamic.list(),
+      dynamic.field("classitems", dynamic.list(dynamic.dynamic)),
     )
+  //let assert Ok(list) =
+  //  json.decode(
+  //    json,
+  //    fn(dynamic) { decoder.decoder(dynamic) |> Ok() } |> dynamic.list(),
+  //  )
 
   let entries =
-    list
-    |> list.filter_map(fn(option) {
-      case option {
-        Some(entry) ->
-          case !string.starts_with(entry.name, "_") {
-            True -> Ok(entry)
-            False -> Error(Nil)
-          }
-        None -> Error(Nil)
+    //list
+    //|> list.filter_map(fn(option) {
+    //  case option {
+    //    Some(entry) ->
+    //      case !string.starts_with(entry.name, "_") {
+    //        True -> Ok(entry)
+    //        False -> Error(Nil)
+    //      }
+    //    None -> Error(Nil)
+    //  }
+    //})
+    classitems
+    |> list.filter_map(fn(dynamic) {
+      let result = decoder.decode_classitem(dynamic)
+      case result {
+        Ok([a, ..]) -> io.debug(a.name)
+        _ -> ""
       }
+      result
     })
+    |> list.concat
     |> list.fold(entry.builder(), entry.add)
     |> entry.entries
   io.println("generated")
