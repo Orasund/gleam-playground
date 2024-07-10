@@ -1,3 +1,4 @@
+import classitem
 import decoder
 import entry.{type Entry, Entry, FunctionSort, TypeSort}
 import gleam/dict
@@ -9,6 +10,7 @@ import gleam/list
 import gleam/option.{None, Some}
 import gleam/string
 import simplifile
+import special/clip
 
 const js_filename = "p5.mjs"
 
@@ -69,10 +71,12 @@ pub fn generate_gleam_file(entries: List(Entry)) {
     <> [
       "P5Vector", "P5Renderer", "P5Graphics", "P5Image", "P5Framebuffer",
       "P5Color", "P5Element", "P5Geometry", "P5Shader", "P5Matrix", "P5XML",
-      "P5TableRow", "P5Camera", "HTMLCanvasElement",
+      "P5TableRow", "P5Camera", "HTMLCanvasElement", "HTMLElement",
     ]
     |> list.map(fn(string) { "pub type " <> string })
     |> string.join("\n\n")
+    <> clip.clip_options()
+    <> "\n\n"
     <> "\n\n"
     <> "@external(javascript, \"../p5.mjs\", \"setup__fun\")\n"
     <> "pub fn setup__fun(fun:fn() -> Nil) -> Nil\n"
@@ -158,7 +162,7 @@ pub fn main() {
     //})
     classitems
     |> list.filter_map(fn(dynamic) {
-      let result = decoder.decode_classitem(dynamic)
+      let result = classitem.decode(dynamic)
       case result {
         Ok([a, ..]) -> io.debug(a.name)
         _ -> ""

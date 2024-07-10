@@ -1,16 +1,61 @@
 import entry.{type Entry, Entry, FunctionSort, Param}
 import gleam/option.{type Option, None, Some}
 import justin
+import special/clip
 
 pub fn ignored(name) {
   case name {
-    "p5" | "layout" | "cubicToQuadratics" | "splitInflections" | "getGlyphInfo" ->
-      True
+    "p5"
+    | "changed"
+    | "input"
+    | "createImg"
+    | "createFileInput"
+    | "createVideo"
+    | "createAudio"
+    | "createCapture"
+    | "drop"
+    | "onended"
+    | "connect"
+    | "addCue"
+    | "saveCanvas"
+    | "saveFrames"
+    | "loadImage"
+    | "image"
+    | "set"
+    | "copy"
+    | "loadJSON"
+    | "loadStrings"
+    | "loadTable"
+    | "loadXML"
+    | "loadBytes"
+    | "httpGet"
+    | "httpPost"
+    | "httpDo"
+    | "write"
+    | "print"
+    | "save"
+    | "saveJSON"
+    | "matchRow"
+    | "setString"
+    | "setAttribute"
+    | "loadFont"
+    | "text"
+    | "textFont"
+    | "int"
+    | "str"
+    | "boolean"
+    | "byte"
+    | "buildGeometry"
+    | "loadModel"
+    | "texture"
+    | "userStartAudio"
+    | "outputVolume"
+    | "loadSound" -> True
     _ -> False
   }
 }
 
-pub fn entries(name) -> Option(Entry) {
+pub fn entries(name) -> Result(List(Entry), Nil) {
   case name {
     "windowResized"
     | "keyPressed"
@@ -29,20 +74,50 @@ pub fn entries(name) -> Option(Entry) {
     | "touchMoved"
     | "touchEnded"
     | "dragOver"
-    | "dragLeave" -> set_function(name)
+    | "dragLeave" ->
+      [
+        Entry(
+          justin.snake_case(name),
+          name,
+          [Param("fun", "fn() -> Nil", False)],
+          "Nil",
+          FunctionSort,
+          Some("p5." <> name <> " = fun"),
+        ),
+      ]
+      |> Ok
 
-    _ -> None
+    "clip" ->
+      [clip.entry()]
+      |> Ok
+    //"beginClip" -> begin_clip() |> Ok
+    //"parent" ->
+    //  parent()
+    //  |> Ok
+    //"createFramebuffer" ->
+    //  [create_function(name, [Param("options", "any", True)], "Nil")]
+    //  |> Ok
+    _ -> Error(Nil)
   }
 }
 
-fn set_function(name) {
-  Entry(
-    justin.snake_case(name),
-    name,
-    [Param("fun", "fn() -> Nil", False)],
-    "Nil",
-    FunctionSort,
-    Some("p5." <> name <> " = fun"),
-  )
-  |> Some()
+fn begin_clip() {
+  [create_function("beginClip", [Param("options", "ClipOptions", True)], "Nil")]
+}
+
+fn parent() {
+  [
+    create_function("parent", [Param("id", "String", False)], "Nil"),
+    create_function("parent", [Param("element", "p5Element", False)], "Nil"),
+    create_function(
+      "parent",
+      [Param("html_element", "HTMLElement", False)],
+      "Nil",
+    ),
+    create_function("parent", [], "P5Element"),
+  ]
+}
+
+fn create_function(name, params, return) {
+  Entry(justin.snake_case(name), name, params, return, FunctionSort, None)
 }

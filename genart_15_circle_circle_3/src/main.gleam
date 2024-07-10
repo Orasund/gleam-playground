@@ -17,26 +17,28 @@ pub fn draw() {
   p5.translate__x_y(canvas_size /. 2.0, canvas_size /. 2.0)
   p5.background__colorstring("#000000")
   p5.random_seed__seed(42.0)
-  rec(canvas_size *. 0.6, 10)
+  rec(canvas_size, 7)
 }
 
 pub fn rec(size: Float, steps: Int) -> Nil {
-  ["#586F7C80", "#B8DBD980", "#F4F4F980", "#04724D80"]
+  ["#586F7C", "#B8DBD9", "#F4F4F9", "#04724D"]
   |> random.uniform()
   |> p5.fill__value()
-  p5.circle__x_y_d(0.0, 0.0, size /. 2.0)
   case steps <= 0 {
-    True -> Nil
+    True -> {
+      p5.circle__x_y_d(0.0, 0.0, size)
+    }
     False -> {
-      list.range(0, 2)
-      |> list.map(fn(i) {
-        use <- transform.rotate({
-          1.8 *. int.to_float(i) *. elementary.pi() /. 3.0
-        })
-        use <- transform.translate(size, 0.0)
-        rec(size *. 0.2 +. int.to_float(i) *. size *. 0.4, steps - 1)
-      })
-      Nil
+      p5.translate__x_y(size /. -4.0, size /. -4.0)
+      rec(size *. 0.5, steps - 1)
+      p5.translate__x_y(size /. 2.0, 0.0)
+      rec(size *. 0.5, steps - 1)
+      p5.translate__x_y(0.0, size /. 2.0)
+      rec(size *. 0.5, steps - 2)
+      p5.translate__x_y(size /. -2.0, 0.0)
+      rec(size *. 0.5, steps - 1)
+      p5.translate__x_y(0.0, size /. -2.0)
+      p5.translate__x_y(size /. 4.0, size /. 4.0)
     }
   }
 }
