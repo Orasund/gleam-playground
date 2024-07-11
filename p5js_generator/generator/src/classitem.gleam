@@ -66,10 +66,12 @@ fn decode_param(dynamic) {
 pub fn decode(dynamic) {
   let name_result = dynamic.field("name", dynamic.string)(dynamic)
   let class_result = dynamic.field("class", dynamic.string)(dynamic)
-  case name_result, class_result {
-    Error(e), _ -> Error(e)
-    _, Error(e) -> Error(e)
-    Ok(name), Ok("p5") -> {
+  let itemtype_result = dynamic.field("itemtype",dynamic.string)(dynamic)
+  case name_result, class_result,itemtype_result {
+    Error(e), _,_ -> Error(e)
+    _, Error(e),_ -> Error(e)
+    _, _, Error(e) -> Error(e)
+    Ok(name), Ok("p5"), Ok("method") -> {
       let ignored = special.ignored(name)
       case special.entries(name) {
         _ if ignored -> Ok([])
@@ -119,6 +121,6 @@ pub fn decode(dynamic) {
           )(dynamic)
       }
     }
-    Ok(_), Ok(_) -> Ok([])
+    Ok(_), Ok(_),Ok(_) -> Ok([])
   }
 }
