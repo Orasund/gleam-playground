@@ -71,12 +71,14 @@ pub fn generate_gleam_file(entries: List(Entry)) {
     <> [
       "P5Vector", "P5Renderer", "P5Graphics", "P5Image", "P5Framebuffer",
       "P5Color", "P5Element", "P5Geometry", "P5Shader", "P5Matrix", "P5XML",
-      "P5TableRow", "P5Camera", "HTMLCanvasElement", "HTMLElement",
+      "P5TableRow", "P5Camera", "HTMLCanvasElement", "P5Convolver",
+      "P5NumberDict", "P5StringDict", "P5PrintWriter", "P5SoundFile", "P5Table",
+      "HTMLElement",
     ]
     |> list.map(fn(string) { "pub type " <> string })
     |> string.join("\n\n")
-    <> clip.clip_options()
     <> "\n\n"
+    <> clip.clip_options()
     <> "\n\n"
     <> "@external(javascript, \"../p5.mjs\", \"setup__fun\")\n"
     <> "pub fn setup__fun(fun:fn() -> Nil) -> Nil\n"

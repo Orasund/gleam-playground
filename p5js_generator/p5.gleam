@@ -29,11 +29,23 @@ pub type P5Camera
 
 pub type HTMLCanvasElement
 
-pub type HTMLElementtype ClipOptions {
+pub type P5Convolver
+
+pub type P5NumberDict
+
+pub type P5StringDict
+
+pub type P5PrintWriter
+
+pub type P5SoundFile
+
+pub type P5Table
+
+pub type HTMLElement
+
+pub type ClipOptions {
     ClipOptions(invert:String)
 }
-
-
 
 @external(javascript, "../p5.mjs", "setup__fun")
 pub fn setup__fun(fun:fn() -> Nil) -> Nil
@@ -45,15 +57,15 @@ pub fn draw__fun(fun:fn() -> Nil) -> Nil
 pub fn init(fun:fn() -> Nil,id:String) -> Nil
 
 @external(javascript, "../p5.mjs", "abs")
-pub fn abs(n:Float) -> Number
+pub fn abs(n:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "acos")
-pub fn acos(value:Float) -> Number
+pub fn acos(value:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "alpha")
-pub fn alpha(color:String) -> Number
+pub fn alpha(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "ambient_light__color")
@@ -97,7 +109,7 @@ pub fn ambient_material__v1_v2_v3(v1:Float, v2:Float, v3:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "angle_mode")
-pub fn angle_mode() -> Nil
+pub fn angle_mode() -> String
 
 
 @external(javascript, "../p5.mjs", "angle_mode__mode")
@@ -105,7 +117,7 @@ pub fn angle_mode__mode(mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "append__array_value")
-pub fn append__array_value(array:Array, value:any) -> Array
+pub fn append__array_value(array:Array(any), value:any) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "apply_matrix__a_b_c_d_e_f")
@@ -117,7 +129,7 @@ pub fn apply_matrix__a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p(a:Float, b:Float, c:Float, 
 
 
 @external(javascript, "../p5.mjs", "apply_matrix__arr")
-pub fn apply_matrix__arr(arr:Array) -> Nil
+pub fn apply_matrix__arr(arr:Array(any)) -> Nil
 
 
 @external(javascript, "../p5.mjs", "arc__x_y_w_h_start_stop")
@@ -133,27 +145,27 @@ pub fn arc__x_y_w_h_start_stop_mode_detail(x:Float, y:Float, w:Float, h:Float, s
 
 
 @external(javascript, "../p5.mjs", "array_copy__src_dst")
-pub fn array_copy__src_dst(src:Array, dst:Array) -> Nil
+pub fn array_copy__src_dst(src:Array(any), dst:Array(any)) -> Nil
 
 
 @external(javascript, "../p5.mjs", "array_copy__src_dst_length")
-pub fn array_copy__src_dst_length(src:Array, dst:Array, length:Int) -> Nil
+pub fn array_copy__src_dst_length(src:Array(any), dst:Array(any), length:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "array_copy__src_srcPosition_dst_dstPosition_length")
-pub fn array_copy__src_srcPosition_dst_dstPosition_length(src:Array, srcPosition:Int, dst:Array, dstPosition:Int, length:Int) -> Nil
+@external(javascript, "../p5.mjs", "array_copy__src_src_position_dst_dst_position_length")
+pub fn array_copy__src_src_position_dst_dst_position_length(src:Array(any), src_position:Int, dst:Array(any), dst_position:Int, length:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "asin")
-pub fn asin(value:Float) -> Number
+pub fn asin(value:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "atan")
-pub fn atan(value:Float) -> Number
+pub fn atan(value:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "atan2__y_x")
-pub fn atan2__y_x(y:Float, x:Float) -> Number
+pub fn atan2__y_x(y:Float, x:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "background__color")
@@ -233,11 +245,11 @@ pub fn bezier_detail(detail:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "bezier_point__a_b_c_d_t")
-pub fn bezier_point__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Number
+pub fn bezier_point__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "bezier_tangent__a_b_c_d_t")
-pub fn bezier_tangent__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Number
+pub fn bezier_tangent__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "bezier_vertex__x2_y2_x3_y3_x4_y4")
@@ -248,12 +260,12 @@ pub fn bezier_vertex__x2_y2_x3_y3_x4_y4(x2:Float, y2:Float, x3:Float, y3:Float, 
 pub fn bezier_vertex__x2_y2_z2_x3_y3_z3_x4_y4_z4(x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "blend__srcImage_sx_sy_sw_sh_dx_dy_dw_dh_blendMode")
-pub fn blend__srcImage_sx_sy_sw_sh_dx_dy_dw_dh_blendMode(srcImage:P5Image, sx:Int, sy:Int, sw:Int, sh:Int, dx:Int, dy:Int, dw:Int, dh:Int, blendMode:String) -> Nil
+@external(javascript, "../p5.mjs", "blend__src_image_sx_sy_sw_sh_dx_dy_dw_dh_blend_mode")
+pub fn blend__src_image_sx_sy_sw_sh_dx_dy_dw_dh_blend_mode(src_image:P5Image, sx:Int, sy:Int, sw:Int, sh:Int, dx:Int, dy:Int, dw:Int, dh:Int, blend_mode:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "blend__sx_sy_sw_sh_dx_dy_dw_dh_blendMode")
-pub fn blend__sx_sy_sw_sh_dx_dy_dw_dh_blendMode(sx:Int, sy:Int, sw:Int, sh:Int, dx:Int, dy:Int, dw:Int, dh:Int, blendMode:String) -> Nil
+@external(javascript, "../p5.mjs", "blend__sx_sy_sw_sh_dx_dy_dw_dh_blend_mode")
+pub fn blend__sx_sy_sw_sh_dx_dy_dw_dh_blend_mode(sx:Int, sy:Int, sw:Int, sh:Int, dx:Int, dy:Int, dw:Int, dh:Int, blend_mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "blend_mode")
@@ -261,7 +273,7 @@ pub fn blend_mode(mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "blue")
-pub fn blue(color:String) -> Number
+pub fn blue(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "box")
@@ -280,16 +292,16 @@ pub fn box__width_height(width:Float, height:Float) -> Nil
 pub fn box__width_height_depth(width:Float, height:Float, depth:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "box__width_height_depth_detailX")
-pub fn box__width_height_depth_detailX(width:Float, height:Float, depth:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "box__width_height_depth_detail_x")
+pub fn box__width_height_depth_detail_x(width:Float, height:Float, depth:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "box__width_height_depth_detailX_detailY")
-pub fn box__width_height_depth_detailX_detailY(width:Float, height:Float, depth:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "box__width_height_depth_detail_x_detail_y")
+pub fn box__width_height_depth_detail_x_detail_y(width:Float, height:Float, depth:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "brightness")
-pub fn brightness(color:String) -> Number
+pub fn brightness(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "camera")
@@ -308,32 +320,32 @@ pub fn camera__x_y(x:Float, y:Float) -> Nil
 pub fn camera__x_y_z(x:Float, y:Float, z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "camera__x_y_z_centerX")
-pub fn camera__x_y_z_centerX(x:Float, y:Float, z:Float, centerX:Float) -> Nil
+@external(javascript, "../p5.mjs", "camera__x_y_z_center_x")
+pub fn camera__x_y_z_center_x(x:Float, y:Float, z:Float, center_x:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "camera__x_y_z_centerX_centerY")
-pub fn camera__x_y_z_centerX_centerY(x:Float, y:Float, z:Float, centerX:Float, centerY:Float) -> Nil
+@external(javascript, "../p5.mjs", "camera__x_y_z_center_x_center_y")
+pub fn camera__x_y_z_center_x_center_y(x:Float, y:Float, z:Float, center_x:Float, center_y:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "camera__x_y_z_centerX_centerY_centerZ")
-pub fn camera__x_y_z_centerX_centerY_centerZ(x:Float, y:Float, z:Float, centerX:Float, centerY:Float, centerZ:Float) -> Nil
+@external(javascript, "../p5.mjs", "camera__x_y_z_center_x_center_y_center_z")
+pub fn camera__x_y_z_center_x_center_y_center_z(x:Float, y:Float, z:Float, center_x:Float, center_y:Float, center_z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "camera__x_y_z_centerX_centerY_centerZ_upX")
-pub fn camera__x_y_z_centerX_centerY_centerZ_upX(x:Float, y:Float, z:Float, centerX:Float, centerY:Float, centerZ:Float, upX:Float) -> Nil
+@external(javascript, "../p5.mjs", "camera__x_y_z_center_x_center_y_center_z_up_x")
+pub fn camera__x_y_z_center_x_center_y_center_z_up_x(x:Float, y:Float, z:Float, center_x:Float, center_y:Float, center_z:Float, up_x:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "camera__x_y_z_centerX_centerY_centerZ_upX_upY")
-pub fn camera__x_y_z_centerX_centerY_centerZ_upX_upY(x:Float, y:Float, z:Float, centerX:Float, centerY:Float, centerZ:Float, upX:Float, upY:Float) -> Nil
+@external(javascript, "../p5.mjs", "camera__x_y_z_center_x_center_y_center_z_up_x_up_y")
+pub fn camera__x_y_z_center_x_center_y_center_z_up_x_up_y(x:Float, y:Float, z:Float, center_x:Float, center_y:Float, center_z:Float, up_x:Float, up_y:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "camera__x_y_z_centerX_centerY_centerZ_upX_upY_upZ")
-pub fn camera__x_y_z_centerX_centerY_centerZ_upX_upY_upZ(x:Float, y:Float, z:Float, centerX:Float, centerY:Float, centerZ:Float, upX:Float, upY:Float, upZ:Float) -> Nil
+@external(javascript, "../p5.mjs", "camera__x_y_z_center_x_center_y_center_z_up_x_up_y_up_z")
+pub fn camera__x_y_z_center_x_center_y_center_z_up_x_up_y_up_z(x:Float, y:Float, z:Float, center_x:Float, center_y:Float, center_z:Float, up_x:Float, up_y:Float, up_z:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "ceil")
-pub fn ceil(n:Float) -> Integer
+pub fn ceil(n:Float) -> Int
 
 
 @external(javascript, "../p5.mjs", "char__n")
@@ -341,7 +353,7 @@ pub fn char__n(n:String) -> String
 
 
 @external(javascript, "../p5.mjs", "char__ns")
-pub fn char__ns(ns:Array) -> String
+pub fn char__ns(ns:Array(any)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "circle__x_y_d")
@@ -389,31 +401,31 @@ pub fn clip__callback_options(callback:fn() -> Nil, options:ClipOptions) -> Nil
 
 
 @external(javascript, "../p5.mjs", "color__color")
-pub fn color__color(color:P5Color) -> p5.Color
+pub fn color__color(color:P5Color) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color__gray")
-pub fn color__gray(gray:Float) -> p5.Color
+pub fn color__gray(gray:Float) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color__gray_alpha")
-pub fn color__gray_alpha(gray:Float, alpha:Float) -> p5.Color
+pub fn color__gray_alpha(gray:Float, alpha:Float) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color__v1_v2_v3")
-pub fn color__v1_v2_v3(v1:Float, v2:Float, v3:Float) -> p5.Color
+pub fn color__v1_v2_v3(v1:Float, v2:Float, v3:Float) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color__v1_v2_v3_alpha")
-pub fn color__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Float) -> p5.Color
+pub fn color__v1_v2_v3_alpha(v1:Float, v2:Float, v3:Float, alpha:Float) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color__value")
-pub fn color__value(value:String) -> p5.Color
+pub fn color__value(value:String) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color__values")
-pub fn color__values(values:Array(Float)) -> p5.Color
+pub fn color__values(values:Array(Float)) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "color_mode__mode")
@@ -428,12 +440,12 @@ pub fn color_mode__mode_max(mode:String, max:Float) -> Nil
 pub fn color_mode__mode_max1_max2_max3(mode:String, max1:Float, max2:Float, max3:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "color_mode__mode_max1_max2_max3_maxA")
-pub fn color_mode__mode_max1_max2_max3_maxA(mode:String, max1:Float, max2:Float, max3:Float, maxA:Float) -> Nil
+@external(javascript, "../p5.mjs", "color_mode__mode_max1_max2_max3_max_a")
+pub fn color_mode__mode_max1_max2_max3_max_a(mode:String, max1:Float, max2:Float, max3:Float, max_a:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "concat__a_b")
-pub fn concat__a_b(a:Array, b:Array) -> Array
+pub fn concat__a_b(a:Array(any), b:Array(any)) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "cone")
@@ -448,268 +460,268 @@ pub fn cone__radius(radius:Float) -> Nil
 pub fn cone__radius_height(radius:Float, height:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cone__radius_height_detailX")
-pub fn cone__radius_height_detailX(radius:Float, height:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "cone__radius_height_detail_x")
+pub fn cone__radius_height_detail_x(radius:Float, height:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cone__radius_height_detailX_detailY")
-pub fn cone__radius_height_detailX_detailY(radius:Float, height:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "cone__radius_height_detail_x_detail_y")
+pub fn cone__radius_height_detail_x_detail_y(radius:Float, height:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cone__radius_height_detailX_detailY_cap")
-pub fn cone__radius_height_detailX_detailY_cap(radius:Float, height:Float, detailX:Int, detailY:Int, cap:Bool) -> Nil
+@external(javascript, "../p5.mjs", "cone__radius_height_detail_x_detail_y_cap")
+pub fn cone__radius_height_detail_x_detail_y_cap(radius:Float, height:Float, detail_x:Int, detail_y:Int, cap:Bool) -> Nil
 
 
 @external(javascript, "../p5.mjs", "constrain__n_low_high")
-pub fn constrain__n_low_high(n:Float, low:Float, high:Float) -> Number
+pub fn constrain__n_low_high(n:Float, low:Float, high:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "cos")
-pub fn cos(angle:Float) -> Number
+pub fn cos(angle:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "create_a__href_html")
-pub fn create_a__href_html(href:String, html:String) -> p5.Element
+pub fn create_a__href_html(href:String, html:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_a__href_html_target")
-pub fn create_a__href_html_target(href:String, html:String, target:String) -> p5.Element
+pub fn create_a__href_html_target(href:String, html:String, target:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_button__label")
-pub fn create_button__label(label:String) -> p5.Element
+pub fn create_button__label(label:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_button__label_value")
-pub fn create_button__label_value(label:String, value:String) -> p5.Element
+pub fn create_button__label_value(label:String, value:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_camera")
-pub fn create_camera() -> p5.Camera
+pub fn create_camera() -> P5Camera
 
 
 @external(javascript, "../p5.mjs", "create_canvas")
-pub fn create_canvas() -> p5.Renderer
+pub fn create_canvas() -> P5Renderer
 
 
 @external(javascript, "../p5.mjs", "create_canvas__width")
-pub fn create_canvas__width(width:Float) -> p5.Renderer
+pub fn create_canvas__width(width:Float) -> P5Renderer
 
 
 @external(javascript, "../p5.mjs", "create_canvas__width_height")
-pub fn create_canvas__width_height(width:Float, height:Float) -> p5.Renderer
+pub fn create_canvas__width_height(width:Float, height:Float) -> P5Renderer
 
 
 @external(javascript, "../p5.mjs", "create_canvas__width_height_canvas")
-pub fn create_canvas__width_height_canvas(width:Float, height:Float, canvas:HTMLCanvasElement) -> p5.Renderer
+pub fn create_canvas__width_height_canvas(width:Float, height:Float, canvas:HTMLCanvasElement) -> P5Renderer
 
 
 @external(javascript, "../p5.mjs", "create_canvas__width_height_renderer")
-pub fn create_canvas__width_height_renderer(width:Float, height:Float, renderer:String) -> p5.Renderer
+pub fn create_canvas__width_height_renderer(width:Float, height:Float, renderer:String) -> P5Renderer
 
 
 @external(javascript, "../p5.mjs", "create_canvas__width_height_renderer_canvas")
-pub fn create_canvas__width_height_renderer_canvas(width:Float, height:Float, renderer:String, canvas:HTMLCanvasElement) -> p5.Renderer
+pub fn create_canvas__width_height_renderer_canvas(width:Float, height:Float, renderer:String, canvas:HTMLCanvasElement) -> P5Renderer
 
 
 @external(javascript, "../p5.mjs", "create_checkbox")
-pub fn create_checkbox() -> p5.Element
+pub fn create_checkbox() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_checkbox__label")
-pub fn create_checkbox__label(label:String) -> p5.Element
+pub fn create_checkbox__label(label:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_checkbox__label_value")
-pub fn create_checkbox__label_value(label:String, value:Bool) -> p5.Element
+pub fn create_checkbox__label_value(label:String, value:Bool) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_color_picker")
-pub fn create_color_picker() -> p5.Element
+pub fn create_color_picker() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_color_picker__value")
-pub fn create_color_picker__value(value:P5Color) -> p5.Element
+pub fn create_color_picker__value(value:P5Color) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_convolver__path")
-pub fn create_convolver__path(path:String) -> p5.Convolver
+pub fn create_convolver__path(path:String) -> P5Convolver
 
 
 @external(javascript, "../p5.mjs", "create_convolver__path_callback")
-pub fn create_convolver__path_callback(path:String, callback:fn() -> Nil) -> p5.Convolver
+pub fn create_convolver__path_callback(path:String, callback:fn() -> Nil) -> P5Convolver
 
 
-@external(javascript, "../p5.mjs", "create_convolver__path_callback_errorCallback")
-pub fn create_convolver__path_callback_errorCallback(path:String, callback:fn() -> Nil, errorCallback:fn() -> Nil) -> p5.Convolver
+@external(javascript, "../p5.mjs", "create_convolver__path_callback_error_callback")
+pub fn create_convolver__path_callback_error_callback(path:String, callback:fn() -> Nil, error_callback:fn() -> Nil) -> P5Convolver
 
 
 @external(javascript, "../p5.mjs", "create_div")
-pub fn create_div() -> p5.Element
+pub fn create_div() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_div__html")
-pub fn create_div__html(html:String) -> p5.Element
+pub fn create_div__html(html:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_element__tag")
-pub fn create_element__tag(tag:String) -> p5.Element
+pub fn create_element__tag(tag:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_element__tag_content")
-pub fn create_element__tag_content(tag:String, content:String) -> p5.Element
+pub fn create_element__tag_content(tag:String, content:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_filter_shader")
-pub fn create_filter_shader(fragSrc:String) -> p5.Shader
+pub fn create_filter_shader(frag_src:String) -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "create_framebuffer")
-pub fn create_framebuffer() -> p5.Framebuffer
+pub fn create_framebuffer() -> P5Framebuffer
 
 
 @external(javascript, "../p5.mjs", "create_framebuffer__options")
-pub fn create_framebuffer__options(options:any) -> p5.Framebuffer
+pub fn create_framebuffer__options(options:any) -> P5Framebuffer
 
 
 @external(javascript, "../p5.mjs", "create_graphics__width_height")
-pub fn create_graphics__width_height(width:Float, height:Float) -> p5.Graphics
+pub fn create_graphics__width_height(width:Float, height:Float) -> P5Graphics
 
 
 @external(javascript, "../p5.mjs", "create_graphics__width_height_canvas")
-pub fn create_graphics__width_height_canvas(width:Float, height:Float, canvas:HTMLCanvasElement) -> p5.Graphics
+pub fn create_graphics__width_height_canvas(width:Float, height:Float, canvas:HTMLCanvasElement) -> P5Graphics
 
 
 @external(javascript, "../p5.mjs", "create_graphics__width_height_renderer")
-pub fn create_graphics__width_height_renderer(width:Float, height:Float, renderer:String) -> p5.Graphics
+pub fn create_graphics__width_height_renderer(width:Float, height:Float, renderer:String) -> P5Graphics
 
 
 @external(javascript, "../p5.mjs", "create_graphics__width_height_renderer_canvas")
-pub fn create_graphics__width_height_renderer_canvas(width:Float, height:Float, renderer:String, canvas:HTMLCanvasElement) -> p5.Graphics
+pub fn create_graphics__width_height_renderer_canvas(width:Float, height:Float, renderer:String, canvas:HTMLCanvasElement) -> P5Graphics
 
 
 @external(javascript, "../p5.mjs", "create_image__width_height")
-pub fn create_image__width_height(width:Int, height:Int) -> p5.Image
+pub fn create_image__width_height(width:Int, height:Int) -> P5Image
 
 
 @external(javascript, "../p5.mjs", "create_input")
-pub fn create_input() -> p5.Element
+pub fn create_input() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_input__value")
-pub fn create_input__value(value:String) -> p5.Element
+pub fn create_input__value(value:String) -> P5Element
 
 
-@external(javascript, "../p5.mjs", "create_input__value_type")
-pub fn create_input__value_type(value:String, type:String) -> p5.Element
+@external(javascript, "../p5.mjs", "create_input__value_type_")
+pub fn create_input__value_type_(value:String, type_:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_number_dict__key_value")
-pub fn create_number_dict__key_value(key:Float, value:Float) -> p5.NumberDict
+pub fn create_number_dict__key_value(key:Float, value:Float) -> P5NumberDict
 
 
 @external(javascript, "../p5.mjs", "create_number_dict__object")
-pub fn create_number_dict__object(object:any) -> p5.NumberDict
+pub fn create_number_dict__object(object:any) -> P5NumberDict
 
 
 @external(javascript, "../p5.mjs", "create_p")
-pub fn create_p() -> p5.Element
+pub fn create_p() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_p__html")
-pub fn create_p__html(html:String) -> p5.Element
+pub fn create_p__html(html:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_radio")
-pub fn create_radio() -> p5.Element
+pub fn create_radio() -> P5Element
 
 
-@external(javascript, "../p5.mjs", "create_radio__containerElement")
-pub fn create_radio__containerElement(containerElement:any) -> p5.Element
+@external(javascript, "../p5.mjs", "create_radio__container_element")
+pub fn create_radio__container_element(container_element:any) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_radio__name")
-pub fn create_radio__name(name:String) -> p5.Element
+pub fn create_radio__name(name:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_select")
-pub fn create_select() -> p5.Element
+pub fn create_select() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_select__existing")
-pub fn create_select__existing(existing:any) -> p5.Element
+pub fn create_select__existing(existing:any) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_select__multiple")
-pub fn create_select__multiple(multiple:Bool) -> p5.Element
+pub fn create_select__multiple(multiple:Bool) -> P5Element
 
 
-@external(javascript, "../p5.mjs", "create_shader__vertSrc_fragSrc")
-pub fn create_shader__vertSrc_fragSrc(vertSrc:String, fragSrc:String) -> p5.Shader
+@external(javascript, "../p5.mjs", "create_shader__vert_src_frag_src")
+pub fn create_shader__vert_src_frag_src(vert_src:String, frag_src:String) -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "create_slider__min_max")
-pub fn create_slider__min_max(min:Float, max:Float) -> p5.Element
+pub fn create_slider__min_max(min:Float, max:Float) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_slider__min_max_value")
-pub fn create_slider__min_max_value(min:Float, max:Float, value:Float) -> p5.Element
+pub fn create_slider__min_max_value(min:Float, max:Float, value:Float) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_slider__min_max_value_step")
-pub fn create_slider__min_max_value_step(min:Float, max:Float, value:Float, step:Float) -> p5.Element
+pub fn create_slider__min_max_value_step(min:Float, max:Float, value:Float, step:Float) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_span")
-pub fn create_span() -> p5.Element
+pub fn create_span() -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_span__html")
-pub fn create_span__html(html:String) -> p5.Element
+pub fn create_span__html(html:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "create_string_dict__key_value")
-pub fn create_string_dict__key_value(key:String, value:String) -> p5.StringDict
+pub fn create_string_dict__key_value(key:String, value:String) -> P5StringDict
 
 
 @external(javascript, "../p5.mjs", "create_string_dict__object")
-pub fn create_string_dict__object(object:any) -> p5.StringDict
+pub fn create_string_dict__object(object:any) -> P5StringDict
 
 
 @external(javascript, "../p5.mjs", "create_vector")
-pub fn create_vector() -> p5.Vector
+pub fn create_vector() -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "create_vector__x")
-pub fn create_vector__x(x:Float) -> p5.Vector
+pub fn create_vector__x(x:Float) -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "create_vector__x_y")
-pub fn create_vector__x_y(x:Float, y:Float) -> p5.Vector
+pub fn create_vector__x_y(x:Float, y:Float) -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "create_vector__x_y_z")
-pub fn create_vector__x_y_z(x:Float, y:Float, z:Float) -> p5.Vector
+pub fn create_vector__x_y_z(x:Float, y:Float, z:Float) -> P5Vector
 
 
 @external(javascript, "../p5.mjs", "create_writer__name")
-pub fn create_writer__name(name:String) -> p5.PrintWriter
+pub fn create_writer__name(name:String) -> P5PrintWriter
 
 
 @external(javascript, "../p5.mjs", "create_writer__name_extension")
-pub fn create_writer__name_extension(name:String, extension:String) -> p5.PrintWriter
+pub fn create_writer__name_extension(name:String, extension:String) -> P5PrintWriter
 
 
-@external(javascript, "../p5.mjs", "cursor__type")
-pub fn cursor__type(type:String) -> Nil
+@external(javascript, "../p5.mjs", "cursor__type_")
+pub fn cursor__type_(type_:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cursor__type_x")
-pub fn cursor__type_x(type:String, x:Float) -> Nil
+@external(javascript, "../p5.mjs", "cursor__type__x")
+pub fn cursor__type__x(type_:String, x:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cursor__type_x_y")
-pub fn cursor__type_x_y(type:String, x:Float, y:Float) -> Nil
+@external(javascript, "../p5.mjs", "cursor__type__x_y")
+pub fn cursor__type__x_y(type_:String, x:Float, y:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "curve__x1_y1_x2_y2_x3_y3_x4_y4")
@@ -725,11 +737,11 @@ pub fn curve_detail(resolution:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "curve_point__a_b_c_d_t")
-pub fn curve_point__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Number
+pub fn curve_point__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "curve_tangent__a_b_c_d_t")
-pub fn curve_tangent__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Number
+pub fn curve_tangent__a_b_c_d_t(a:Float, b:Float, c:Float, d:Float, t:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "curve_tightness")
@@ -756,108 +768,108 @@ pub fn cylinder__radius(radius:Float) -> Nil
 pub fn cylinder__radius_height(radius:Float, height:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cylinder__radius_height_detailX")
-pub fn cylinder__radius_height_detailX(radius:Float, height:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "cylinder__radius_height_detail_x")
+pub fn cylinder__radius_height_detail_x(radius:Float, height:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cylinder__radius_height_detailX_detailY")
-pub fn cylinder__radius_height_detailX_detailY(radius:Float, height:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "cylinder__radius_height_detail_x_detail_y")
+pub fn cylinder__radius_height_detail_x_detail_y(radius:Float, height:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cylinder__radius_height_detailX_detailY_bottomCap")
-pub fn cylinder__radius_height_detailX_detailY_bottomCap(radius:Float, height:Float, detailX:Int, detailY:Int, bottomCap:Bool) -> Nil
+@external(javascript, "../p5.mjs", "cylinder__radius_height_detail_x_detail_y_bottom_cap")
+pub fn cylinder__radius_height_detail_x_detail_y_bottom_cap(radius:Float, height:Float, detail_x:Int, detail_y:Int, bottom_cap:Bool) -> Nil
 
 
-@external(javascript, "../p5.mjs", "cylinder__radius_height_detailX_detailY_bottomCap_topCap")
-pub fn cylinder__radius_height_detailX_detailY_bottomCap_topCap(radius:Float, height:Float, detailX:Int, detailY:Int, bottomCap:Bool, topCap:Bool) -> Nil
+@external(javascript, "../p5.mjs", "cylinder__radius_height_detail_x_detail_y_bottom_cap_top_cap")
+pub fn cylinder__radius_height_detail_x_detail_y_bottom_cap_top_cap(radius:Float, height:Float, detail_x:Int, detail_y:Int, bottom_cap:Bool, top_cap:Bool) -> Nil
 
 
 @external(javascript, "../p5.mjs", "day")
-pub fn day() -> Integer
+pub fn day() -> Int
 
 
 @external(javascript, "../p5.mjs", "debug_mode")
 pub fn debug_mode() -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize")
-pub fn debug_mode__gridSize(gridSize:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size")
+pub fn debug_mode__grid_size(grid_size:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions")
-pub fn debug_mode__gridSize_gridDivisions(gridSize:Float, gridDivisions:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions")
+pub fn debug_mode__grid_size_grid_divisions(grid_size:Float, grid_divisions:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff(gridSize:Float, gridDivisions:Float, gridXOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff(grid_size:Float, grid_divisions:Float, grid_xoff:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff_gridYOff")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff_gridYOff(gridSize:Float, gridDivisions:Float, gridXOff:Float, gridYOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff(grid_size:Float, grid_divisions:Float, grid_xoff:Float, grid_yoff:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff(gridSize:Float, gridDivisions:Float, gridXOff:Float, gridYOff:Float, gridZOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff(grid_size:Float, grid_divisions:Float, grid_xoff:Float, grid_yoff:Float, grid_zoff:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize(gridSize:Float, gridDivisions:Float, gridXOff:Float, gridYOff:Float, gridZOff:Float, axesSize:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size(grid_size:Float, grid_divisions:Float, grid_xoff:Float, grid_yoff:Float, grid_zoff:Float, axes_size:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff(gridSize:Float, gridDivisions:Float, gridXOff:Float, gridYOff:Float, gridZOff:Float, axesSize:Float, axesXOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff(grid_size:Float, grid_divisions:Float, grid_xoff:Float, grid_yoff:Float, grid_zoff:Float, axes_size:Float, axes_xoff:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff_axesYOff")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff_axesYOff(gridSize:Float, gridDivisions:Float, gridXOff:Float, gridYOff:Float, gridZOff:Float, axesSize:Float, axesXOff:Float, axesYOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff_axes_yoff")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff_axes_yoff(grid_size:Float, grid_divisions:Float, grid_xoff:Float, grid_yoff:Float, grid_zoff:Float, axes_size:Float, axes_xoff:Float, axes_yoff:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff_axesYOff_axesZOff")
-pub fn debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff_axesYOff_axesZOff(gridSize:Float, gridDivisions:Float, gridXOff:Float, gridYOff:Float, gridZOff:Float, axesSize:Float, axesXOff:Float, axesYOff:Float, axesZOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff_axes_yoff_axes_zoff")
+pub fn debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff_axes_yoff_axes_zoff(grid_size:Float, grid_divisions:Float, grid_xoff:Float, grid_yoff:Float, grid_zoff:Float, axes_size:Float, axes_xoff:Float, axes_yoff:Float, axes_zoff:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "debug_mode__mode")
 pub fn debug_mode__mode(mode:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_axesSize")
-pub fn debug_mode__mode_axesSize(mode:String, axesSize:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_axes_size")
+pub fn debug_mode__mode_axes_size(mode:String, axes_size:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_axesSize_xOff")
-pub fn debug_mode__mode_axesSize_xOff(mode:String, axesSize:Float, xOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_axes_size_x_off")
+pub fn debug_mode__mode_axes_size_x_off(mode:String, axes_size:Float, x_off:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_axesSize_xOff_yOff")
-pub fn debug_mode__mode_axesSize_xOff_yOff(mode:String, axesSize:Float, xOff:Float, yOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_axes_size_x_off_y_off")
+pub fn debug_mode__mode_axes_size_x_off_y_off(mode:String, axes_size:Float, x_off:Float, y_off:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_axesSize_xOff_yOff_zOff")
-pub fn debug_mode__mode_axesSize_xOff_yOff_zOff(mode:String, axesSize:Float, xOff:Float, yOff:Float, zOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_axes_size_x_off_y_off_z_off")
+pub fn debug_mode__mode_axes_size_x_off_y_off_z_off(mode:String, axes_size:Float, x_off:Float, y_off:Float, z_off:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_gridSize")
-pub fn debug_mode__mode_gridSize(mode:String, gridSize:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_grid_size")
+pub fn debug_mode__mode_grid_size(mode:String, grid_size:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_gridSize_gridDivisions")
-pub fn debug_mode__mode_gridSize_gridDivisions(mode:String, gridSize:Float, gridDivisions:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_grid_size_grid_divisions")
+pub fn debug_mode__mode_grid_size_grid_divisions(mode:String, grid_size:Float, grid_divisions:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_gridSize_gridDivisions_xOff")
-pub fn debug_mode__mode_gridSize_gridDivisions_xOff(mode:String, gridSize:Float, gridDivisions:Float, xOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_grid_size_grid_divisions_x_off")
+pub fn debug_mode__mode_grid_size_grid_divisions_x_off(mode:String, grid_size:Float, grid_divisions:Float, x_off:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_gridSize_gridDivisions_xOff_yOff")
-pub fn debug_mode__mode_gridSize_gridDivisions_xOff_yOff(mode:String, gridSize:Float, gridDivisions:Float, xOff:Float, yOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_grid_size_grid_divisions_x_off_y_off")
+pub fn debug_mode__mode_grid_size_grid_divisions_x_off_y_off(mode:String, grid_size:Float, grid_divisions:Float, x_off:Float, y_off:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "debug_mode__mode_gridSize_gridDivisions_xOff_yOff_zOff")
-pub fn debug_mode__mode_gridSize_gridDivisions_xOff_yOff_zOff(mode:String, gridSize:Float, gridDivisions:Float, xOff:Float, yOff:Float, zOff:Float) -> Nil
+@external(javascript, "../p5.mjs", "debug_mode__mode_grid_size_grid_divisions_x_off_y_off_z_off")
+pub fn debug_mode__mode_grid_size_grid_divisions_x_off_y_off_z_off(mode:String, grid_size:Float, grid_divisions:Float, x_off:Float, y_off:Float, z_off:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "degrees")
-pub fn degrees(radians:Float) -> Number
+pub fn degrees(radians:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "describe__text")
@@ -905,15 +917,15 @@ pub fn directional_light__v1_v2_v3_x_y_z(v1:Float, v2:Float, v3:Float, x:Float, 
 
 
 @external(javascript, "../p5.mjs", "display_density")
-pub fn display_density() -> Number
+pub fn display_density() -> Float
 
 
 @external(javascript, "../p5.mjs", "dist__x1_y1_x2_y2")
-pub fn dist__x1_y1_x2_y2(x1:Float, y1:Float, x2:Float, y2:Float) -> Number
+pub fn dist__x1_y1_x2_y2(x1:Float, y1:Float, x2:Float, y2:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "dist__x1_y1_z1_x2_y2_z2")
-pub fn dist__x1_y1_z1_x2_y2_z2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float) -> Number
+pub fn dist__x1_y1_z1_x2_y2_z2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "double_clicked")
@@ -944,24 +956,24 @@ pub fn ellipse_mode(mode:String) -> Nil
 pub fn ellipsoid() -> Nil
 
 
-@external(javascript, "../p5.mjs", "ellipsoid__radiusX")
-pub fn ellipsoid__radiusX(radiusX:Float) -> Nil
+@external(javascript, "../p5.mjs", "ellipsoid__radius_x")
+pub fn ellipsoid__radius_x(radius_x:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "ellipsoid__radiusX_radiusY")
-pub fn ellipsoid__radiusX_radiusY(radiusX:Float, radiusY:Float) -> Nil
+@external(javascript, "../p5.mjs", "ellipsoid__radius_x_radius_y")
+pub fn ellipsoid__radius_x_radius_y(radius_x:Float, radius_y:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "ellipsoid__radiusX_radiusY_radiusZ")
-pub fn ellipsoid__radiusX_radiusY_radiusZ(radiusX:Float, radiusY:Float, radiusZ:Float) -> Nil
+@external(javascript, "../p5.mjs", "ellipsoid__radius_x_radius_y_radius_z")
+pub fn ellipsoid__radius_x_radius_y_radius_z(radius_x:Float, radius_y:Float, radius_z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "ellipsoid__radiusX_radiusY_radiusZ_detailX")
-pub fn ellipsoid__radiusX_radiusY_radiusZ_detailX(radiusX:Float, radiusY:Float, radiusZ:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "ellipsoid__radius_x_radius_y_radius_z_detail_x")
+pub fn ellipsoid__radius_x_radius_y_radius_z_detail_x(radius_x:Float, radius_y:Float, radius_z:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "ellipsoid__radiusX_radiusY_radiusZ_detailX_detailY")
-pub fn ellipsoid__radiusX_radiusY_radiusZ_detailX_detailY(radiusX:Float, radiusY:Float, radiusZ:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "ellipsoid__radius_x_radius_y_radius_z_detail_x_detail_y")
+pub fn ellipsoid__radius_x_radius_y_radius_z_detail_x_detail_y(radius_x:Float, radius_y:Float, radius_z:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "emissive_material__color")
@@ -989,7 +1001,7 @@ pub fn end_contour() -> Nil
 
 
 @external(javascript, "../p5.mjs", "end_geometry")
-pub fn end_geometry() -> p5.Geometry
+pub fn end_geometry() -> P5Geometry
 
 
 @external(javascript, "../p5.mjs", "end_shape")
@@ -1008,12 +1020,12 @@ pub fn end_shape__mode_count(mode:String, count:Int) -> Nil
 pub fn erase() -> Nil
 
 
-@external(javascript, "../p5.mjs", "erase__strengthFill")
-pub fn erase__strengthFill(strengthFill:Float) -> Nil
+@external(javascript, "../p5.mjs", "erase__strength_fill")
+pub fn erase__strength_fill(strength_fill:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "erase__strengthFill_strengthStroke")
-pub fn erase__strengthFill_strengthStroke(strengthFill:Float, strengthStroke:Float) -> Nil
+@external(javascript, "../p5.mjs", "erase__strength_fill_strength_stroke")
+pub fn erase__strength_fill_strength_stroke(strength_fill:Float, strength_stroke:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "exit_pointer_lock")
@@ -1021,7 +1033,7 @@ pub fn exit_pointer_lock() -> Nil
 
 
 @external(javascript, "../p5.mjs", "exp")
-pub fn exp(n:Float) -> Number
+pub fn exp(n:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "fill__color")
@@ -1052,44 +1064,44 @@ pub fn fill__value(value:String) -> Nil
 pub fn fill__values(values:Array(Float)) -> Nil
 
 
-@external(javascript, "../p5.mjs", "filter__filterType")
-pub fn filter__filterType(filterType:String) -> Nil
+@external(javascript, "../p5.mjs", "filter__filter_type")
+pub fn filter__filter_type(filter_type:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "filter__filterType_filterParam")
-pub fn filter__filterType_filterParam(filterType:String, filterParam:Float) -> Nil
+@external(javascript, "../p5.mjs", "filter__filter_type_filter_param")
+pub fn filter__filter_type_filter_param(filter_type:String, filter_param:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "filter__filterType_filterParam_useWebGL")
-pub fn filter__filterType_filterParam_useWebGL(filterType:String, filterParam:Float, useWebGL:Bool) -> Nil
+@external(javascript, "../p5.mjs", "filter__filter_type_filter_param_use_web_gl")
+pub fn filter__filter_type_filter_param_use_web_gl(filter_type:String, filter_param:Float, use_web_gl:Bool) -> Nil
 
 
-@external(javascript, "../p5.mjs", "filter__filterType_useWebGL")
-pub fn filter__filterType_useWebGL(filterType:String, useWebGL:Bool) -> Nil
+@external(javascript, "../p5.mjs", "filter__filter_type_use_web_gl")
+pub fn filter__filter_type_use_web_gl(filter_type:String, use_web_gl:Bool) -> Nil
 
 
-@external(javascript, "../p5.mjs", "filter__shaderFilter")
-pub fn filter__shaderFilter(shaderFilter:P5Shader) -> Nil
+@external(javascript, "../p5.mjs", "filter__shader_filter")
+pub fn filter__shader_filter(shader_filter:P5Shader) -> Nil
 
 
 @external(javascript, "../p5.mjs", "float__ns")
-pub fn float__ns(ns:Array(String)) -> Number
+pub fn float__ns(ns:Array(String)) -> Array(Float)
 
 
 @external(javascript, "../p5.mjs", "float__str")
-pub fn float__str(str:String) -> Number
+pub fn float__str(str:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "floor")
-pub fn floor(n:Float) -> Integer
+pub fn floor(n:Float) -> Int
 
 
 @external(javascript, "../p5.mjs", "fract")
-pub fn fract(n:Float) -> Number
+pub fn fract(n:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "frame_rate")
-pub fn frame_rate() -> Nil
+pub fn frame_rate() -> Float
 
 
 @external(javascript, "../p5.mjs", "frame_rate__fps")
@@ -1101,7 +1113,7 @@ pub fn free_geometry(geometry:P5Geometry) -> Nil
 
 
 @external(javascript, "../p5.mjs", "freq_to_midi")
-pub fn freq_to_midi(frequency:Float) -> Number
+pub fn freq_to_midi(frequency:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "frustum")
@@ -1133,39 +1145,39 @@ pub fn frustum__left_right_bottom_top_near_far(left:Float, right:Float, bottom:F
 
 
 @external(javascript, "../p5.mjs", "fullscreen")
-pub fn fullscreen() -> Boolean
+pub fn fullscreen() -> Bool
 
 
 @external(javascript, "../p5.mjs", "fullscreen__val")
-pub fn fullscreen__val(val:Bool) -> Boolean
+pub fn fullscreen__val(val:Bool) -> Bool
 
 
 @external(javascript, "../p5.mjs", "get")
-pub fn get() -> p5.Image
+pub fn get() -> P5Image
 
 
 @external(javascript, "../p5.mjs", "get__x_y")
-pub fn get__x_y(x:Float, y:Float) -> p5.Image
+pub fn get__x_y(x:Float, y:Float) -> Array(Float)
 
 
 @external(javascript, "../p5.mjs", "get__x_y_w_h")
-pub fn get__x_y_w_h(x:Float, y:Float, w:Float, h:Float) -> p5.Image
+pub fn get__x_y_w_h(x:Float, y:Float, w:Float, h:Float) -> P5Image
 
 
 @external(javascript, "../p5.mjs", "get_audio_context")
-pub fn get_audio_context() -> Object
+pub fn get_audio_context() -> any
 
 
 @external(javascript, "../p5.mjs", "get_item")
-pub fn get_item(key:String) -> String|Number|Boolean|Object|Array
+pub fn get_item(key:String) -> any
 
 
 @external(javascript, "../p5.mjs", "get_output_volume")
-pub fn get_output_volume() -> Number
+pub fn get_output_volume() -> Float
 
 
 @external(javascript, "../p5.mjs", "get_target_frame_rate")
-pub fn get_target_frame_rate() -> Number
+pub fn get_target_frame_rate() -> Float
 
 
 @external(javascript, "../p5.mjs", "get_url")
@@ -1173,15 +1185,15 @@ pub fn get_url() -> String
 
 
 @external(javascript, "../p5.mjs", "get_urlparams")
-pub fn get_urlparams() -> Object
+pub fn get_urlparams() -> any
 
 
 @external(javascript, "../p5.mjs", "get_urlpath")
-pub fn get_urlpath() -> String[]
+pub fn get_urlpath() -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "green")
-pub fn green(color:String) -> Number
+pub fn green(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "grid_output")
@@ -1201,19 +1213,19 @@ pub fn hex__n_digits(n:Float, digits:Float) -> String
 
 
 @external(javascript, "../p5.mjs", "hex__ns")
-pub fn hex__ns(ns:Array(Float)) -> String
+pub fn hex__ns(ns:Array(Float)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "hex__ns_digits")
-pub fn hex__ns_digits(ns:Array(Float), digits:Float) -> String
+pub fn hex__ns_digits(ns:Array(Float), digits:Float) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "hour")
-pub fn hour() -> Integer
+pub fn hour() -> Int
 
 
 @external(javascript, "../p5.mjs", "hue")
-pub fn hue(color:String) -> Number
+pub fn hue(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "image_light")
@@ -1225,15 +1237,15 @@ pub fn image_mode(mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "is_looping")
-pub fn is_looping() -> Boolean
+pub fn is_looping() -> Bool
 
 
 @external(javascript, "../p5.mjs", "join__list_separator")
-pub fn join__list_separator(list:Array, separator:String) -> String
+pub fn join__list_separator(list:Array(any), separator:String) -> String
 
 
 @external(javascript, "../p5.mjs", "key_is_down")
-pub fn key_is_down(code:Float) -> Boolean
+pub fn key_is_down(code:Float) -> Bool
 
 
 @external(javascript, "../p5.mjs", "key_pressed")
@@ -1249,11 +1261,11 @@ pub fn key_typed(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "lerp__start_stop_amt")
-pub fn lerp__start_stop_amt(start:Float, stop:Float, amt:Float) -> Number
+pub fn lerp__start_stop_amt(start:Float, stop:Float, amt:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "lerp_color__c1_c2_amt")
-pub fn lerp_color__c1_c2_amt(c1:P5Color, c2:P5Color, amt:Float) -> p5.Color
+pub fn lerp_color__c1_c2_amt(c1:P5Color, c2:P5Color, amt:Float) -> P5Color
 
 
 @external(javascript, "../p5.mjs", "light_falloff__constant_linear_quadratic")
@@ -1261,7 +1273,7 @@ pub fn light_falloff__constant_linear_quadratic(constant:Float, linear:Float, qu
 
 
 @external(javascript, "../p5.mjs", "lightness")
-pub fn lightness(color:String) -> Number
+pub fn lightness(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "lights")
@@ -1277,7 +1289,7 @@ pub fn line__x1_y1_z1_x2_y2_z2(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float,
 
 
 @external(javascript, "../p5.mjs", "line_perspective")
-pub fn line_perspective() -> Nil
+pub fn line_perspective() -> Bool
 
 
 @external(javascript, "../p5.mjs", "line_perspective__enable")
@@ -1288,20 +1300,20 @@ pub fn line_perspective__enable(enable:Bool) -> Nil
 pub fn load_pixels() -> Nil
 
 
-@external(javascript, "../p5.mjs", "load_shader__vertFilename_fragFilename")
-pub fn load_shader__vertFilename_fragFilename(vertFilename:String, fragFilename:String) -> p5.Shader
+@external(javascript, "../p5.mjs", "load_shader__vert_filename_frag_filename")
+pub fn load_shader__vert_filename_frag_filename(vert_filename:String, frag_filename:String) -> P5Shader
 
 
-@external(javascript, "../p5.mjs", "load_shader__vertFilename_fragFilename_successCallback")
-pub fn load_shader__vertFilename_fragFilename_successCallback(vertFilename:String, fragFilename:String, successCallback:fn() -> Nil) -> p5.Shader
+@external(javascript, "../p5.mjs", "load_shader__vert_filename_frag_filename_success_callback")
+pub fn load_shader__vert_filename_frag_filename_success_callback(vert_filename:String, frag_filename:String, success_callback:fn() -> Nil) -> P5Shader
 
 
-@external(javascript, "../p5.mjs", "load_shader__vertFilename_fragFilename_successCallback_failureCallback")
-pub fn load_shader__vertFilename_fragFilename_successCallback_failureCallback(vertFilename:String, fragFilename:String, successCallback:fn() -> Nil, failureCallback:fn() -> Nil) -> p5.Shader
+@external(javascript, "../p5.mjs", "load_shader__vert_filename_frag_filename_success_callback_failure_callback")
+pub fn load_shader__vert_filename_frag_filename_success_callback_failure_callback(vert_filename:String, frag_filename:String, success_callback:fn() -> Nil, failure_callback:fn() -> Nil) -> P5Shader
 
 
 @external(javascript, "../p5.mjs", "log")
-pub fn log(n:Float) -> Number
+pub fn log(n:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "loop")
@@ -1309,31 +1321,31 @@ pub fn loop() -> Nil
 
 
 @external(javascript, "../p5.mjs", "mag__x_y")
-pub fn mag__x_y(x:Float, y:Float) -> Number
+pub fn mag__x_y(x:Float, y:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "map__value_start1_stop1_start2_stop2")
-pub fn map__value_start1_stop1_start2_stop2(value:Float, start1:Float, stop1:Float, start2:Float, stop2:Float) -> Number
+pub fn map__value_start1_stop1_start2_stop2(value:Float, start1:Float, stop1:Float, start2:Float, stop2:Float) -> Float
 
 
-@external(javascript, "../p5.mjs", "map__value_start1_stop1_start2_stop2_withinBounds")
-pub fn map__value_start1_stop1_start2_stop2_withinBounds(value:Float, start1:Float, stop1:Float, start2:Float, stop2:Float, withinBounds:Bool) -> Number
+@external(javascript, "../p5.mjs", "map__value_start1_stop1_start2_stop2_within_bounds")
+pub fn map__value_start1_stop1_start2_stop2_within_bounds(value:Float, start1:Float, stop1:Float, start2:Float, stop2:Float, within_bounds:Bool) -> Float
 
 
 @external(javascript, "../p5.mjs", "match__str_regexp")
-pub fn match__str_regexp(str:String, regexp:String) -> String[]
+pub fn match__str_regexp(str:String, regexp:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "match_all__str_regexp")
-pub fn match_all__str_regexp(str:String, regexp:String) -> String[]
+pub fn match_all__str_regexp(str:String, regexp:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "max__n0_n1")
-pub fn max__n0_n1(n0:Float, n1:Float) -> Number
+pub fn max__n0_n1(n0:Float, n1:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "max__nums")
-pub fn max__nums(nums:Array(Float)) -> Number
+pub fn max__nums(nums:Array(Float)) -> Float
 
 
 @external(javascript, "../p5.mjs", "metalness")
@@ -1341,23 +1353,23 @@ pub fn metalness(metallic:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "midi_to_freq")
-pub fn midi_to_freq(midiNote:Float) -> Number
+pub fn midi_to_freq(midi_note:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "millis")
-pub fn millis() -> Number
+pub fn millis() -> Float
 
 
 @external(javascript, "../p5.mjs", "min__n0_n1")
-pub fn min__n0_n1(n0:Float, n1:Float) -> Number
+pub fn min__n0_n1(n0:Float, n1:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "min__nums")
-pub fn min__nums(nums:Array(Float)) -> Number
+pub fn min__nums(nums:Array(Float)) -> Float
 
 
 @external(javascript, "../p5.mjs", "minute")
-pub fn minute() -> Integer
+pub fn minute() -> Int
 
 
 @external(javascript, "../p5.mjs", "model")
@@ -1365,7 +1377,7 @@ pub fn model(model:P5Geometry) -> Nil
 
 
 @external(javascript, "../p5.mjs", "month")
-pub fn month() -> Integer
+pub fn month() -> Int
 
 
 @external(javascript, "../p5.mjs", "mouse_clicked")
@@ -1405,15 +1417,15 @@ pub fn nf__num_left_right(num:String, left:String, right:String) -> String
 
 
 @external(javascript, "../p5.mjs", "nf__nums")
-pub fn nf__nums(nums:Array(Float)) -> String
+pub fn nf__nums(nums:Array(Float)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nf__nums_left")
-pub fn nf__nums_left(nums:Array(Float), left:String) -> String
+pub fn nf__nums_left(nums:Array(Float), left:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nf__nums_left_right")
-pub fn nf__nums_left_right(nums:Array(Float), left:String, right:String) -> String
+pub fn nf__nums_left_right(nums:Array(Float), left:String, right:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfc__num")
@@ -1425,11 +1437,11 @@ pub fn nfc__num_right(num:String, right:String) -> String
 
 
 @external(javascript, "../p5.mjs", "nfc__nums")
-pub fn nfc__nums(nums:Array(Float)) -> String
+pub fn nfc__nums(nums:Array(Float)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfc__nums_right")
-pub fn nfc__nums_right(nums:Array(Float), right:String) -> String
+pub fn nfc__nums_right(nums:Array(Float), right:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfp__num")
@@ -1445,15 +1457,15 @@ pub fn nfp__num_left_right(num:Float, left:Int, right:Int) -> String
 
 
 @external(javascript, "../p5.mjs", "nfp__nums")
-pub fn nfp__nums(nums:Array(Float)) -> String
+pub fn nfp__nums(nums:Array(Float)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfp__nums_left")
-pub fn nfp__nums_left(nums:Array(Float), left:Int) -> String
+pub fn nfp__nums_left(nums:Array(Float), left:Int) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfp__nums_left_right")
-pub fn nfp__nums_left_right(nums:Array(Float), left:Int, right:Int) -> String
+pub fn nfp__nums_left_right(nums:Array(Float), left:Int, right:Int) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfs__num")
@@ -1469,15 +1481,15 @@ pub fn nfs__num_left_right(num:Float, left:Int, right:Int) -> String
 
 
 @external(javascript, "../p5.mjs", "nfs__nums")
-pub fn nfs__nums(nums:Array) -> String
+pub fn nfs__nums(nums:Array(any)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfs__nums_left")
-pub fn nfs__nums_left(nums:Array, left:Int) -> String
+pub fn nfs__nums_left(nums:Array(any), left:Int) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "nfs__nums_left_right")
-pub fn nfs__nums_left_right(nums:Array, left:Int, right:Int) -> String
+pub fn nfs__nums_left_right(nums:Array(any), left:Int, right:Int) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "no_canvas")
@@ -1521,15 +1533,15 @@ pub fn no_tint() -> Nil
 
 
 @external(javascript, "../p5.mjs", "noise__x")
-pub fn noise__x(x:Float) -> Number
+pub fn noise__x(x:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "noise__x_y")
-pub fn noise__x_y(x:Float, y:Float) -> Number
+pub fn noise__x_y(x:Float, y:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "noise__x_y_z")
-pub fn noise__x_y_z(x:Float, y:Float, z:Float) -> Number
+pub fn noise__x_y_z(x:Float, y:Float, z:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "noise_detail__lod_falloff")
@@ -1541,7 +1553,7 @@ pub fn noise_seed(seed:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "norm__value_start_stop")
-pub fn norm__value_start_stop(value:Float, start:Float, stop:Float) -> Number
+pub fn norm__value_start_stop(value:Float, start:Float, stop:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "normal__vector")
@@ -1560,20 +1572,20 @@ pub fn normal_material() -> Nil
 pub fn orbit_control() -> Nil
 
 
-@external(javascript, "../p5.mjs", "orbit_control__sensitivityX")
-pub fn orbit_control__sensitivityX(sensitivityX:Float) -> Nil
+@external(javascript, "../p5.mjs", "orbit_control__sensitivity_x")
+pub fn orbit_control__sensitivity_x(sensitivity_x:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "orbit_control__sensitivityX_sensitivityY")
-pub fn orbit_control__sensitivityX_sensitivityY(sensitivityX:Float, sensitivityY:Float) -> Nil
+@external(javascript, "../p5.mjs", "orbit_control__sensitivity_x_sensitivity_y")
+pub fn orbit_control__sensitivity_x_sensitivity_y(sensitivity_x:Float, sensitivity_y:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "orbit_control__sensitivityX_sensitivityY_sensitivityZ")
-pub fn orbit_control__sensitivityX_sensitivityY_sensitivityZ(sensitivityX:Float, sensitivityY:Float, sensitivityZ:Float) -> Nil
+@external(javascript, "../p5.mjs", "orbit_control__sensitivity_x_sensitivity_y_sensitivity_z")
+pub fn orbit_control__sensitivity_x_sensitivity_y_sensitivity_z(sensitivity_x:Float, sensitivity_y:Float, sensitivity_z:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "orbit_control__sensitivityX_sensitivityY_sensitivityZ_options")
-pub fn orbit_control__sensitivityX_sensitivityY_sensitivityZ_options(sensitivityX:Float, sensitivityY:Float, sensitivityZ:Float, options:any) -> Nil
+@external(javascript, "../p5.mjs", "orbit_control__sensitivity_x_sensitivity_y_sensitivity_z_options")
+pub fn orbit_control__sensitivity_x_sensitivity_y_sensitivity_z_options(sensitivity_x:Float, sensitivity_y:Float, sensitivity_z:Float, options:any) -> Nil
 
 
 @external(javascript, "../p5.mjs", "ortho")
@@ -1629,7 +1641,7 @@ pub fn perspective__fovy_aspect_near_far(fovy:Float, aspect:Float, near:Float, f
 
 
 @external(javascript, "../p5.mjs", "pixel_density")
-pub fn pixel_density() -> Nil
+pub fn pixel_density() -> Float
 
 
 @external(javascript, "../p5.mjs", "pixel_density__val")
@@ -1648,16 +1660,16 @@ pub fn plane__width(width:Float) -> Nil
 pub fn plane__width_height(width:Float, height:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "plane__width_height_detailX")
-pub fn plane__width_height_detailX(width:Float, height:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "plane__width_height_detail_x")
+pub fn plane__width_height_detail_x(width:Float, height:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "plane__width_height_detailX_detailY")
-pub fn plane__width_height_detailX_detailY(width:Float, height:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "plane__width_height_detail_x_detail_y")
+pub fn plane__width_height_detail_x_detail_y(width:Float, height:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "point__coordinateVector")
-pub fn point__coordinateVector(coordinateVector:P5Vector) -> Nil
+@external(javascript, "../p5.mjs", "point__coordinate_vector")
+pub fn point__coordinate_vector(coordinate_vector:P5Vector) -> Nil
 
 
 @external(javascript, "../p5.mjs", "point__x_y")
@@ -1689,7 +1701,7 @@ pub fn pop() -> Nil
 
 
 @external(javascript, "../p5.mjs", "pow__n_e")
-pub fn pow__n_e(n:Float, e:Float) -> Number
+pub fn pow__n_e(n:Float, e:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "preload")
@@ -1704,24 +1716,24 @@ pub fn push() -> Nil
 pub fn quad__x1_y1_x2_y2_x3_y3_x4_y4(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "quad__x1_y1_x2_y2_x3_y3_x4_y4_detailX")
-pub fn quad__x1_y1_x2_y2_x3_y3_x4_y4_detailX(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x")
+pub fn quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "quad__x1_y1_x2_y2_x3_y3_x4_y4_detailX_detailY")
-pub fn quad__x1_y1_x2_y2_x3_y3_x4_y4_detailX_detailY(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x_detail_y")
+pub fn quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x_detail_y(x1:Float, y1:Float, x2:Float, y2:Float, x3:Float, y3:Float, x4:Float, y4:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4")
 pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detailX")
-pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detailX(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x")
+pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detailX_detailY")
-pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detailX_detailY(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x_detail_y")
+pub fn quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x_detail_y(x1:Float, y1:Float, z1:Float, x2:Float, y2:Float, z2:Float, x3:Float, y3:Float, z3:Float, x4:Float, y4:Float, z4:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "quadratic_vertex__cx_cy_cz_x3_y3_z3")
@@ -1733,35 +1745,35 @@ pub fn quadratic_vertex__cx_cy_x3_y3(cx:Float, cy:Float, x3:Float, y3:Float) -> 
 
 
 @external(javascript, "../p5.mjs", "radians")
-pub fn radians(degrees:Float) -> Number
+pub fn radians(degrees:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "random")
-pub fn random() -> Number
+pub fn random() -> Float
 
 
 @external(javascript, "../p5.mjs", "random__choices")
-pub fn random__choices(choices:Array) -> Number
+pub fn random__choices(choices:Array(any)) -> any
 
 
 @external(javascript, "../p5.mjs", "random__min")
-pub fn random__min(min:Float) -> Number
+pub fn random__min(min:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "random__min_max")
-pub fn random__min_max(min:Float, max:Float) -> Number
+pub fn random__min_max(min:Float, max:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "random_gaussian")
-pub fn random_gaussian() -> Number
+pub fn random_gaussian() -> Float
 
 
 @external(javascript, "../p5.mjs", "random_gaussian__mean")
-pub fn random_gaussian__mean(mean:Float) -> Number
+pub fn random_gaussian__mean(mean:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "random_gaussian__mean_sd")
-pub fn random_gaussian__mean_sd(mean:Float, sd:Float) -> Number
+pub fn random_gaussian__mean_sd(mean:Float, sd:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "random_seed")
@@ -1776,12 +1788,12 @@ pub fn rect__x_y_w(x:Float, y:Float, w:Float) -> Nil
 pub fn rect__x_y_w_h(x:Float, y:Float, w:Float, h:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "rect__x_y_w_h_detailX")
-pub fn rect__x_y_w_h_detailX(x:Float, y:Float, w:Float, h:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "rect__x_y_w_h_detail_x")
+pub fn rect__x_y_w_h_detail_x(x:Float, y:Float, w:Float, h:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "rect__x_y_w_h_detailX_detailY")
-pub fn rect__x_y_w_h_detailX_detailY(x:Float, y:Float, w:Float, h:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "rect__x_y_w_h_detail_x_detail_y")
+pub fn rect__x_y_w_h_detail_x_detail_y(x:Float, y:Float, w:Float, h:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "rect__x_y_w_h_tl")
@@ -1805,7 +1817,7 @@ pub fn rect_mode(mode:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "red")
-pub fn red(color:String) -> Number
+pub fn red(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "redraw")
@@ -1844,12 +1856,12 @@ pub fn reset_shader() -> Nil
 pub fn resize_canvas__width_height(width:Float, height:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "resize_canvas__width_height_noRedraw")
-pub fn resize_canvas__width_height_noRedraw(width:Float, height:Float, noRedraw:Bool) -> Nil
+@external(javascript, "../p5.mjs", "resize_canvas__width_height_no_redraw")
+pub fn resize_canvas__width_height_no_redraw(width:Float, height:Float, no_redraw:Bool) -> Nil
 
 
 @external(javascript, "../p5.mjs", "reverse")
-pub fn reverse(list:Array) -> Array
+pub fn reverse(list:Array(any)) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "rotate__angle")
@@ -1857,7 +1869,7 @@ pub fn rotate__angle(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "rotate__angle_axis")
-pub fn rotate__angle_axis(angle:Float, axis:Number[]) -> Nil
+pub fn rotate__angle_axis(angle:Float, axis:Array(Float)) -> Nil
 
 
 @external(javascript, "../p5.mjs", "rotate_x")
@@ -1873,19 +1885,19 @@ pub fn rotate_z(angle:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "round__n")
-pub fn round__n(n:Float) -> Integer
+pub fn round__n(n:Float) -> Int
 
 
 @external(javascript, "../p5.mjs", "round__n_decimals")
-pub fn round__n_decimals(n:Float, decimals:Float) -> Integer
+pub fn round__n_decimals(n:Float, decimals:Float) -> Int
 
 
 @external(javascript, "../p5.mjs", "sample_rate")
-pub fn sample_rate() -> Number
+pub fn sample_rate() -> Float
 
 
 @external(javascript, "../p5.mjs", "saturation")
-pub fn saturation(color:String) -> Number
+pub fn saturation(color:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "save_gif__filename_duration")
@@ -1896,8 +1908,8 @@ pub fn save_gif__filename_duration(filename:String, duration:Float) -> Nil
 pub fn save_gif__filename_duration_options(filename:String, duration:Float, options:any) -> Nil
 
 
-@external(javascript, "../p5.mjs", "save_sound__soundFile_fileName")
-pub fn save_sound__soundFile_fileName(soundFile:P5SoundFile, fileName:String) -> Nil
+@external(javascript, "../p5.mjs", "save_sound__sound_file_file_name")
+pub fn save_sound__sound_file_file_name(sound_file:P5SoundFile, file_name:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "save_strings__list_filename")
@@ -1908,52 +1920,52 @@ pub fn save_strings__list_filename(list:Array(String), filename:String) -> Nil
 pub fn save_strings__list_filename_extension(list:Array(String), filename:String, extension:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "save_strings__list_filename_extension_isCRLF")
-pub fn save_strings__list_filename_extension_isCRLF(list:Array(String), filename:String, extension:String, isCRLF:Bool) -> Nil
+@external(javascript, "../p5.mjs", "save_strings__list_filename_extension_is_crlf")
+pub fn save_strings__list_filename_extension_is_crlf(list:Array(String), filename:String, extension:String, is_crlf:Bool) -> Nil
 
 
-@external(javascript, "../p5.mjs", "save_table__Table_filename")
-pub fn save_table__Table_filename(Table:P5Table, filename:String) -> Nil
+@external(javascript, "../p5.mjs", "save_table__table_filename")
+pub fn save_table__table_filename(table:P5Table, filename:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "save_table__Table_filename_options")
-pub fn save_table__Table_filename_options(Table:P5Table, filename:String, options:String) -> Nil
+@external(javascript, "../p5.mjs", "save_table__table_filename_options")
+pub fn save_table__table_filename_options(table:P5Table, filename:String, options:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "scale__s")
-pub fn scale__s(s:Number) -> Nil
+pub fn scale__s(s:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "scale__s_y")
-pub fn scale__s_y(s:Number, y:Float) -> Nil
+pub fn scale__s_y(s:Float, y:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "scale__s_y_z")
-pub fn scale__s_y_z(s:Number, y:Float, z:Float) -> Nil
+pub fn scale__s_y_z(s:Float, y:Float, z:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "scale__scales")
-pub fn scale__scales(scales:Number[]) -> Nil
+pub fn scale__scales(scales:Array(Float)) -> Nil
 
 
 @external(javascript, "../p5.mjs", "second")
-pub fn second() -> Integer
+pub fn second() -> Int
 
 
 @external(javascript, "../p5.mjs", "select__selectors")
-pub fn select__selectors(selectors:String) -> p5.Element|null
+pub fn select__selectors(selectors:String) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "select__selectors_container")
-pub fn select__selectors_container(selectors:String, container:P5Element) -> p5.Element|null
+pub fn select__selectors_container(selectors:String, container:P5Element) -> P5Element
 
 
 @external(javascript, "../p5.mjs", "select_all__selectors")
-pub fn select_all__selectors(selectors:String) -> p5.Element[]
+pub fn select_all__selectors(selectors:String) -> Array(P5Element)
 
 
 @external(javascript, "../p5.mjs", "select_all__selectors_container")
-pub fn select_all__selectors_container(selectors:String, container:P5Element) -> p5.Element[]
+pub fn select_all__selectors_container(selectors:String, container:P5Element) -> Array(P5Element)
 
 
 @external(javascript, "../p5.mjs", "set_attributes__key_value")
@@ -1964,8 +1976,8 @@ pub fn set_attributes__key_value(key:String, value:Bool) -> Nil
 pub fn set_attributes__obj(obj:any) -> Nil
 
 
-@external(javascript, "../p5.mjs", "set_bpm__BPM_rampTime")
-pub fn set_bpm__BPM_rampTime(BPM:Float, rampTime:Float) -> Nil
+@external(javascript, "../p5.mjs", "set_bpm__bpm_ramp_time")
+pub fn set_bpm__bpm_ramp_time(bpm:Float, ramp_time:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "set_camera")
@@ -2001,19 +2013,19 @@ pub fn shininess(shine:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "shorten")
-pub fn shorten(list:Array) -> Array
+pub fn shorten(list:Array(any)) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "shuffle__array")
-pub fn shuffle__array(array:Array) -> Array
+pub fn shuffle__array(array:Array(any)) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "shuffle__array_bool")
-pub fn shuffle__array_bool(array:Array, bool:Bool) -> Array
+pub fn shuffle__array_bool(array:Array(any), bool:Bool) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "sin")
-pub fn sin(angle:Float) -> Number
+pub fn sin(angle:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "smooth")
@@ -2021,11 +2033,11 @@ pub fn smooth() -> Nil
 
 
 @external(javascript, "../p5.mjs", "sort__list")
-pub fn sort__list(list:Array) -> Array
+pub fn sort__list(list:Array(any)) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "sort__list_count")
-pub fn sort__list_count(list:Array, count:Int) -> Array
+pub fn sort__list_count(list:Array(any), count:Int) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "sound_formats")
@@ -2084,28 +2096,28 @@ pub fn sphere() -> Nil
 pub fn sphere__radius(radius:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "sphere__radius_detailX")
-pub fn sphere__radius_detailX(radius:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "sphere__radius_detail_x")
+pub fn sphere__radius_detail_x(radius:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "sphere__radius_detailX_detailY")
-pub fn sphere__radius_detailX_detailY(radius:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "sphere__radius_detail_x_detail_y")
+pub fn sphere__radius_detail_x_detail_y(radius:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "splice__list_value_position")
-pub fn splice__list_value_position(list:Array, value:any, position:Int) -> Array
+pub fn splice__list_value_position(list:Array(any), value:any, position:Int) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "split__value_delim")
-pub fn split__value_delim(value:String, delim:String) -> String[]
+pub fn split__value_delim(value:String, delim:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "split_tokens__value")
-pub fn split_tokens__value(value:String) -> String[]
+pub fn split_tokens__value(value:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "split_tokens__value_delim")
-pub fn split_tokens__value_delim(value:String, delim:String) -> String[]
+pub fn split_tokens__value_delim(value:String, delim:String) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "spot_light__color_position_direction")
@@ -2205,11 +2217,11 @@ pub fn spot_light__v1_v2_v3_x_y_z_rx_ry_rz_angle_concentration(v1:Float, v2:Floa
 
 
 @external(javascript, "../p5.mjs", "sq")
-pub fn sq(n:Float) -> Number
+pub fn sq(n:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "sqrt")
-pub fn sqrt(n:Float) -> Number
+pub fn sqrt(n:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "square__x_y_s")
@@ -2277,39 +2289,39 @@ pub fn stroke_weight(weight:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "subset__list_start")
-pub fn subset__list_start(list:Array, start:Int) -> Array
+pub fn subset__list_start(list:Array(any), start:Int) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "subset__list_start_count")
-pub fn subset__list_start_count(list:Array, start:Int, count:Int) -> Array
+pub fn subset__list_start_count(list:Array(any), start:Int, count:Int) -> Array(any)
 
 
 @external(javascript, "../p5.mjs", "tan")
-pub fn tan(angle:Float) -> Number
+pub fn tan(angle:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "text_align")
-pub fn text_align() -> Nil
+pub fn text_align() -> any
 
 
-@external(javascript, "../p5.mjs", "text_align__horizAlign")
-pub fn text_align__horizAlign(horizAlign:String) -> Nil
+@external(javascript, "../p5.mjs", "text_align__horiz_align")
+pub fn text_align__horiz_align(horiz_align:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "text_align__horizAlign_vertAlign")
-pub fn text_align__horizAlign_vertAlign(horizAlign:String, vertAlign:String) -> Nil
+@external(javascript, "../p5.mjs", "text_align__horiz_align_vert_align")
+pub fn text_align__horiz_align_vert_align(horiz_align:String, vert_align:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "text_ascent")
-pub fn text_ascent() -> Number
+pub fn text_ascent() -> Float
 
 
 @external(javascript, "../p5.mjs", "text_descent")
-pub fn text_descent() -> Number
+pub fn text_descent() -> Float
 
 
 @external(javascript, "../p5.mjs", "text_leading")
-pub fn text_leading() -> Nil
+pub fn text_leading() -> Float
 
 
 @external(javascript, "../p5.mjs", "text_leading__leading")
@@ -2325,7 +2337,7 @@ pub fn text_output__display(display:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "text_size")
-pub fn text_size() -> Nil
+pub fn text_size() -> Float
 
 
 @external(javascript, "../p5.mjs", "text_size__size")
@@ -2333,7 +2345,7 @@ pub fn text_size__size(size:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "text_style")
-pub fn text_style() -> Nil
+pub fn text_style() -> String
 
 
 @external(javascript, "../p5.mjs", "text_style__style")
@@ -2341,7 +2353,7 @@ pub fn text_style__style(style:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "text_width")
-pub fn text_width(str:String) -> Number
+pub fn text_width(str:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "text_wrap")
@@ -2352,12 +2364,12 @@ pub fn text_wrap(style:String) -> String
 pub fn texture_mode(mode:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "texture_wrap__wrapX")
-pub fn texture_wrap__wrapX(wrapX:String) -> Nil
+@external(javascript, "../p5.mjs", "texture_wrap__wrap_x")
+pub fn texture_wrap__wrap_x(wrap_x:String) -> Nil
 
 
-@external(javascript, "../p5.mjs", "texture_wrap__wrapX_wrapY")
-pub fn texture_wrap__wrapX_wrapY(wrapX:String, wrapY:String) -> Nil
+@external(javascript, "../p5.mjs", "texture_wrap__wrap_x_wrap_y")
+pub fn texture_wrap__wrap_x_wrap_y(wrap_x:String, wrap_y:String) -> Nil
 
 
 @external(javascript, "../p5.mjs", "tint__color")
@@ -2396,16 +2408,16 @@ pub fn torus() -> Nil
 pub fn torus__radius(radius:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "torus__radius_tubeRadius")
-pub fn torus__radius_tubeRadius(radius:Float, tubeRadius:Float) -> Nil
+@external(javascript, "../p5.mjs", "torus__radius_tube_radius")
+pub fn torus__radius_tube_radius(radius:Float, tube_radius:Float) -> Nil
 
 
-@external(javascript, "../p5.mjs", "torus__radius_tubeRadius_detailX")
-pub fn torus__radius_tubeRadius_detailX(radius:Float, tubeRadius:Float, detailX:Int) -> Nil
+@external(javascript, "../p5.mjs", "torus__radius_tube_radius_detail_x")
+pub fn torus__radius_tube_radius_detail_x(radius:Float, tube_radius:Float, detail_x:Int) -> Nil
 
 
-@external(javascript, "../p5.mjs", "torus__radius_tubeRadius_detailX_detailY")
-pub fn torus__radius_tubeRadius_detailX_detailY(radius:Float, tubeRadius:Float, detailX:Int, detailY:Int) -> Nil
+@external(javascript, "../p5.mjs", "torus__radius_tube_radius_detail_x_detail_y")
+pub fn torus__radius_tube_radius_detail_x_detail_y(radius:Float, tube_radius:Float, detail_x:Int, detail_y:Int) -> Nil
 
 
 @external(javascript, "../p5.mjs", "touch_ended")
@@ -2441,23 +2453,23 @@ pub fn trim__str(str:String) -> String
 
 
 @external(javascript, "../p5.mjs", "trim__strs")
-pub fn trim__strs(strs:Array(String)) -> String
+pub fn trim__strs(strs:Array(String)) -> Array(String)
 
 
 @external(javascript, "../p5.mjs", "unchar__n")
-pub fn unchar__n(n:String) -> Number
+pub fn unchar__n(n:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "unchar__ns")
-pub fn unchar__ns(ns:Array(String)) -> Number
+pub fn unchar__ns(ns:Array(String)) -> Array(Float)
 
 
 @external(javascript, "../p5.mjs", "unhex__n")
-pub fn unhex__n(n:String) -> Number
+pub fn unhex__n(n:String) -> Float
 
 
 @external(javascript, "../p5.mjs", "unhex__ns")
-pub fn unhex__ns(ns:Array(String)) -> Number
+pub fn unhex__ns(ns:Array(String)) -> Array(Float)
 
 
 @external(javascript, "../p5.mjs", "update_pixels")
@@ -2501,4 +2513,4 @@ pub fn window_resized(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "year")
-pub fn year() -> Integer
+pub fn year() -> Int

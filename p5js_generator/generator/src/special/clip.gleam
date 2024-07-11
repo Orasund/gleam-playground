@@ -3,7 +3,7 @@ import gleam/option.{None}
 import justin
 
 pub fn clip_options() {
-  "type ClipOptions {
+  "pub type ClipOptions {
     ClipOptions(invert:String)
 }"
 }

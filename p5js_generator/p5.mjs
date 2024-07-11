@@ -70,7 +70,7 @@ export const array_copy__src_dst = (src, dst) => p5.arrayCopy(src, dst)
 
 export const array_copy__src_dst_length = (src, dst, length) => p5.arrayCopy(src, dst, length)
 
-export const array_copy__src_srcPosition_dst_dstPosition_length = (src, srcPosition, dst, dstPosition, length) => p5.arrayCopy(src, srcPosition, dst, dstPosition, length)
+export const array_copy__src_src_position_dst_dst_position_length = (src, src_position, dst, dst_position, length) => p5.arrayCopy(src, src_position, dst, dst_position, length)
 
 export const asin = (value) => p5.asin(value)
 
@@ -124,9 +124,9 @@ export const bezier_vertex__x2_y2_x3_y3_x4_y4 = (x2, y2, x3, y3, x4, y4) => p5.b
 
 export const bezier_vertex__x2_y2_z2_x3_y3_z3_x4_y4_z4 = (x2, y2, z2, x3, y3, z3, x4, y4, z4) => p5.bezierVertex(x2, y2, z2, x3, y3, z3, x4, y4, z4)
 
-export const blend__srcImage_sx_sy_sw_sh_dx_dy_dw_dh_blendMode = (srcImage, sx, sy, sw, sh, dx, dy, dw, dh, blendMode) => p5.blend(srcImage, sx, sy, sw, sh, dx, dy, dw, dh, blendMode)
+export const blend__src_image_sx_sy_sw_sh_dx_dy_dw_dh_blend_mode = (src_image, sx, sy, sw, sh, dx, dy, dw, dh, blend_mode) => p5.blend(src_image, sx, sy, sw, sh, dx, dy, dw, dh, blend_mode)
 
-export const blend__sx_sy_sw_sh_dx_dy_dw_dh_blendMode = (sx, sy, sw, sh, dx, dy, dw, dh, blendMode) => p5.blend(sx, sy, sw, sh, dx, dy, dw, dh, blendMode)
+export const blend__sx_sy_sw_sh_dx_dy_dw_dh_blend_mode = (sx, sy, sw, sh, dx, dy, dw, dh, blend_mode) => p5.blend(sx, sy, sw, sh, dx, dy, dw, dh, blend_mode)
 
 export const blend_mode = (mode) => p5.blendMode(mode)
 
@@ -140,9 +140,9 @@ export const box__width_height = (width, height) => p5.box(width, height)
 
 export const box__width_height_depth = (width, height, depth) => p5.box(width, height, depth)
 
-export const box__width_height_depth_detailX = (width, height, depth, detailX) => p5.box(width, height, depth, detailX)
+export const box__width_height_depth_detail_x = (width, height, depth, detail_x) => p5.box(width, height, depth, detail_x)
 
-export const box__width_height_depth_detailX_detailY = (width, height, depth, detailX, detailY) => p5.box(width, height, depth, detailX, detailY)
+export const box__width_height_depth_detail_x_detail_y = (width, height, depth, detail_x, detail_y) => p5.box(width, height, depth, detail_x, detail_y)
 
 export const brightness = (color) => p5.brightness(color)
 
@@ -154,17 +154,17 @@ export const camera__x_y = (x, y) => p5.camera(x, y)
 
 export const camera__x_y_z = (x, y, z) => p5.camera(x, y, z)
 
-export const camera__x_y_z_centerX = (x, y, z, centerX) => p5.camera(x, y, z, centerX)
+export const camera__x_y_z_center_x = (x, y, z, center_x) => p5.camera(x, y, z, center_x)
 
-export const camera__x_y_z_centerX_centerY = (x, y, z, centerX, centerY) => p5.camera(x, y, z, centerX, centerY)
+export const camera__x_y_z_center_x_center_y = (x, y, z, center_x, center_y) => p5.camera(x, y, z, center_x, center_y)
 
-export const camera__x_y_z_centerX_centerY_centerZ = (x, y, z, centerX, centerY, centerZ) => p5.camera(x, y, z, centerX, centerY, centerZ)
+export const camera__x_y_z_center_x_center_y_center_z = (x, y, z, center_x, center_y, center_z) => p5.camera(x, y, z, center_x, center_y, center_z)
 
-export const camera__x_y_z_centerX_centerY_centerZ_upX = (x, y, z, centerX, centerY, centerZ, upX) => p5.camera(x, y, z, centerX, centerY, centerZ, upX)
+export const camera__x_y_z_center_x_center_y_center_z_up_x = (x, y, z, center_x, center_y, center_z, up_x) => p5.camera(x, y, z, center_x, center_y, center_z, up_x)
 
-export const camera__x_y_z_centerX_centerY_centerZ_upX_upY = (x, y, z, centerX, centerY, centerZ, upX, upY) => p5.camera(x, y, z, centerX, centerY, centerZ, upX, upY)
+export const camera__x_y_z_center_x_center_y_center_z_up_x_up_y = (x, y, z, center_x, center_y, center_z, up_x, up_y) => p5.camera(x, y, z, center_x, center_y, center_z, up_x, up_y)
 
-export const camera__x_y_z_centerX_centerY_centerZ_upX_upY_upZ = (x, y, z, centerX, centerY, centerZ, upX, upY, upZ) => p5.camera(x, y, z, centerX, centerY, centerZ, upX, upY, upZ)
+export const camera__x_y_z_center_x_center_y_center_z_up_x_up_y_up_z = (x, y, z, center_x, center_y, center_z, up_x, up_y, up_z) => p5.camera(x, y, z, center_x, center_y, center_z, up_x, up_y, up_z)
 
 export const ceil = (n) => p5.ceil(n)
 
@@ -214,7 +214,7 @@ export const color_mode__mode_max = (mode, max) => p5.colorMode(mode, max)
 
 export const color_mode__mode_max1_max2_max3 = (mode, max1, max2, max3) => p5.colorMode(mode, max1, max2, max3)
 
-export const color_mode__mode_max1_max2_max3_maxA = (mode, max1, max2, max3, maxA) => p5.colorMode(mode, max1, max2, max3, maxA)
+export const color_mode__mode_max1_max2_max3_max_a = (mode, max1, max2, max3, max_a) => p5.colorMode(mode, max1, max2, max3, max_a)
 
 export const concat__a_b = (a, b) => p5.concat(a, b)
 
@@ -224,11 +224,11 @@ export const cone__radius = (radius) => p5.cone(radius)
 
 export const cone__radius_height = (radius, height) => p5.cone(radius, height)
 
-export const cone__radius_height_detailX = (radius, height, detailX) => p5.cone(radius, height, detailX)
+export const cone__radius_height_detail_x = (radius, height, detail_x) => p5.cone(radius, height, detail_x)
 
-export const cone__radius_height_detailX_detailY = (radius, height, detailX, detailY) => p5.cone(radius, height, detailX, detailY)
+export const cone__radius_height_detail_x_detail_y = (radius, height, detail_x, detail_y) => p5.cone(radius, height, detail_x, detail_y)
 
-export const cone__radius_height_detailX_detailY_cap = (radius, height, detailX, detailY, cap) => p5.cone(radius, height, detailX, detailY, cap)
+export const cone__radius_height_detail_x_detail_y_cap = (radius, height, detail_x, detail_y, cap) => p5.cone(radius, height, detail_x, detail_y, cap)
 
 export const constrain__n_low_high = (n, low, high) => p5.constrain(n, low, high)
 
@@ -270,7 +270,7 @@ export const create_convolver__path = (path) => p5.createConvolver(path)
 
 export const create_convolver__path_callback = (path, callback) => p5.createConvolver(path, callback)
 
-export const create_convolver__path_callback_errorCallback = (path, callback, errorCallback) => p5.createConvolver(path, callback, errorCallback)
+export const create_convolver__path_callback_error_callback = (path, callback, error_callback) => p5.createConvolver(path, callback, error_callback)
 
 export const create_div = () => p5.createDiv()
 
@@ -280,7 +280,7 @@ export const create_element__tag = (tag) => p5.createElement(tag)
 
 export const create_element__tag_content = (tag, content) => p5.createElement(tag, content)
 
-export const create_filter_shader = (fragSrc) => p5.createFilterShader(fragSrc)
+export const create_filter_shader = (frag_src) => p5.createFilterShader(frag_src)
 
 export const create_framebuffer = () => p5.createFramebuffer()
 
@@ -300,7 +300,7 @@ export const create_input = () => p5.createInput()
 
 export const create_input__value = (value) => p5.createInput(value)
 
-export const create_input__value_type = (value, type) => p5.createInput(value, type)
+export const create_input__value_type_ = (value, type_) => p5.createInput(value, type_)
 
 export const create_number_dict__key_value = (key, value) => p5.createNumberDict(key, value)
 
@@ -312,7 +312,7 @@ export const create_p__html = (html) => p5.createP(html)
 
 export const create_radio = () => p5.createRadio()
 
-export const create_radio__containerElement = (containerElement) => p5.createRadio(containerElement)
+export const create_radio__container_element = (container_element) => p5.createRadio(container_element)
 
 export const create_radio__name = (name) => p5.createRadio(name)
 
@@ -322,7 +322,7 @@ export const create_select__existing = (existing) => p5.createSelect(existing)
 
 export const create_select__multiple = (multiple) => p5.createSelect(multiple)
 
-export const create_shader__vertSrc_fragSrc = (vertSrc, fragSrc) => p5.createShader(vertSrc, fragSrc)
+export const create_shader__vert_src_frag_src = (vert_src, frag_src) => p5.createShader(vert_src, frag_src)
 
 export const create_slider__min_max = (min, max) => p5.createSlider(min, max)
 
@@ -350,11 +350,11 @@ export const create_writer__name = (name) => p5.createWriter(name)
 
 export const create_writer__name_extension = (name, extension) => p5.createWriter(name, extension)
 
-export const cursor__type = (type) => p5.cursor(type)
+export const cursor__type_ = (type_) => p5.cursor(type_)
 
-export const cursor__type_x = (type, x) => p5.cursor(type, x)
+export const cursor__type__x = (type_, x) => p5.cursor(type_, x)
 
-export const cursor__type_x_y = (type, x, y) => p5.cursor(type, x, y)
+export const cursor__type__x_y = (type_, x, y) => p5.cursor(type_, x, y)
 
 export const curve__x1_y1_x2_y2_x3_y3_x4_y4 = (x1, y1, x2, y2, x3, y3, x4, y4) => p5.curve(x1, y1, x2, y2, x3, y3, x4, y4)
 
@@ -378,55 +378,55 @@ export const cylinder__radius = (radius) => p5.cylinder(radius)
 
 export const cylinder__radius_height = (radius, height) => p5.cylinder(radius, height)
 
-export const cylinder__radius_height_detailX = (radius, height, detailX) => p5.cylinder(radius, height, detailX)
+export const cylinder__radius_height_detail_x = (radius, height, detail_x) => p5.cylinder(radius, height, detail_x)
 
-export const cylinder__radius_height_detailX_detailY = (radius, height, detailX, detailY) => p5.cylinder(radius, height, detailX, detailY)
+export const cylinder__radius_height_detail_x_detail_y = (radius, height, detail_x, detail_y) => p5.cylinder(radius, height, detail_x, detail_y)
 
-export const cylinder__radius_height_detailX_detailY_bottomCap = (radius, height, detailX, detailY, bottomCap) => p5.cylinder(radius, height, detailX, detailY, bottomCap)
+export const cylinder__radius_height_detail_x_detail_y_bottom_cap = (radius, height, detail_x, detail_y, bottom_cap) => p5.cylinder(radius, height, detail_x, detail_y, bottom_cap)
 
-export const cylinder__radius_height_detailX_detailY_bottomCap_topCap = (radius, height, detailX, detailY, bottomCap, topCap) => p5.cylinder(radius, height, detailX, detailY, bottomCap, topCap)
+export const cylinder__radius_height_detail_x_detail_y_bottom_cap_top_cap = (radius, height, detail_x, detail_y, bottom_cap, top_cap) => p5.cylinder(radius, height, detail_x, detail_y, bottom_cap, top_cap)
 
 export const day = () => p5.day()
 
 export const debug_mode = () => p5.debugMode()
 
-export const debug_mode__gridSize = (gridSize) => p5.debugMode(gridSize)
+export const debug_mode__grid_size = (grid_size) => p5.debugMode(grid_size)
 
-export const debug_mode__gridSize_gridDivisions = (gridSize, gridDivisions) => p5.debugMode(gridSize, gridDivisions)
+export const debug_mode__grid_size_grid_divisions = (grid_size, grid_divisions) => p5.debugMode(grid_size, grid_divisions)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff = (gridSize, gridDivisions, gridXOff) => p5.debugMode(gridSize, gridDivisions, gridXOff)
+export const debug_mode__grid_size_grid_divisions_grid_xoff = (grid_size, grid_divisions, grid_xoff) => p5.debugMode(grid_size, grid_divisions, grid_xoff)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff_gridYOff = (gridSize, gridDivisions, gridXOff, gridYOff) => p5.debugMode(gridSize, gridDivisions, gridXOff, gridYOff)
+export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff = (grid_size, grid_divisions, grid_xoff, grid_yoff) => p5.debugMode(grid_size, grid_divisions, grid_xoff, grid_yoff)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff = (gridSize, gridDivisions, gridXOff, gridYOff, gridZOff) => p5.debugMode(gridSize, gridDivisions, gridXOff, gridYOff, gridZOff)
+export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff = (grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff) => p5.debugMode(grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize = (gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize) => p5.debugMode(gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize)
+export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size = (grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size) => p5.debugMode(grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff = (gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize, axesXOff) => p5.debugMode(gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize, axesXOff)
+export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff = (grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size, axes_xoff) => p5.debugMode(grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size, axes_xoff)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff_axesYOff = (gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize, axesXOff, axesYOff) => p5.debugMode(gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize, axesXOff, axesYOff)
+export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff_axes_yoff = (grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size, axes_xoff, axes_yoff) => p5.debugMode(grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size, axes_xoff, axes_yoff)
 
-export const debug_mode__gridSize_gridDivisions_gridXOff_gridYOff_gridZOff_axesSize_axesXOff_axesYOff_axesZOff = (gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize, axesXOff, axesYOff, axesZOff) => p5.debugMode(gridSize, gridDivisions, gridXOff, gridYOff, gridZOff, axesSize, axesXOff, axesYOff, axesZOff)
+export const debug_mode__grid_size_grid_divisions_grid_xoff_grid_yoff_grid_zoff_axes_size_axes_xoff_axes_yoff_axes_zoff = (grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size, axes_xoff, axes_yoff, axes_zoff) => p5.debugMode(grid_size, grid_divisions, grid_xoff, grid_yoff, grid_zoff, axes_size, axes_xoff, axes_yoff, axes_zoff)
 
 export const debug_mode__mode = (mode) => p5.debugMode(mode)
 
-export const debug_mode__mode_axesSize = (mode, axesSize) => p5.debugMode(mode, axesSize)
+export const debug_mode__mode_axes_size = (mode, axes_size) => p5.debugMode(mode, axes_size)
 
-export const debug_mode__mode_axesSize_xOff = (mode, axesSize, xOff) => p5.debugMode(mode, axesSize, xOff)
+export const debug_mode__mode_axes_size_x_off = (mode, axes_size, x_off) => p5.debugMode(mode, axes_size, x_off)
 
-export const debug_mode__mode_axesSize_xOff_yOff = (mode, axesSize, xOff, yOff) => p5.debugMode(mode, axesSize, xOff, yOff)
+export const debug_mode__mode_axes_size_x_off_y_off = (mode, axes_size, x_off, y_off) => p5.debugMode(mode, axes_size, x_off, y_off)
 
-export const debug_mode__mode_axesSize_xOff_yOff_zOff = (mode, axesSize, xOff, yOff, zOff) => p5.debugMode(mode, axesSize, xOff, yOff, zOff)
+export const debug_mode__mode_axes_size_x_off_y_off_z_off = (mode, axes_size, x_off, y_off, z_off) => p5.debugMode(mode, axes_size, x_off, y_off, z_off)
 
-export const debug_mode__mode_gridSize = (mode, gridSize) => p5.debugMode(mode, gridSize)
+export const debug_mode__mode_grid_size = (mode, grid_size) => p5.debugMode(mode, grid_size)
 
-export const debug_mode__mode_gridSize_gridDivisions = (mode, gridSize, gridDivisions) => p5.debugMode(mode, gridSize, gridDivisions)
+export const debug_mode__mode_grid_size_grid_divisions = (mode, grid_size, grid_divisions) => p5.debugMode(mode, grid_size, grid_divisions)
 
-export const debug_mode__mode_gridSize_gridDivisions_xOff = (mode, gridSize, gridDivisions, xOff) => p5.debugMode(mode, gridSize, gridDivisions, xOff)
+export const debug_mode__mode_grid_size_grid_divisions_x_off = (mode, grid_size, grid_divisions, x_off) => p5.debugMode(mode, grid_size, grid_divisions, x_off)
 
-export const debug_mode__mode_gridSize_gridDivisions_xOff_yOff = (mode, gridSize, gridDivisions, xOff, yOff) => p5.debugMode(mode, gridSize, gridDivisions, xOff, yOff)
+export const debug_mode__mode_grid_size_grid_divisions_x_off_y_off = (mode, grid_size, grid_divisions, x_off, y_off) => p5.debugMode(mode, grid_size, grid_divisions, x_off, y_off)
 
-export const debug_mode__mode_gridSize_gridDivisions_xOff_yOff_zOff = (mode, gridSize, gridDivisions, xOff, yOff, zOff) => p5.debugMode(mode, gridSize, gridDivisions, xOff, yOff, zOff)
+export const debug_mode__mode_grid_size_grid_divisions_x_off_y_off_z_off = (mode, grid_size, grid_divisions, x_off, y_off, z_off) => p5.debugMode(mode, grid_size, grid_divisions, x_off, y_off, z_off)
 
 export const degrees = (radians) => p5.degrees(radians)
 
@@ -472,15 +472,15 @@ export const ellipse_mode = (mode) => p5.ellipseMode(mode)
 
 export const ellipsoid = () => p5.ellipsoid()
 
-export const ellipsoid__radiusX = (radiusX) => p5.ellipsoid(radiusX)
+export const ellipsoid__radius_x = (radius_x) => p5.ellipsoid(radius_x)
 
-export const ellipsoid__radiusX_radiusY = (radiusX, radiusY) => p5.ellipsoid(radiusX, radiusY)
+export const ellipsoid__radius_x_radius_y = (radius_x, radius_y) => p5.ellipsoid(radius_x, radius_y)
 
-export const ellipsoid__radiusX_radiusY_radiusZ = (radiusX, radiusY, radiusZ) => p5.ellipsoid(radiusX, radiusY, radiusZ)
+export const ellipsoid__radius_x_radius_y_radius_z = (radius_x, radius_y, radius_z) => p5.ellipsoid(radius_x, radius_y, radius_z)
 
-export const ellipsoid__radiusX_radiusY_radiusZ_detailX = (radiusX, radiusY, radiusZ, detailX) => p5.ellipsoid(radiusX, radiusY, radiusZ, detailX)
+export const ellipsoid__radius_x_radius_y_radius_z_detail_x = (radius_x, radius_y, radius_z, detail_x) => p5.ellipsoid(radius_x, radius_y, radius_z, detail_x)
 
-export const ellipsoid__radiusX_radiusY_radiusZ_detailX_detailY = (radiusX, radiusY, radiusZ, detailX, detailY) => p5.ellipsoid(radiusX, radiusY, radiusZ, detailX, detailY)
+export const ellipsoid__radius_x_radius_y_radius_z_detail_x_detail_y = (radius_x, radius_y, radius_z, detail_x, detail_y) => p5.ellipsoid(radius_x, radius_y, radius_z, detail_x, detail_y)
 
 export const emissive_material__color = (color) => p5.emissiveMaterial(color)
 
@@ -504,9 +504,9 @@ export const end_shape__mode_count = (mode, count) => p5.endShape(mode, count)
 
 export const erase = () => p5.erase()
 
-export const erase__strengthFill = (strengthFill) => p5.erase(strengthFill)
+export const erase__strength_fill = (strength_fill) => p5.erase(strength_fill)
 
-export const erase__strengthFill_strengthStroke = (strengthFill, strengthStroke) => p5.erase(strengthFill, strengthStroke)
+export const erase__strength_fill_strength_stroke = (strength_fill, strength_stroke) => p5.erase(strength_fill, strength_stroke)
 
 export const exit_pointer_lock = () => p5.exitPointerLock()
 
@@ -526,15 +526,15 @@ export const fill__value = (value) => p5.fill(value)
 
 export const fill__values = (values) => p5.fill(values)
 
-export const filter__filterType = (filterType) => p5.filter(filterType)
+export const filter__filter_type = (filter_type) => p5.filter(filter_type)
 
-export const filter__filterType_filterParam = (filterType, filterParam) => p5.filter(filterType, filterParam)
+export const filter__filter_type_filter_param = (filter_type, filter_param) => p5.filter(filter_type, filter_param)
 
-export const filter__filterType_filterParam_useWebGL = (filterType, filterParam, useWebGL) => p5.filter(filterType, filterParam, useWebGL)
+export const filter__filter_type_filter_param_use_web_gl = (filter_type, filter_param, use_web_gl) => p5.filter(filter_type, filter_param, use_web_gl)
 
-export const filter__filterType_useWebGL = (filterType, useWebGL) => p5.filter(filterType, useWebGL)
+export const filter__filter_type_use_web_gl = (filter_type, use_web_gl) => p5.filter(filter_type, use_web_gl)
 
-export const filter__shaderFilter = (shaderFilter) => p5.filter(shaderFilter)
+export const filter__shader_filter = (shader_filter) => p5.filter(shader_filter)
 
 export const float__ns = (ns) => p5.float(ns)
 
@@ -644,11 +644,11 @@ export const line_perspective__enable = (enable) => p5.linePerspective(enable)
 
 export const load_pixels = () => p5.loadPixels()
 
-export const load_shader__vertFilename_fragFilename = (vertFilename, fragFilename) => p5.loadShader(vertFilename, fragFilename)
+export const load_shader__vert_filename_frag_filename = (vert_filename, frag_filename) => p5.loadShader(vert_filename, frag_filename)
 
-export const load_shader__vertFilename_fragFilename_successCallback = (vertFilename, fragFilename, successCallback) => p5.loadShader(vertFilename, fragFilename, successCallback)
+export const load_shader__vert_filename_frag_filename_success_callback = (vert_filename, frag_filename, success_callback) => p5.loadShader(vert_filename, frag_filename, success_callback)
 
-export const load_shader__vertFilename_fragFilename_successCallback_failureCallback = (vertFilename, fragFilename, successCallback, failureCallback) => p5.loadShader(vertFilename, fragFilename, successCallback, failureCallback)
+export const load_shader__vert_filename_frag_filename_success_callback_failure_callback = (vert_filename, frag_filename, success_callback, failure_callback) => p5.loadShader(vert_filename, frag_filename, success_callback, failure_callback)
 
 export const log = (n) => p5.log(n)
 
@@ -658,7 +658,7 @@ export const mag__x_y = (x, y) => p5.mag(x, y)
 
 export const map__value_start1_stop1_start2_stop2 = (value, start1, stop1, start2, stop2) => p5.map(value, start1, stop1, start2, stop2)
 
-export const map__value_start1_stop1_start2_stop2_withinBounds = (value, start1, stop1, start2, stop2, withinBounds) => p5.map(value, start1, stop1, start2, stop2, withinBounds)
+export const map__value_start1_stop1_start2_stop2_within_bounds = (value, start1, stop1, start2, stop2, within_bounds) => p5.map(value, start1, stop1, start2, stop2, within_bounds)
 
 export const match__str_regexp = (str, regexp) => p5.match(str, regexp)
 
@@ -670,7 +670,7 @@ export const max__nums = (nums) => p5.max(nums)
 
 export const metalness = (metallic) => p5.metalness(metallic)
 
-export const midi_to_freq = (midiNote) => p5.midiToFreq(midiNote)
+export const midi_to_freq = (midi_note) => p5.midiToFreq(midi_note)
 
 export const millis = () => p5.millis()
 
@@ -780,13 +780,13 @@ export const normal_material = () => p5.normalMaterial()
 
 export const orbit_control = () => p5.orbitControl()
 
-export const orbit_control__sensitivityX = (sensitivityX) => p5.orbitControl(sensitivityX)
+export const orbit_control__sensitivity_x = (sensitivity_x) => p5.orbitControl(sensitivity_x)
 
-export const orbit_control__sensitivityX_sensitivityY = (sensitivityX, sensitivityY) => p5.orbitControl(sensitivityX, sensitivityY)
+export const orbit_control__sensitivity_x_sensitivity_y = (sensitivity_x, sensitivity_y) => p5.orbitControl(sensitivity_x, sensitivity_y)
 
-export const orbit_control__sensitivityX_sensitivityY_sensitivityZ = (sensitivityX, sensitivityY, sensitivityZ) => p5.orbitControl(sensitivityX, sensitivityY, sensitivityZ)
+export const orbit_control__sensitivity_x_sensitivity_y_sensitivity_z = (sensitivity_x, sensitivity_y, sensitivity_z) => p5.orbitControl(sensitivity_x, sensitivity_y, sensitivity_z)
 
-export const orbit_control__sensitivityX_sensitivityY_sensitivityZ_options = (sensitivityX, sensitivityY, sensitivityZ, options) => p5.orbitControl(sensitivityX, sensitivityY, sensitivityZ, options)
+export const orbit_control__sensitivity_x_sensitivity_y_sensitivity_z_options = (sensitivity_x, sensitivity_y, sensitivity_z, options) => p5.orbitControl(sensitivity_x, sensitivity_y, sensitivity_z, options)
 
 export const ortho = () => p5.ortho()
 
@@ -824,11 +824,11 @@ export const plane__width = (width) => p5.plane(width)
 
 export const plane__width_height = (width, height) => p5.plane(width, height)
 
-export const plane__width_height_detailX = (width, height, detailX) => p5.plane(width, height, detailX)
+export const plane__width_height_detail_x = (width, height, detail_x) => p5.plane(width, height, detail_x)
 
-export const plane__width_height_detailX_detailY = (width, height, detailX, detailY) => p5.plane(width, height, detailX, detailY)
+export const plane__width_height_detail_x_detail_y = (width, height, detail_x, detail_y) => p5.plane(width, height, detail_x, detail_y)
 
-export const point__coordinateVector = (coordinateVector) => p5.point(coordinateVector)
+export const point__coordinate_vector = (coordinate_vector) => p5.point(coordinate_vector)
 
 export const point__x_y = (x, y) => p5.point(x, y)
 
@@ -852,15 +852,15 @@ export const push = () => p5.push()
 
 export const quad__x1_y1_x2_y2_x3_y3_x4_y4 = (x1, y1, x2, y2, x3, y3, x4, y4) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4)
 
-export const quad__x1_y1_x2_y2_x3_y3_x4_y4_detailX = (x1, y1, x2, y2, x3, y3, x4, y4, detailX) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4, detailX)
+export const quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x = (x1, y1, x2, y2, x3, y3, x4, y4, detail_x) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4, detail_x)
 
-export const quad__x1_y1_x2_y2_x3_y3_x4_y4_detailX_detailY = (x1, y1, x2, y2, x3, y3, x4, y4, detailX, detailY) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4, detailX, detailY)
+export const quad__x1_y1_x2_y2_x3_y3_x4_y4_detail_x_detail_y = (x1, y1, x2, y2, x3, y3, x4, y4, detail_x, detail_y) => p5.quad(x1, y1, x2, y2, x3, y3, x4, y4, detail_x, detail_y)
 
 export const quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4 = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4) => p5.quad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4)
 
-export const quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detailX = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detailX) => p5.quad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detailX)
+export const quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x) => p5.quad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x)
 
-export const quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detailX_detailY = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detailX, detailY) => p5.quad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detailX, detailY)
+export const quad__x1_y1_z1_x2_y2_z2_x3_y3_z3_x4_y4_z4_detail_x_detail_y = (x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x, detail_y) => p5.quad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, detail_x, detail_y)
 
 export const quadratic_vertex__cx_cy_cz_x3_y3_z3 = (cx, cy, cz, x3, y3, z3) => p5.quadraticVertex(cx, cy, cz, x3, y3, z3)
 
@@ -888,9 +888,9 @@ export const rect__x_y_w = (x, y, w) => p5.rect(x, y, w)
 
 export const rect__x_y_w_h = (x, y, w, h) => p5.rect(x, y, w, h)
 
-export const rect__x_y_w_h_detailX = (x, y, w, h, detailX) => p5.rect(x, y, w, h, detailX)
+export const rect__x_y_w_h_detail_x = (x, y, w, h, detail_x) => p5.rect(x, y, w, h, detail_x)
 
-export const rect__x_y_w_h_detailX_detailY = (x, y, w, h, detailX, detailY) => p5.rect(x, y, w, h, detailX, detailY)
+export const rect__x_y_w_h_detail_x_detail_y = (x, y, w, h, detail_x, detail_y) => p5.rect(x, y, w, h, detail_x, detail_y)
 
 export const rect__x_y_w_h_tl = (x, y, w, h, tl) => p5.rect(x, y, w, h, tl)
 
@@ -922,7 +922,7 @@ export const reset_shader = () => p5.resetShader()
 
 export const resize_canvas__width_height = (width, height) => p5.resizeCanvas(width, height)
 
-export const resize_canvas__width_height_noRedraw = (width, height, noRedraw) => p5.resizeCanvas(width, height, noRedraw)
+export const resize_canvas__width_height_no_redraw = (width, height, no_redraw) => p5.resizeCanvas(width, height, no_redraw)
 
 export const reverse = (list) => p5.reverse(list)
 
@@ -948,17 +948,17 @@ export const save_gif__filename_duration = (filename, duration) => p5.saveGif(fi
 
 export const save_gif__filename_duration_options = (filename, duration, options) => p5.saveGif(filename, duration, options)
 
-export const save_sound__soundFile_fileName = (soundFile, fileName) => p5.saveSound(soundFile, fileName)
+export const save_sound__sound_file_file_name = (sound_file, file_name) => p5.saveSound(sound_file, file_name)
 
 export const save_strings__list_filename = (list, filename) => p5.saveStrings(list, filename)
 
 export const save_strings__list_filename_extension = (list, filename, extension) => p5.saveStrings(list, filename, extension)
 
-export const save_strings__list_filename_extension_isCRLF = (list, filename, extension, isCRLF) => p5.saveStrings(list, filename, extension, isCRLF)
+export const save_strings__list_filename_extension_is_crlf = (list, filename, extension, is_crlf) => p5.saveStrings(list, filename, extension, is_crlf)
 
-export const save_table__Table_filename = (Table, filename) => p5.saveTable(Table, filename)
+export const save_table__table_filename = (table, filename) => p5.saveTable(table, filename)
 
-export const save_table__Table_filename_options = (Table, filename, options) => p5.saveTable(Table, filename, options)
+export const save_table__table_filename_options = (table, filename, options) => p5.saveTable(table, filename, options)
 
 export const scale__s = (s) => p5.scale(s)
 
@@ -982,7 +982,7 @@ export const set_attributes__key_value = (key, value) => p5.setAttributes(key, v
 
 export const set_attributes__obj = (obj) => p5.setAttributes(obj)
 
-export const set_bpm__BPM_rampTime = (BPM, rampTime) => p5.setBPM(BPM, rampTime)
+export const set_bpm__bpm_ramp_time = (bpm, ramp_time) => p5.setBPM(bpm, ramp_time)
 
 export const set_camera = (cam) => p5.setCamera(cam)
 
@@ -1042,9 +1042,9 @@ export const sphere = () => p5.sphere()
 
 export const sphere__radius = (radius) => p5.sphere(radius)
 
-export const sphere__radius_detailX = (radius, detailX) => p5.sphere(radius, detailX)
+export const sphere__radius_detail_x = (radius, detail_x) => p5.sphere(radius, detail_x)
 
-export const sphere__radius_detailX_detailY = (radius, detailX, detailY) => p5.sphere(radius, detailX, detailY)
+export const sphere__radius_detail_x_detail_y = (radius, detail_x, detail_y) => p5.sphere(radius, detail_x, detail_y)
 
 export const splice__list_value_position = (list, value, position) => p5.splice(list, value, position)
 
@@ -1146,9 +1146,9 @@ export const tan = (angle) => p5.tan(angle)
 
 export const text_align = () => p5.textAlign()
 
-export const text_align__horizAlign = (horizAlign) => p5.textAlign(horizAlign)
+export const text_align__horiz_align = (horiz_align) => p5.textAlign(horiz_align)
 
-export const text_align__horizAlign_vertAlign = (horizAlign, vertAlign) => p5.textAlign(horizAlign, vertAlign)
+export const text_align__horiz_align_vert_align = (horiz_align, vert_align) => p5.textAlign(horiz_align, vert_align)
 
 export const text_ascent = () => p5.textAscent()
 
@@ -1176,9 +1176,9 @@ export const text_wrap = (style) => p5.textWrap(style)
 
 export const texture_mode = (mode) => p5.textureMode(mode)
 
-export const texture_wrap__wrapX = (wrapX) => p5.textureWrap(wrapX)
+export const texture_wrap__wrap_x = (wrap_x) => p5.textureWrap(wrap_x)
 
-export const texture_wrap__wrapX_wrapY = (wrapX, wrapY) => p5.textureWrap(wrapX, wrapY)
+export const texture_wrap__wrap_x_wrap_y = (wrap_x, wrap_y) => p5.textureWrap(wrap_x, wrap_y)
 
 export const tint__color = (color) => p5.tint(color)
 
@@ -1198,11 +1198,11 @@ export const torus = () => p5.torus()
 
 export const torus__radius = (radius) => p5.torus(radius)
 
-export const torus__radius_tubeRadius = (radius, tubeRadius) => p5.torus(radius, tubeRadius)
+export const torus__radius_tube_radius = (radius, tube_radius) => p5.torus(radius, tube_radius)
 
-export const torus__radius_tubeRadius_detailX = (radius, tubeRadius, detailX) => p5.torus(radius, tubeRadius, detailX)
+export const torus__radius_tube_radius_detail_x = (radius, tube_radius, detail_x) => p5.torus(radius, tube_radius, detail_x)
 
-export const torus__radius_tubeRadius_detailX_detailY = (radius, tubeRadius, detailX, detailY) => p5.torus(radius, tubeRadius, detailX, detailY)
+export const torus__radius_tube_radius_detail_x_detail_y = (radius, tube_radius, detail_x, detail_y) => p5.torus(radius, tube_radius, detail_x, detail_y)
 
 export const touch_ended = (fun) => p5.touchEnded = fun
 
