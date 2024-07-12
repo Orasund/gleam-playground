@@ -54,12 +54,16 @@ fn gleam_type(type_string) {
     "p5.XML" -> "P5XML" |> Ok
     "p5.Geometry" -> "P5Geometry" |> Ok
     "p5.image" -> "P5Image" |> Ok
+    "p5.Image|p5.Element|p5.Texture|p5.Framebuffer|p5.FramebufferTexture" ->
+      "P5Image" |> Ok
     "p5.Camera" -> "P5Camera" |> Ok
     "p5.SoundFile" -> "P5SoundFile" |> Ok
     "p5.PrintWriter" -> "P5PrintWriter" |> Ok
     "p5.Convolver" -> "P5Convolver" |> Ok
     "Object" -> "any" |> Ok
     "Function" -> "fn() -> Nil" |> Ok
+    "function(p5.Image)" -> "fn(P5Image) -> Nil" |> Ok
+    "Function(Event)" -> "fn(Event) -> Nil" |> Ok
     "*" -> "any" |> Ok
     _ -> {
       Error(type_string)

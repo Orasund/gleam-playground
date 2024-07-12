@@ -8,6 +8,9 @@ export const setup__fun = (fun) => p5.setup = fun
 
 export const draw__fun = (fun) => p5.draw = fun
 
+export const preload__fun = (fun) => p5.preload = fun
+
+
 
 
 export function init(fun, id) {

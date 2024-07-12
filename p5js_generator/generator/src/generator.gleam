@@ -73,7 +73,7 @@ pub fn generate_gleam_file(entries: List(Entry)) {
       "P5Color", "P5Element", "P5Geometry", "P5Shader", "P5Matrix", "P5XML",
       "P5TableRow", "P5Camera", "HTMLCanvasElement", "P5Convolver",
       "P5NumberDict", "P5StringDict", "P5PrintWriter", "P5SoundFile", "P5Table",
-      "HTMLElement",
+      "Event", "HTMLElement",
     ]
     |> list.map(fn(string) { "pub type " <> string })
     |> string.join("\n\n")

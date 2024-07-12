@@ -41,6 +41,8 @@ pub type P5SoundFile
 
 pub type P5Table
 
+pub type Event
+
 pub type HTMLElement
 
 pub type ClipOptions {
@@ -1228,6 +1230,42 @@ pub fn hour() -> Int
 pub fn hue(color:String) -> Float
 
 
+@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy")
+pub fn image__img_dx_dy_d_width_d_height_sx_sy(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width")
+pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height")
+pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit")
+pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align")
+pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String, x_align:String) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align")
+pub fn image__img_dx_dy_d_width_d_height_sx_sy_s_width_s_height_fit_x_align_y_align(img:P5Image, dx:Float, dy:Float, d_width:Float, d_height:Float, sx:Float, sy:Float, s_width:Float, s_height:Float, fit:String, x_align:String, y_align:String) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_x_y")
+pub fn image__img_x_y(img:P5Image, x:Float, y:Float) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_x_y_width")
+pub fn image__img_x_y_width(img:P5Image, x:Float, y:Float, width:Float) -> Nil
+
+
+@external(javascript, "../p5.mjs", "image__img_x_y_width_height")
+pub fn image__img_x_y_width_height(img:P5Image, x:Float, y:Float, width:Float, height:Float) -> Nil
+
+
 @external(javascript, "../p5.mjs", "image_light")
 pub fn image_light(img:P5Image) -> Nil
 
@@ -1294,6 +1332,18 @@ pub fn line_perspective() -> Bool
 
 @external(javascript, "../p5.mjs", "line_perspective__enable")
 pub fn line_perspective__enable(enable:Bool) -> Nil
+
+
+@external(javascript, "../p5.mjs", "load_image__path")
+pub fn load_image__path(path:String) -> P5Image
+
+
+@external(javascript, "../p5.mjs", "load_image__path_success_callback")
+pub fn load_image__path_success_callback(path:String, success_callback:fn(P5Image) -> Nil) -> P5Image
+
+
+@external(javascript, "../p5.mjs", "load_image__path_success_callback_failure_callback")
+pub fn load_image__path_success_callback_failure_callback(path:String, success_callback:fn(P5Image) -> Nil, failure_callback:fn(Event) -> Nil) -> P5Image
 
 
 @external(javascript, "../p5.mjs", "load_pixels")

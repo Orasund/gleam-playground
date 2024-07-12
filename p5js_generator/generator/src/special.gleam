@@ -19,8 +19,6 @@ pub fn ignored(name) {
     | "addCue"
     | "saveCanvas"
     | "saveFrames"
-    | "loadImage"
-    | "image"
     | "set"
     | "copy"
     | "loadJSON"
