@@ -2,14 +2,6 @@ let p5 = null
 
 
 
-export const setup__fun = (fun) => p5.setup = fun
-
-
-
-export const draw__fun = (fun) => p5.draw = fun
-
-
-
 export function init(fun, id) {
 
     return new window.p5((newSketch) => {
@@ -460,7 +452,7 @@ export const dist__x1_y1_z1_x2_y2_z2 = (x1, y1, z1, x2, y2, z2) => p5.dist(x1, y
 
 export const double_clicked = (fun) => p5.doubleClicked = fun
 
-export const draw = () => p5.draw()
+export const draw = (fun) => p5.draw = fun
 
 export const ellipse__x_y_w = (x, y, w) => p5.ellipse(x, y, w)
 
@@ -870,7 +862,7 @@ export const pop = () => p5.pop()
 
 export const pow__n_e = (n, e) => p5.pow(n, e)
 
-export const preload = () => p5.preload()
+export const preload = (fun) => p5.preload = fun
 
 export const push = () => p5.push()
 
@@ -1014,7 +1006,7 @@ export const set_move_threshold = (value) => p5.setMoveThreshold(value)
 
 export const set_shake_threshold = (value) => p5.setShakeThreshold(value)
 
-export const setup = () => p5.setup()
+export const setup = (fun) => p5.setup = fun
 
 export const shader = (s) => p5.shader(s)
 

@@ -49,12 +49,6 @@ pub type ClipOptions {
     ClipOptions(invert:String)
 }
 
-@external(javascript, "../p5.mjs", "setup__fun")
-pub fn setup__fun(fun:fn() -> Nil) -> Nil
-
-@external(javascript, "../p5.mjs", "draw__fun")
-pub fn draw__fun(fun:fn() -> Nil) -> Nil
-
 @external(javascript, "../p5.mjs", "init")
 pub fn init(fun:fn() -> Nil,id:String) -> Nil
 
@@ -935,7 +929,7 @@ pub fn double_clicked(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "draw")
-pub fn draw() -> Nil
+pub fn draw(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "ellipse__x_y_w")
@@ -1755,7 +1749,7 @@ pub fn pow__n_e(n:Float, e:Float) -> Float
 
 
 @external(javascript, "../p5.mjs", "preload")
-pub fn preload() -> Nil
+pub fn preload(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "push")
@@ -2043,7 +2037,7 @@ pub fn set_shake_threshold(value:Float) -> Nil
 
 
 @external(javascript, "../p5.mjs", "setup")
-pub fn setup() -> Nil
+pub fn setup(fun:fn() -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "shader")

@@ -72,7 +72,10 @@ pub fn entries(name) -> Result(List(Entry), Nil) {
     | "touchMoved"
     | "touchEnded"
     | "dragOver"
-    | "dragLeave" ->
+    | "dragLeave"
+    | "setup"
+    | "draw"
+    | "preload" ->
       [
         Entry(
           justin.snake_case(name),
