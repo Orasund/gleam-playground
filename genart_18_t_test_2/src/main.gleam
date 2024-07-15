@@ -24,7 +24,6 @@ pub fn setup(ref) {
     p5.create_canvas__width_height(600.0, 600.0)
     let assert option.Some(asset_list) = javascript.dereference(ref)
     p5.background__colorstring("#CC7178")
-    p5.stroke__value("#54426B")
     p5.random_seed(41.0)
     use <- transform.translate(600.0 /. 2.0, 600.0 /. 2.0)
     rec(600.0 /. 3.5, 5, asset_list)
@@ -32,7 +31,7 @@ pub fn setup(ref) {
 }
 
 pub fn rec(size: Float, steps: Int, asset_list) -> Nil {
-  p5.fill__value(random.uniform(["#E9F1F7", "#54426B"]))
+  p5.fill__value(random.uniform(["#E9F1F7", "#000"]))
   shape.polygon(0.0, 0.0, size, 6)
   let asset = random.uniform(asset_list)
   p5.image__img_x_y_width_height(asset, size /. -2.0, size /. -2.0, size, size)
