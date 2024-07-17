@@ -48,17 +48,8 @@ pub type ClipOptions {
   ClipOptions(invert: String)
 }
 
-@external(javascript, "../p5.mjs", "setup__fun")
-pub fn setup__fun(fun: fn() -> Nil) -> Nil
-
-@external(javascript, "../p5.mjs", "draw__fun")
-pub fn draw__fun(fun: fn() -> Nil) -> Nil
-
-@external(javascript, "../p5.mjs", "preload__fun")
-pub fn preload__fun(fun: fn() -> Nil) -> Nil
-
 @external(javascript, "../p5.mjs", "init")
-pub fn init(fun: fn() -> Nil, id id: String) -> Nil
+pub fn init(fun: fn() -> Nil, id: String) -> Nil
 
 @external(javascript, "../p5.mjs", "abs")
 pub fn abs(n: Float) -> Float
@@ -1171,7 +1162,7 @@ pub fn dist__x1_y1_z1_x2_y2_z2(
 pub fn double_clicked(fun: fn() -> Nil) -> Nil
 
 @external(javascript, "../p5.mjs", "draw")
-pub fn draw() -> Nil
+pub fn draw(fun: fn() -> Nil) -> Nil
 
 @external(javascript, "../p5.mjs", "ellipse__x_y_w")
 pub fn ellipse__x_y_w(x: Float, y: Float, w: Float) -> Nil
@@ -2046,7 +2037,7 @@ pub fn pop() -> Nil
 pub fn pow__n_e(n: Float, e: Float) -> Float
 
 @external(javascript, "../p5.mjs", "preload")
-pub fn preload() -> Nil
+pub fn preload(fun: fn() -> Nil) -> Nil
 
 @external(javascript, "../p5.mjs", "push")
 pub fn push() -> Nil
@@ -2419,7 +2410,7 @@ pub fn set_move_threshold(value: Float) -> Nil
 pub fn set_shake_threshold(value: Float) -> Nil
 
 @external(javascript, "../p5.mjs", "setup")
-pub fn setup() -> Nil
+pub fn setup(fun: fn() -> Nil) -> Nil
 
 @external(javascript, "../p5.mjs", "shader")
 pub fn shader(s: P5Shader) -> Nil
