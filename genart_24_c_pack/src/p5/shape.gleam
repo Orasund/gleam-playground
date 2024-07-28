@@ -1,7 +1,7 @@
 import gleam/int
 import gleam/list
 import gleam_community/maths/elementary
-import p5js_bindings/p5
+import p5/p5
 import vector.{Polar, Vector}
 
 pub fn triangle(x: Float, y: Float, r: Float) {

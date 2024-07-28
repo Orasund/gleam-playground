@@ -1,4 +1,4 @@
-import p5js_bindings/p5
+import p5/p5
 
 pub fn translate(x: Float, y: Float, fun: fn() -> Nil) {
   p5.translate__x_y(x, y)

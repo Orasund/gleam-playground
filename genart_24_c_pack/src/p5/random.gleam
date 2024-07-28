@@ -1,5 +1,5 @@
 import gleam/javascript/array
-import p5js_bindings/p5
+import p5/p5
 
 pub fn uniform(list: List(a)) -> a {
   list
