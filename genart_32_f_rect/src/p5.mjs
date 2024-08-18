@@ -960,10 +960,6 @@ export const sample_rate = () => p5.sampleRate()
 
 export const saturation = (color) => p5.saturation(color)
 
-export const save_frames__filename_extension_duration_framerate = (filename, extension, duration, framerate) => p5.saveFrames(filename, extension, duration, framerate)
-
-export const save_frames__filename_extension_duration_framerate_callback = (filename, extension, duration, framerate, callback) => p5.saveFrames(filename, extension, duration, framerate, callback)
-
 export const save_gif__filename_duration = (filename, duration) => p5.saveGif(filename, duration)
 
 export const save_gif__filename_duration_options = (filename, duration, options) => p5.saveGif(filename, duration, options)

@@ -62,6 +62,7 @@ fn gleam_type(type_string) {
     "p5.Convolver" -> "P5Convolver" |> Ok
     "Object" -> "any" |> Ok
     "Function" -> "fn() -> Nil" |> Ok
+    "Function(Array)" -> "fn(Array(a)) -> Nil" |> Ok
     "function(p5.Image)" -> "fn(P5Image) -> Nil" |> Ok
     "Function(Event)" -> "fn(Event) -> Nil" |> Ok
     "*" -> "any" |> Ok

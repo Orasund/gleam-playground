@@ -1,6 +1,4 @@
 import gleam/javascript/array.{type Array}
-import gleam/dynamic.{type Dynamic}
-
 pub type P5Vector
 
 pub type P5Renderer
@@ -1942,6 +1940,14 @@ pub fn sample_rate() -> Float
 
 @external(javascript, "../p5.mjs", "saturation")
 pub fn saturation(color:String) -> Float
+
+
+@external(javascript, "../p5.mjs", "save_frames__filename_extension_duration_framerate")
+pub fn save_frames__filename_extension_duration_framerate(filename:String, extension:String, duration:Float, framerate:Float) -> Nil
+
+
+@external(javascript, "../p5.mjs", "save_frames__filename_extension_duration_framerate_callback")
+pub fn save_frames__filename_extension_duration_framerate_callback(filename:String, extension:String, duration:Float, framerate:Float, callback:fn(Array(a)) -> Nil) -> Nil
 
 
 @external(javascript, "../p5.mjs", "save_gif__filename_duration")

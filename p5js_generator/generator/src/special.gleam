@@ -18,7 +18,6 @@ pub fn ignored(name) {
     | "connect"
     | "addCue"
     | "saveCanvas"
-    | "saveFrames"
     | "set"
     | "copy"
     | "loadJSON"

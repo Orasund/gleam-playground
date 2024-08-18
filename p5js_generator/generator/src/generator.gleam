@@ -1,5 +1,4 @@
 import classitem
-import decoder
 import entry.{type Entry, Entry, FunctionSort, TypeSort}
 import gleam/dict
 import gleam/dynamic
