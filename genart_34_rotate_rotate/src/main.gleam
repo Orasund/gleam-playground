@@ -1,6 +1,5 @@
 import gleam/bool
 import gleam/javascript
-import gleam/javascript/array
 import gleam_community/maths/elementary.{pi}
 import p5/p5
 import p5/random
