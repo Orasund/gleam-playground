@@ -9,20 +9,19 @@ import ref
 
 const canvas_size = 600.0
 
-const cols = 50
+const cols = 100
 
-pub fn setup() {
+pub fn setup(ref) {
   p5.create_canvas__width_height(canvas_size, canvas_size)
   p5.frame_rate__fps(30.0)
   p5.random_seed(42.0)
-  p5.no_stroke()
   //p5.save_gif__filename_duration("test", 16.0)
-  list.repeat(Nil, cols * cols)
-  |> list.index_map(fn(_, i) {
-    random.uniform(["#FFA630", "#2E5077"])
-    |> fn(color) { #(#(i / cols, i % cols), color) }
-  })
-  |> dict.from_list()
+  let dict =
+    list.repeat(fn() { random.uniform(["#FFA630", "#2E5077"]) }, cols * cols)
+    |> list.index_map(fn(color, i) { #(#(i / cols, i % cols), color()) })
+    |> dict.from_list()
+  ref.set_reference(ref, option.Some(dict))
+  p5.no_stroke()
 }
 
 fn draw(state) {
@@ -39,10 +38,7 @@ pub fn main() {
   p5.init(
     fn() {
       let ref = ref.make_reference(option.None)
-      p5.setup(fn() {
-        ref.set_reference(ref, option.Some(setup()))
-        Nil
-      })
+      p5.setup(fn() { setup(ref) })
       p5.draw(fn() {
         let assert option.Some(state) = ref.get_reference(ref)
         ref.set_reference(ref, option.Some(draw(state)))
